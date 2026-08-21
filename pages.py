@@ -139,10 +139,11 @@ PAGES["/"] = {
  "body": """
 <section class="hero">
   <div class="hero-l"><div class="in">
-    <h1>Automation that triggers on the symptom, <span class="q">not on a script.</span></h1>
-    <p class="sub">DEX made the digital workplace measurable. Nanoheal makes it autonomous &mdash;
-    resolving issues the moment the operating system reports them. No scripts to write.
-    Nothing left running to watch.</p>
+    <h1>We see it coming. Then we <span class="q">fix it without a script.</span></h1>
+    <p class="sub">Nanoheal measures, forecasts and detects anomalies across the digital workplace
+    &mdash; everything a DEX platform does. Then it does the half nobody else does: resolves the
+    issue the moment the operating system reports it, and runs your IT operations on the same
+    engine. No scripts to write. Nothing left running to watch.</p>
     <div class="acts">
       <a class="btn btn-solid" href="/#demo">Schedule a Demo</a>
       <a class="btn btn-line" href="/why-nanoheal/why-not-scripts/">See how it triggers</a>
@@ -164,7 +165,36 @@ PAGES["/"] = {
   </div>
 </div></div>
 
-<section class="band" id="difference">
+<section class="band" id="scope">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Scope</p>
+      <h2 class="h2">Everything a DEX platform does. Then the half that stays undone.</h2>
+      <p class="lede">Analytics is table stakes and we hold the table. What separates Nanoheal is
+      what happens in the seconds after the dashboard would have raised an alert.</p>
+    </div>
+    <div class="tblwrap">
+      <table class="spec">
+        <thead><tr><th>&nbsp;</th><th>What it covers</th><th>Where it stands</th></tr></thead>
+        <tbody>
+          <tr><td>Measure</td><td>Fleet-wide performance, stability, application and network experience, scored on a patented DEX methodology</td><td>Category parity</td></tr>
+          <tr><td>Forecast</td><td>Predicts degradation before the employee feels it &mdash; capacity, drift, failure patterns building across the estate</td><td class="good">Ahead</td></tr>
+          <tr><td>Detect anomalies</td><td>Surfaces what nobody wrote a rule for, and traces it to root cause</td><td class="good">Ahead</td></tr>
+          <tr><td>Resolve</td><td>Triggered by the symptom the OS reports. No script authored, nothing polling</td><td class="good">Only Nanoheal</td></tr>
+          <tr><td>Run IT operations</td><td>Software distribution, patch, device compliance policy &mdash; the same engine, the same knowledge layer</td><td class="good">Only Nanoheal</td></tr>
+          <tr><td>Orchestrate the estate</td><td>ServiceNow, Active Directory, any system with a standard API &mdash; integrated without code</td><td class="good">Only Nanoheal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-line" href="/platform/observe-predict/">Observe &amp; predict</a>
+      <a class="btn btn-line" href="/platform/it-operations/">IT operations</a>
+      <a class="btn btn-line" href="/platform/orchestration/">Orchestration</a>
+    </div>
+  </div>
+</section>
+
+<section class="band bone2" id="difference">
   <div class="wrap">
     <div class="head">
       <p class="label">The difference</p>
@@ -220,7 +250,7 @@ PAGES["/"] = {
   </div>
 </section>
 
-<section class="band bone2">
+<section class="band">
   <div class="wrap">
     <div class="head">
       <p class="label">The framework</p>
@@ -235,6 +265,13 @@ PAGES["/"] = {
        "The semantic context layer that decides what a symptom means here."),
       ("M", "Manage &amp; evolve", "/platform/manage/",
        "How coverage compounds instead of stalling at the top call drivers."),
+    ]) + nextcards([
+      ("&rarr;", "IT operations", "/platform/it-operations/",
+       "Software distribution, patch and device policy &mdash; not just healing."),
+      ("&rarr;", "Orchestration", "/platform/orchestration/",
+       "ServiceNow, Active Directory, anything with an API. No code."),
+      ("&rarr;", "Workflows in plain language", "/platform/workflows/",
+       "Describe the task. The context layer compiles it."),
     ]) + """
     <div style="margin-top:22px">
       <a class="btn btn-line" href="/platform/">See the whole AIM-X loop</a>
@@ -323,9 +360,10 @@ PAGES["/platform/"] = {
    '<a href="/">Home</a> &nbsp;/&nbsp; Platform',
    "The framework",
    "One loop, and the whole point is that it doesn&rsquo;t stop.",
-   "Most platforms are a catalogue of modules you assemble yourself. AIM-X is a cycle: the fix "
-   "runs, the outcome is measured, the measurement reveals the next gap, and that becomes new "
-   "capability. Intelligence sits at the centre of all four.") + """
+   "Most platforms are a catalogue of modules you assemble yourself. AIM-X is a cycle: the estate "
+   "is measured and forecast, the fix runs, the outcome is scored, and the score reveals the next "
+   "gap \u2014 which the context layer turns into new capability without anyone writing code. "
+   "Intelligence sits at the centre of all four.") + """
 
 <section class="band">
   <div class="wrap">""" + AIMX_DIAGRAM + """</div>
@@ -372,10 +410,17 @@ PAGES["/platform/"] = {
     ]) + nextcards([
       ("X", "Experience", "/platform/deliverexperience/",
        "Improvement gets asserted. Yours will be scored."),
+      ("&rarr;", "Observe &amp; predict", "/platform/observe-predict/",
+       "Analytics, forecasting and anomaly detection &mdash; the input to all of it."),
       ("&rarr;", "Why not scripts", "/why-nanoheal/why-not-scripts/",
        "The technical case, in full."),
-      ("&rarr;", "Runs everywhere", "/#markets",
-       "Windows, macOS, Linux, VDI, mobile, IoT. Cloud, on-prem or airgapped."),
+    ]) + nextcards([
+      ("&rarr;", "IT operations", "/platform/it-operations/",
+       "Software distribution, patch and device policy on the same engine."),
+      ("&rarr;", "Orchestration", "/platform/orchestration/",
+       "ServiceNow, Active Directory, anything with a standard API. No code."),
+      ("&rarr;", "Workflows &amp; natural language", "/platform/workflows/",
+       "Describe the task; the context layer compiles it."),
     ]) + """
   </div>
 </section>
@@ -391,7 +436,8 @@ PAGES["/platform/automate/"] = {
    "A &mdash; Automate",
    "Remediation is a software project. It shouldn&rsquo;t be.",
    "Specify, script, test, approve, publish &mdash; then maintain it forever as the estate drifts. "
-   "That cost is why automation coverage stops at the top call drivers everywhere else.") + """
+   "That cost is why automation coverage stops at the top call drivers everywhere else \u2014 and "
+   "why the routine work of running an estate never gets automated at all.") + """
 
 <section class="band">
   <div class="wrap">
@@ -446,7 +492,24 @@ PAGES["/platform/automate/"] = {
       </div>
 
       <div class="issue">
-        <p class="n">03 &mdash; Delivery</p>
+        <p class="n">03 &mdash; Scope</p>
+        <h3>Three classes of work. One engine.</h3>
+        <p class="lead">Healing a device and running a device are the same primitive operations
+        against files, registry, services and configuration. Nanoheal does not separate them into
+        different products, because the engine does not distinguish between them.</p>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Resolve.</h3><p>Remediation triggered by the symptom the OS
+          reports, or by a forecast before the symptom arrives.</p></div>
+          <div class="tile"><h3>Run.</h3><p>Software distribution, patch management and routine IT
+          tasks &mdash; the day-to-day operation of the estate.
+          <a href="/platform/it-operations/" style="color:var(--teal)">IT operations &rarr;</a></p></div>
+          <div class="tile"><h3>Enforce.</h3><p>Device compliance policy, with drift treated as a
+          symptom that triggers its own correction rather than a line in a report.</p></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; Delivery</p>
         <h3>One fix, three ways to deliver it.</h3>
         <p class="lead">The same validated knowledge serves all three paths. You don't rebuild it
         per channel.</p>
@@ -462,7 +525,7 @@ PAGES["/platform/automate/"] = {
       </div>
 
       <div class="issue">
-        <p class="n">04 &mdash; Day one</p>
+        <p class="n">05 &mdash; Day one</p>
         <h3>1,200+ configurations, before you build anything.</h3>
         <p class="lead">Remediations, IT tasks and policy compliance, matched against your existing
         top call drivers on the first day &mdash; not an empty canvas.</p>
@@ -494,7 +557,8 @@ PAGES["/platform/intelligence/"] = {
    "Telemetry says what happened. Not what your organisation does about it.",
    "Two identical crashes on two machines are not the same incident. One is a known driver "
    "conflict on a build you're retiring; the other is a finance laptop three days from an audit. "
-   "The signal is identical. The right action is not.") + """
+   "The signal is identical. The right action is not \u2014 and working out the difference is what "
+   "the context layer is for.") + """
 
 <section class="band">
   <div class="wrap">
@@ -529,7 +593,28 @@ PAGES["/platform/intelligence/"] = {
       </div>
 
       <div class="issue">
-        <p class="n">02 &mdash; What it decides</p>
+        <p class="n">02 &mdash; What it writes</p>
+        <h3>It doesn&rsquo;t pick from a library. It authors the entry.</h3>
+        <p class="lead">This is the part that is easiest to miss and hardest to copy. Intelligence
+        does not merely match a symptom to a pre-existing fix &mdash; it works out which engine
+        capabilities the situation requires, in what order, with what parameters, and writes that
+        as a new knowledge entry.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>So the library is not a fixed catalogue that ships and then ages. It is the
+          accumulating output of the context layer meeting situations it has not seen before. A
+          human validates each new entry once; from then on it is permanent, reusable capability.</p>
+          <p class="pull">The competition ships a library and hopes it covers you. Nanoheal ships
+          the thing that writes the library.</p>
+          <p>The same mechanism produces every class of work on this platform &mdash;
+          <a href="/platform/automate/" style="color:var(--teal)">remediation</a>,
+          <a href="/platform/it-operations/" style="color:var(--teal)">software, patch and policy</a>,
+          and <a href="/platform/orchestration/" style="color:var(--teal)">actions in ITSM, directory
+          and other IT systems</a>. One authoring mechanism, not four.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; What it decides</p>
         <h3>Which capability, with which parameters.</h3>
         <p class="lead">This is the part that replaces scripting. The intelligence doesn't
         generate code &mdash; it selects from the engine's capability set and supplies the
@@ -546,18 +631,23 @@ PAGES["/platform/intelligence/"] = {
       </div>
 
       <div class="issue">
-        <p class="n">03 &mdash; Where it acts</p>
+        <p class="n">04 &mdash; Where it acts</p>
         <h3>The endpoint is one destination, not the only one.</h3>
         <p class="lead">Reasoning across the estate is only useful if it can act across the estate.</p>
         <div class="g3" style="margin-top:26px">
-          <div class="tile"><h3>Device.</h3><p>Endpoint actions and remediation through the engine's capability API.</p></div>
-          <div class="tile"><h3>ITSM.</h3><p>Creates and updates tickets and changes, and closes them when the fix lands.</p></div>
-          <div class="tile"><h3>IT &amp; workplace platforms.</h3><p>Patches, software, configuration, directory, collaboration, identity, network.</p></div>
+          <div class="tile"><h3>Device.</h3><p>Endpoint remediation, plus
+          <a href="/platform/it-operations/" style="color:var(--teal)">software, patch and policy</a>
+          &mdash; all on the one capability engine.</p></div>
+          <div class="tile"><h3>ITSM and directory.</h3><p>Creates, updates and closes tickets and
+          changes; acts in Active Directory and identity platforms.</p></div>
+          <div class="tile"><h3>Anything with a standard API.</h3><p>Integrated by description
+          rather than by code &mdash; see
+          <a href="/platform/orchestration/" style="color:var(--teal)">Orchestration</a>.</p></div>
         </div>
       </div>
 
       <div class="issue">
-        <p class="n">04 &mdash; What governs it</p>
+        <p class="n">05 &mdash; What governs it</p>
         <h3>Policies, priorities and guardrails, checked before anything runs.</h3>
         <div class="prose" style="margin-top:20px">
           <p>Autonomy without constraint is not a feature anyone in a regulated estate wants.
@@ -852,6 +942,399 @@ PAGES["/why-nanoheal/why-not-scripts/"] = {
       ("A", "Automate", "/platform/automate/", "The capability API, in detail."),
       ("I", "Intelligence", "/platform/intelligence/", "How the parameters get chosen."),
       ("&rarr;", "The AIM-X loop", "/platform/", "Where this sits in the whole framework."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+# ── /platform/observe-predict/ ───────────────────────────────────────────────
+PAGES["/platform/observe-predict/"] = {
+ "title": "Observe & predict — analytics, forecasting, anomaly detection — Nanoheal",
+ "desc": "Everything a DEX platform measures, plus forecasting and anomaly detection — and it "
+         "feeds an engine that can act on what it finds.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Observe &amp; predict',
+   "Observe &amp; predict",
+   "Analytics is table stakes. We hold the table.",
+   "Fleet-wide measurement, forecasting and anomaly detection &mdash; scored on a patented DEX "
+   "methodology. The difference is not what Nanoheal sees. It is that what Nanoheal sees is wired "
+   "to something that can act on it.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Observability that ends in an alert is a cost centre.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>The dashboard is the destination.</h3>
+      <p>Sensors are configured, tuned, and eventually a dashboard goes live. It shows what is
+      wrong across the fleet with real precision &mdash; and then the work of doing something
+      about it starts, somewhere else, with someone else, in a different tool.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Detection is the first half of one motion.</h3>
+      <p>The same platform that measured the degradation holds the knowledge to resolve it and the
+      engine to execute. There is no handoff, because there is nowhere to hand off to.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Measure</p>
+        <h3>What the employee actually experienced.</h3>
+        <p class="lead">Device performance and stability, application behaviour, network and
+        connectivity quality, boot and logon times, crash and hang patterns, resource pressure,
+        configuration drift &mdash; across Windows, macOS, Linux, VDI, mobile and IoT.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>It resolves to a single <a href="/platform/deliverexperience/" style="color:var(--teal)">DEX
+          Score</a> on a patented methodology, which matters for a reason most scores don't survive:
+          it is defined independently of any release, so a ten-point gain means the same thing in
+          Q3 that it meant in Q1.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Forecast</p>
+        <h3>The failure that hasn&rsquo;t happened yet.</h3>
+        <p class="lead">Degradation is rarely sudden. Disks fill on a curve, memory pressure builds
+        over weeks, a driver starts failing on one build before it reaches the rest of the fleet,
+        certificates and licences expire on a known date.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Forecasting turns those curves into a dated, ranked list of what will break and
+          roughly when. On its own that is a better alert. Wired to an engine that can already fix
+          it, it becomes something else entirely: the remediation runs before the employee has a
+          bad day, and the ticket that would have been raised never exists.</p>
+          <p class="pull">Prediction without execution just tells you what is coming. The value is
+          in the estate where nobody had to be told.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; Detect anomalies</p>
+        <h3>The problems nobody wrote a rule for.</h3>
+        <p class="lead">Threshold alerting only catches what someone anticipated. Anomaly detection
+        catches the rest &mdash; the behaviour that is abnormal for this fleet, this device class,
+        this population, this time of week.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>This matters most in the two situations that generate the worst incidents: a change
+          that behaves differently in production than it did in test, and a slow regression that
+          never crosses a threshold but degrades thousands of people at once. Neither has a rule
+          written for it, because neither was foreseen.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; Trace to root cause</p>
+        <h3>The cause, not the symptom that reached the desk.</h3>
+        <p class="lead">A slow laptop is a report, not a diagnosis. Correlating device, application,
+        network, configuration and change history isolates what actually caused it.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>The root cause is also what makes automation reusable. A fix bound to a symptom helps
+          one person; a fix bound to a cause becomes knowledge that resolves the same condition
+          everywhere it exists, including on the machines where nobody has complained yet.</p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("I", "Intelligence", "/platform/intelligence/", "What turns a finding into an action."),
+      ("A", "Automate", "/platform/automate/", "The engine that executes it."),
+      ("X", "Experience", "/platform/deliverexperience/", "The score all of it moves."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+# ── /platform/it-operations/ ─────────────────────────────────────────────────
+PAGES["/platform/it-operations/"] = {
+ "title": "IT operations — software, patch and policy on one engine — Nanoheal",
+ "desc": "Software distribution, patch management and device compliance policy run on the same "
+         "capability engine and knowledge layer as remediation — not a separate tool.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; IT operations',
+   "IT operations",
+   "The same engine that heals the device also runs it.",
+   "Software distribution, patch management, device compliance policy. Not a second product and "
+   "not a second agent &mdash; the same capability engine, driven by the same knowledge layer.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Nobody set out to run four agents. It just happened.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>A tool per job.</h3>
+      <p>One platform measures experience. Another distributes software. A third handles patch. A
+      fourth enforces policy. Each ships an agent, each keeps its own inventory, each has its own
+      idea of what a device is &mdash; and reconciling them is somebody's full-time job.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>One engine, many kinds of work.</h3>
+      <p>Installing software, applying a patch, enforcing a policy and repairing a broken service
+      are the same underlying operations against files, registry, services and configuration. One
+      capability set covers all of it.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Software distribution</p>
+        <h3>Deploy, repair, roll back, reclaim.</h3>
+        <p class="lead">Install and update across the fleet or a targeted population, with repair
+        for failed installs and rollback when a version misbehaves. Usage data from the analytics
+        side identifies licences nobody is using.</p>
+        <div class="prose" style="margin-top:18px">
+          <p>Because distribution shares the engine with remediation, a failed install isn't a
+          report you chase &mdash; it is a symptom, and it can trigger its own repair.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Patch management</p>
+        <h3>Compliance you can evidence, on the estate you actually have.</h3>
+        <p class="lead">Assess, stage, deploy and verify across operating systems and third-party
+        applications, with rings, windows and rollback. Verification is measured on the device, not
+        inferred from a deployment record.</p>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; Device compliance policy</p>
+        <h3>Policy that corrects drift instead of reporting it.</h3>
+        <p class="lead">Define the desired state &mdash; settings, profiles, security configuration,
+        encryption, required software &mdash; in the same plain-language knowledge layer as
+        everything else.</p>
+        <div class="prose" style="margin-top:18px">
+          <p>If you run Intune or a comparable MDM, the familiar gap is between what policy says
+          and what the device does: a profile fails to apply, drift accumulates, and the console
+          reports non-compliance without resolving it. Nanoheal treats non-compliance as a symptom
+          like any other &mdash; the drift itself triggers the correction, on the same engine, with
+          no script involved.</p>
+          <p class="pull">Reporting a device out of policy is a finding. Putting it back in policy
+          is the job.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; IT tasks and requests</p>
+        <h3>The routine work that still lands on a human.</h3>
+        <p class="lead">Profile resets, printer and peripheral setup, drive mapping, certificate
+        renewal, disk cleanup, onboarding and offboarding sequences, VPN and Wi-Fi reconfiguration.</p>
+        <div class="prose" style="margin-top:18px">
+          <p>These are what a large share of service-desk contacts actually consist of, and they
+          are the clearest case for the economics argument: individually small, collectively
+          enormous, and never worth a bespoke automation project. When the next automation costs
+          almost nothing, they finally get built.</p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Orchestration", "/platform/orchestration/", "Acting in systems beyond the device."),
+      ("A", "Automate", "/platform/automate/", "The capability engine underneath all of this."),
+      ("&rarr;", "Workflows", "/platform/workflows/", "Describing a task in plain language."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+# ── /platform/orchestration/ ─────────────────────────────────────────────────
+PAGES["/platform/orchestration/"] = {
+ "title": "Orchestration — any IT system, integrated without code — Nanoheal",
+ "desc": "The context layer spans the IT ecosystem. ServiceNow, Active Directory and any system "
+         "with a standard API are integrated without writing code.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Orchestration',
+   "Orchestration &amp; integration",
+   "Most fixes don&rsquo;t end on the device.",
+   "A stale credential is resolved in the directory. A resolved incident has to be closed in "
+   "ITSM. A licence is reclaimed in a SaaS console. Automation confined to the endpoint stops "
+   "halfway through most of the work.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Integration is where automation projects quietly die.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Every connector is a project.</h3>
+      <p>Connecting to ServiceNow means an integration build. Active Directory means another.
+      Each has its own authentication, its own error handling, its own field mapping, and its own
+      maintenance burden when either side changes. Integration backlog becomes the reason
+      automation stalls &mdash; not the automation itself.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Describe the system, not the code.</h3>
+      <p>Any system exposing a standard API interface is integrated by describing what it offers.
+      The context layer handles authentication, calls, mapping and error handling. No connector is
+      written, so no connector is maintained.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; What it connects</p>
+        <h3>The systems the work actually lives in.</h3>
+        <div class="tblwrap">
+          <table class="spec">
+            <thead><tr><th>System class</th><th>Examples</th><th>What Nanoheal does there</th></tr></thead>
+            <tbody>
+              <tr><td>ITSM</td><td>ServiceNow and comparable platforms</td><td>Reads incident, problem and change history for context; creates, updates and closes tickets as work completes</td></tr>
+              <tr><td>Directory &amp; identity</td><td>Active Directory, Entra ID, identity providers</td><td>Group membership, account state, credential and session actions, access requests</td></tr>
+              <tr><td>IT management</td><td>MDM, endpoint management, patch and software platforms</td><td>Reads and reconciles state; acts where the platform is authoritative</td></tr>
+              <tr><td>CMDB &amp; asset</td><td>Configuration and asset systems</td><td>Resolves ownership, role, entitlement and compliance obligation before acting</td></tr>
+              <tr><td>Workplace &amp; collaboration</td><td>Collaboration, network, cloud and SaaS platforms</td><td>Configuration, licence reclaim, connectivity and access remediation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; How it connects</p>
+        <h3>No code, and therefore no connector backlog.</h3>
+        <div class="prose" style="margin-top:16px">
+          <p>The mechanism is the same one that removes scripting from remediation. The context
+          layer holds a description of what a system exposes &mdash; its operations, its objects,
+          its fields. Intelligence selects the operation and supplies the parameters. Nothing is
+          generated and nothing is compiled into a custom connector.</p>
+          <p>This is why adding a system is measured in the time it takes to describe and approve
+          it, rather than in engineering sprints, and why the integration doesn't break the next
+          time either side ships a release.</p>
+          <p class="pull">The reason integration is normally slow is that somebody has to write
+          the integration. Remove that and the schedule changes shape.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; What it makes possible</p>
+        <h3>One resolution, across four systems, unattended.</h3>
+        <p class="lead">A worked example, in the order it happens:</p>
+        <div class="tblwrap">
+          <table class="spec">
+            <thead><tr><th>Step</th><th>Where</th><th>What happens</th></tr></thead>
+            <tbody>
+              <tr><td>Symptom</td><td>Endpoint</td><td>Repeated authentication failures surface in the OS event log</td></tr>
+              <tr><td>Context</td><td>Directory + CMDB</td><td>Account state and group membership read; device owner, role and compliance obligation resolved</td></tr>
+              <tr><td>History</td><td>ITSM</td><td>Two similar incidents in the last quarter; the known resolution is retrieved</td></tr>
+              <tr><td>Action</td><td>Device + directory</td><td>Cached credential cleared and profile repaired on the device; the stale directory object corrected</td></tr>
+              <tr><td>Close</td><td>ITSM</td><td>Ticket created and closed with what was done, so the record exists without a human writing it</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Every one of those steps is available to a scripted approach. What isn't available is
+          doing it without five integrations, a scheduler and somebody maintaining all of it.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; What governs it</p>
+        <h3>Guardrails travel with the action.</h3>
+        <div class="prose" style="margin-top:16px">
+          <p>Acting in ITSM or a directory is higher-consequence than acting on one endpoint, and
+          it is governed accordingly: scoped credentials per system, explicit allow-lists of
+          permitted operations, approval gates, change windows, blast-radius limits and full
+          attribution of what ran, where, and on whose authority.</p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("I", "Intelligence", "/platform/intelligence/", "The context layer this runs on."),
+      ("&rarr;", "Workflows", "/platform/workflows/", "Building it in plain language."),
+      ("&rarr;", "IT operations", "/platform/it-operations/", "The device-side half."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+# ── /platform/workflows/ ─────────────────────────────────────────────────────
+PAGES["/platform/workflows/"] = {
+ "title": "Workflows & natural language — describe it, don't build it — Nanoheal",
+ "desc": "Describe a task in plain language and the context layer compiles the workflow. Trigger "
+         "it from a symptom, a schedule, a conversation or an IT agent request.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Workflows &amp; natural language',
+   "Workflows &amp; natural language",
+   "Describe the task. Don&rsquo;t build it.",
+   "The people who know what needs automating are rarely the people who can build it. That gap "
+   "is the reason automation backlogs exist, and closing it is worth more than any individual "
+   "workflow in the queue.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">The backlog isn&rsquo;t a list of ideas. It&rsquo;s a list of things waiting for an engineer.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>A request, then a queue.</h3>
+      <p>A service-desk lead knows exactly which repetitive task should be automated. They raise
+      a request. It joins a backlog behind work with a bigger business case, and by the time it is
+      picked up the details have changed. Most of what should be automated is never refused
+      &mdash; it is just never reached.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>The person who knows, writes it.</h3>
+      <p>They describe the task in plain English. The context layer resolves it against the
+      engine's capabilities and compiles a workflow. IT validates it once. No engineering ticket
+      is ever raised.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Authoring</p>
+        <h3>Plain language in. Sealed capability out.</h3>
+        <div class="prose" style="margin-top:16px">
+          <p>Intelligence reads the description, resolves it against what the engine can do and
+          what the context layer knows about your estate, and produces a workflow with its
+          parameters, conditions and failure handling made explicit for review.</p>
+          <p>Worth being precise about what does <em>not</em> happen: no code is generated. The
+          output is knowledge against a fixed, signed capability set. That is what makes it
+          reviewable by someone who doesn't write PowerShell, and what means it doesn't rot when
+          the estate moves underneath it.</p>
+          <p class="pull">If the output were generated code, you would have moved the engineering
+          problem rather than removed it &mdash; and inherited code nobody wrote but somebody
+          still maintains.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Triggering</p>
+        <h3>Four ways the same workflow starts.</h3>
+        <div class="tblwrap">
+          <table class="spec">
+            <thead><tr><th>Trigger</th><th>Starts when</th><th>Typical use</th></tr></thead>
+            <tbody>
+              <tr><td>Symptom</td><td>The OS reports the condition &mdash; event, service state, crash, error</td><td>Autoheal, before anyone notices</td></tr>
+              <tr><td>Forecast</td><td>Prediction or anomaly detection flags a condition building</td><td>Prevention &mdash; the ticket never exists</td></tr>
+              <tr><td>Request</td><td>An employee, a service-desk agent or an IT agent asks</td><td>Self-service and assisted resolution</td></tr>
+              <tr><td>Schedule or policy</td><td>A window, a compliance obligation, a drift threshold</td><td>Patch rings, policy enforcement, routine tasks</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>One authored workflow serves all four. This is the part that compounds: the effort is
+          spent once and recovered every time the condition recurs, through whichever channel it
+          arrives.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; The conversational interface</p>
+        <h3>Ask the estate a question. Then ask it to act.</h3>
+        <p class="lead">The context layer already holds DEX signals, ITSM history, CMDB and your
+        SOPs. Natural language is simply the most direct way to interrogate that.</p>
+        <div class="prose" style="margin-top:18px">
+          <p>"Which devices are showing the memory pattern that preceded last month's crashes?"
+          is a question. "Fix them" is the next sentence, and it runs through exactly the same
+          guardrails, approvals and attribution as any other execution path &mdash; conversational
+          input does not mean relaxed governance.</p>
+          <p>For the service desk this replaces the runbook. The agent describes the outcome
+          rather than following twelve steps, and the same validated capability runs that would
+          have run unattended.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; Validation</p>
+        <h3>Once, by a human, before it is trusted.</h3>
+        <div class="prose" style="margin-top:16px">
+          <p>Nothing authored this way executes on its own authority. A workflow is reviewed and
+          approved once; it is then compiled, sealed and versioned, and every subsequent execution
+          is attributable to that approved version. Plain-language authoring changes who can
+          propose an automation. It does not change who signs it off.</p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Orchestration", "/platform/orchestration/", "Where these workflows can act."),
+      ("I", "Intelligence", "/platform/intelligence/", "What compiles the description."),
+      ("M", "Manage &amp; evolve", "/platform/manage/", "Deciding what to author next."),
     ]) + """
   </div>
 </section>

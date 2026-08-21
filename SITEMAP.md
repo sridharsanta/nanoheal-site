@@ -22,7 +22,13 @@
 
 ## 3. The message hierarchy
 
-**Level 1 — the wedge (hero).** Seeing the problem is the easy half. Nanoheal ends it. No scripts to write; nothing left running to watch.
+**Level 1 — the wedge (hero).** "We see it coming. Then we fix it without a script."
+
+> **Corrected framing.** The earlier hero ("DEX made the workplace measurable, Nanoheal makes it
+> autonomous") conceded the measuring half to competitors and positioned Nanoheal as a bolt-on to
+> a DEX tool. Nanoheal has analytics parity *plus* forecasting and anomaly detection, so the hero
+> must claim both halves. The wedge still leads — breadth defends, the differentiator wins — with
+> a parity table immediately below so scope is never a disqualifier.
 
 **Level 2 — the mechanism (the section that must convert).** *Scripts have to go looking for a problem. Nanoheal is told.*
 
@@ -34,7 +40,9 @@
 | Breaks on patch / policy / OS drift | Engine owns *how*; knowledge owns *what* — survives drift |
 | Cost paid twice: build it, then run it forever | Fix arrives the moment the symptom does |
 
-**Level 3 — why it's possible.** The engine exposes device operations as a governed capability API (files, registry, services and processes, config and policy, software and patch, network, identity, plus ITSM and IT-management orchestration). The intelligence doesn't generate code — it *selects a capability and supplies its parameters* from the knowledge base. Small, sealed, versioned, guardrailed.
+**Level 3 — why it's possible.** The engine exposes device operations as a governed capability API (files, registry, services and processes, config and policy, software and patch, network, identity, plus ITSM and IT-management orchestration). Intelligence doesn't generate code — it works out which capabilities a situation needs and **authors the knowledge entry** for it, which a human validates once. Small, sealed, versioned, guardrailed.
+
+**Level 3b — scope.** The same engine and the same knowledge layer run three classes of work: *resolve* (remediation), *run* (software distribution, patch, IT tasks) and *enforce* (device compliance policy). And the context layer spans the IT ecosystem — ServiceNow, Active Directory, anything with a standard API, integrated by description rather than by code. Competitors need a separate product, or a separate integration project, for each of these.
 
 **Level 4 — proof and economics.** 1,200+ configurations on day one · patented DEX score (US 9,477,573) · Fortune 100 manufacturer, ~200K endpoints, 150+ automations, 17% autohealed, 35% overall ticket avoidance · $1.0M cost avoided + $8.6M productivity per 10,000 employees/year (illustrative model) · Gartner, ISG Rising Star, Forrester DEX Landscape Q2 2026.
 
@@ -60,14 +68,17 @@ Built and live in this repo are marked **●**; the rest is the planned IA.
 
   Platform
   ● /platform/                      AIM-X overview — the closed loop, Intelligence at the hub
-  ● /platform/automate/             A — "Remediation is a software project. It shouldn't be."
-  ● /platform/intelligence/         I — "Telemetry says what happened, not what you do about it."
-  ● /platform/manage/               M — "Coverage stalls at the top call drivers. It doesn't have to."
-  ● /platform/deliverexperience/    X — "Improvement gets asserted. Yours will be scored."
+  ● /platform/observe-predict/      analytics parity, forecasting, anomaly detection, root cause
+  ● /platform/intelligence/         I — the context layer that AUTHORS the knowledge entry
+  ● /platform/automate/             A — resolve / run / enforce, on one capability engine
+  ● /platform/it-operations/        software distribution, patch, device compliance policy
+  ● /platform/orchestration/        ServiceNow, AD, any standard API — integrated without code
+  ● /platform/workflows/            plain-language authoring; symptom / forecast / request / schedule triggers
+  ● /platform/manage/               M — where autonomy goes next
+  ● /platform/deliverexperience/    X — the patented DEX score
   ● /platform/innovate/             301 → /platform/intelligence/ (legacy URL)
     /platform/knowledge-library/    the 1,200+ configurations, and how they grow
     /platform/coverage/             OS, VDI, mobile, IoT; cloud / on-prem / airgapped
-    /platform/integrations/         ITSM, CMDB, identity, IT management, collaboration
 
   Why Nanoheal
   ● /why-nanoheal/why-not-scripts/  the technical case, in full

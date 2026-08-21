@@ -14,8 +14,12 @@ ROOT = pathlib.Path(__file__).parent
 NAV = [
     ("Platform", "/platform/", [
         ("Overview — AIM-X", "/platform/", "The whole framework in one loop"),
+        ("Observe &amp; predict", "/platform/observe-predict/", "Analytics, forecasting, anomaly detection"),
+        ("Intelligence", "/platform/intelligence/", "The context layer that writes the knowledge"),
         ("Automate", "/platform/automate/", "Resolution without a script"),
-        ("Intelligence", "/platform/intelligence/", "The semantic context layer"),
+        ("IT operations", "/platform/it-operations/", "Software, patch and policy on the same engine"),
+        ("Orchestration", "/platform/orchestration/", "Any IT system, integrated without code"),
+        ("Workflows &amp; natural language", "/platform/workflows/", "Describe it, don't build it"),
         ("Manage &amp; evolve", "/platform/manage/", "Where autonomy goes next"),
         ("Experience", "/platform/deliverexperience/", "The patented DEX score"),
     ]),
@@ -27,8 +31,9 @@ NAV = [
 FOOTER_COLS = [
     ("Platform", [
         ("AIM-X overview", "/platform/"),
-        ("Automate", "/platform/automate/"),
+        ("Observe &amp; predict", "/platform/observe-predict/"),
         ("Intelligence", "/platform/intelligence/"),
+        ("Automate", "/platform/automate/"),
         ("Manage &amp; evolve", "/platform/manage/"),
         ("Experience", "/platform/deliverexperience/"),
     ]),
@@ -40,9 +45,10 @@ FOOTER_COLS = [
     ]),
     ("Solutions", [
         ("Ticket deflection", "/platform/automate/"),
-        ("Self-service &amp; assisted", "/platform/automate/"),
-        ("Policy compliance", "/platform/manage/"),
-        ("IT task automation", "/platform/automate/"),
+        ("Software distribution", "/platform/it-operations/"),
+        ("Patch management", "/platform/it-operations/"),
+        ("Device compliance policy", "/platform/it-operations/"),
+        ("ITSM &amp; directory orchestration", "/platform/orchestration/"),
     ]),
     ("Company", [
         ("Partners", "/#partners"),
