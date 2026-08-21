@@ -53,58 +53,80 @@
 
 ## 4. Site map
 
+Built and live in this repo are marked **●**; the rest is the planned IA.
+
 ```
-Home
+● Home                              the USP only: symptom-vs-script, proof, routes inward
 
-Platform
-├─ Overview — AIM-X
-├─ Symptom-Triggered Automation      ← the differentiator page
-├─ Capability Engine  (the device API; no-script execution)
-├─ Semantic Context Layer  (DEX signals, SOPs, ITSM, CMDB)
-├─ Knowledge Library  (1,200+ configurations; create-once)
-├─ DEX Measurement  (patented score, US 9,477,573)
-├─ Delivery Modes  (Autoheal · Self-service · Assisted)
-└─ Platform Coverage  (Windows/macOS/Linux/VDI/mobile/IoT; cloud, on-prem, airgapped)
+  Platform
+  ● /platform/                      AIM-X overview — the closed loop, Intelligence at the hub
+  ● /platform/automate/             A — "Remediation is a software project. It shouldn't be."
+  ● /platform/intelligence/         I — "Telemetry says what happened, not what you do about it."
+  ● /platform/manage/               M — "Coverage stalls at the top call drivers. It doesn't have to."
+  ● /platform/deliverexperience/    X — "Improvement gets asserted. Yours will be scored."
+  ● /platform/innovate/             301 → /platform/intelligence/ (legacy URL)
+    /platform/knowledge-library/    the 1,200+ configurations, and how they grow
+    /platform/coverage/             OS, VDI, mobile, IoT; cloud / on-prem / airgapped
+    /platform/integrations/         ITSM, CMDB, identity, IT management, collaboration
 
-Solutions
-├─ By outcome — Ticket deflection · Autoheal · Employee self-service ·
-│               Policy & compliance · IT task automation · DEX improvement programme
-├─ By role    — CIO · Digital workplace lead · End-user services · Service desk · Security & compliance
-└─ By environment — Enterprise · VDI/DaaS estates · Regulated & airgapped · Mid-market
+  Why Nanoheal
+  ● /why-nanoheal/why-not-scripts/  the technical case, in full
+    /why-nanoheal/time-to-value/    day one → first weeks → every quarter
+    /why-nanoheal/compare/          named comparison vs Nexthink / ControlUp / Lakeside
+    /why-nanoheal/analysts/         Gartner, ISG, Forrester
 
-Why Nanoheal
-├─ Why not scripts                   ← the mechanism argument, long form
-├─ Time to value / total cost of automation
-├─ Compare: Nanoheal vs DEX platforms  (brands named here only, not on the homepage)
-└─ Analyst recognition
+  Solutions — by outcome
+    /solutions/ticket-deflection/   /autoheal/  /self-service/
+    /solutions/policy-compliance/   /it-task-automation/  /dex-programme/
+  Solutions — by segment
+    /solutions/enterprise/          Fortune 1000: manufacturing, tech services, SaaS
+    /solutions/service-providers/   global SIs and MSPs — the autonomy layer
+    /solutions/oem-channel/         OEMs and support channels, multi-tenant
+    /solutions/smb/
+  Solutions — by role
+    /solutions/cio/  /digital-workplace/  /end-user-services/  /service-desk/
 
-Partners
-├─ For global SIs and MSPs
-├─ Partner programme · Become a partner
-└─ Partner portal
+  Resources
+    /resources/customer-stories/    /business-case/  /whitepapers/  /blog/
+    docs.nanoheal.com               product documentation · learning portal
 
-Resources
-├─ Customer stories · Business case calculator · Whitepapers & analyst reports
-├─ Blog · Webinars & events
-└─ Documentation · Learning portal · Support
-
-Company
-└─ About · Leadership · Careers · News · Contact · Trust & security · Legal
+  Company
+    /partners/  /aboutus/  /careers/  /contact/  /trust/
 ```
 
-**Primary nav:** Platform · AIM-X · Outcomes · Partners · Resources + *Get a demo*.
-**Primary CTA everywhere:** "Bring us your top three call drivers — we'll resolve them live."
+**Primary nav:** Platform (dropdown) · Why not scripts · Outcomes · Partners + *Schedule a Demo*.
+
+### Why this IA, and how it differs from the competition
+
+Nexthink, ControlUp and Lakeside all organise Platform as a **catalogue of modules** —
+"Workplace Experience", "ControlUp for Desktops", "Help Desk". That structure describes
+what the vendor built, and it invites a feature-by-feature comparison Nanoheal will not
+always win on breadth of analytics.
+
+This IA organises Platform as a **loop of problems solved**. Each pillar page opens with
+the issue as the buyer experiences it, then shows the mechanism. It is a harder structure
+to comparison-shop against, and it puts the differentiator — cost of the next automation —
+on every page rather than only on the homepage.
+
+One number worth keeping visible: Lakeside publishes 1,300+ sensors and 220+ automations.
+Sensors measure; configurations act. Nanoheal's 1,200+ configurations against 220 is the
+single cleanest quantitative contrast available, and it is used on /platform/automate/.
 
 ## 5. Homepage section order (built)
 
+The homepage no longer carries the whole story — detail moved to the inner pages, and
+what remains is the differentiator plus routes inward.
+
 1. Hero — the wedge, with a live symptom→resolution console
 2. Analyst proof strip
-3. The gap — weeks per fix / code that rots / so it stops
-4. **The difference** — script-based vs symptom-triggered, side by side *(the page's centre of gravity)*
-5. The engine — capability API grid
-6. AIM-X framework — A / I / M / X
-7. Path to value — day-one timeline + production proof + economics
-8. How the library grows — create once / run every time / grow continuously
-9. Runs everywhere
-10. For service providers
-11. CTA + footer sitemap
+3. **The difference** — script-based vs symptom-triggered *(the page's centre of gravity)* → /why-not-scripts/
+4. AIM-X, three cards → /platform/
+5. Outcomes — production proof and economics
+6. Who runs on Nanoheal — enterprise / SI / OEM-channel, and platform coverage
+7. For service providers
+8. CTA + footer
+
+Removed from the homepage and relocated: the capability API grid (→ /platform/automate/),
+the four AIM-X panels (→ /platform/ and the four pillar pages), the path-to-value timeline
+(→ /why-nanoheal/time-to-value/, not yet built), and "how the library grows"
+(→ /platform/manage/).

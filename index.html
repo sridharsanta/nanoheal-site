@@ -4,369 +4,73 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nanoheal — Automation that triggers on the symptom, not a script</title>
-<meta name="description" content="DEX made the digital workplace measurable. Nanoheal makes it autonomous — resolution triggered the moment the operating system reports the symptom. No scripts to write. Nothing left running to watch.">
+<meta name="description" content="DEX made the digital workplace measurable. Nanoheal makes it autonomous — resolution triggered the moment the operating system reports the symptom.">
 <meta property="og:title" content="Nanoheal — Automation that triggers on the symptom, not a script">
-<meta property="og:description" content="The autonomy layer for the digital workplace. Knowledge, not code.">
+<meta property="og:description" content="DEX made the digital workplace measurable. Nanoheal makes it autonomous — resolution triggered the moment the operating system reports the symptom.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://nanoheal.com/">
 <link rel="canonical" href="https://nanoheal.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
-<style>
-:root{
-  --bone:#EFEDEB;
-  --bone-2:#E4E1DF;
-  --bone-3:#E8E5E3;
-  --paper:#FFFFFF;
-  --ink:#1A1716;
-  --ink-soft:#231F1E;
-  --tx:#1A1716;
-  --tx-2:#57534F;
-  --tx-3:#8A8480;
-  --line:#D8D4D1;
-  --line-2:#C9C4C0;
-  --teal:#04737E;
-  --teal-2:#0A8F9B;
-  --teal-wash:#E2EFF0;
-  --clay:#A8402F;
-  --clay-wash:#F2E6E2;
-  --on-ink:#EFEDEB;
-  --on-ink-2:#A9A29D;
-  --on-ink-3:#7A736E;
-  --on-ink-line:#332E2C;
-  --r:4px;
-  --shadow:0 1px 2px rgba(26,23,22,.04), 0 18px 40px -28px rgba(26,23,22,.30);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bone:#141110;
-    --bone-2:#1C1918;
-    --bone-3:#191615;
-    --paper:#211D1C;
-    --ink:#0C0A09;
-    --ink-soft:#151211;
-    --tx:#EFEDEB;
-    --tx-2:#B0A9A4;
-    --tx-3:#7C7570;
-    --line:#302B29;
-    --line-2:#3C3634;
-    --teal:#4FB3BC;
-    --teal-2:#78CDD5;
-    --teal-wash:#10312F;
-    --clay:#D98570;
-    --clay-wash:#2E1E1A;
-    --on-ink:#EFEDEB;
-    --on-ink-2:#A9A29D;
-    --on-ink-3:#7A736E;
-    --on-ink-line:#2A2523;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -26px rgba(0,0,0,.8);
-  }
-}
-:root[data-theme="dark"]{
-  --bone:#141110; --bone-2:#1C1918; --bone-3:#191615; --paper:#211D1C;
-  --ink:#0C0A09; --ink-soft:#151211;
-  --tx:#EFEDEB; --tx-2:#B0A9A4; --tx-3:#7C7570;
-  --line:#302B29; --line-2:#3C3634;
-  --teal:#4FB3BC; --teal-2:#78CDD5; --teal-wash:#10312F;
-  --clay:#D98570; --clay-wash:#2E1E1A;
-  --on-ink:#EFEDEB; --on-ink-2:#A9A29D; --on-ink-3:#7A736E; --on-ink-line:#2A2523;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -26px rgba(0,0,0,.8);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0; background:var(--bone); color:var(--tx);
-  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4{
-  font-family:"Instrument Sans",Inter,system-ui,sans-serif; margin:0; font-weight:500;
-  letter-spacing:-.022em; line-height:1.1; text-wrap:balance;
-}
-p{margin:0}
-a{color:inherit; text-decoration:none}
-img,svg{max-width:100%}
-:focus-visible{outline:2px solid var(--teal-2); outline-offset:3px; border-radius:var(--r)}
-
-.wrap{max-width:1256px; margin:0 auto; padding:0 28px}
-.band{padding:clamp(72px,8vw,132px) 0}
-.band.ink{background:var(--ink); color:var(--on-ink)}
-.band.ink h1,.band.ink h2,.band.ink h3{color:var(--on-ink)}
-.band.bone2{background:var(--bone-2)}
-.label{
-  font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--tx-3); font-family:Inter,sans-serif;
-}
-.band.ink .label{color:var(--on-ink-3)}
-.h2{font-size:clamp(30px,4vw,50px)}
-.lede{font-size:16px; color:var(--tx-2); max-width:58ch; line-height:1.6}
-.band.ink .lede{color:var(--on-ink-2)}
-.head{display:flex; flex-direction:column; gap:18px; max-width:62ch}
-
-/* buttons */
-.btn{
-  display:inline-flex; align-items:center; gap:7px; font-family:Inter,sans-serif; font-size:13.5px;
-  font-weight:500; padding:9px 15px; border-radius:var(--r); border:1px solid transparent;
-  transition:opacity .18s, background .18s, border-color .18s, color .18s;
-}
-.btn-solid{background:var(--paper); color:var(--tx); border-color:var(--line)}
-.btn-solid:hover{background:var(--bone-3)}
-.btn-ink{background:var(--ink); color:var(--on-ink)}
-.btn-ink:hover{opacity:.86}
-.btn-line{border-color:var(--line-2); color:var(--tx)}
-.btn-line:hover{border-color:var(--teal); color:var(--teal)}
-.band.ink .btn-line,.hero-l .btn-line{border-color:var(--on-ink-line); color:var(--on-ink)}
-.band.ink .btn-line:hover,.hero-l .btn-line:hover{border-color:var(--teal); color:var(--teal-2)}
-
-/* nav */
-header{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bone) 92%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
-.nav{display:flex; align-items:center; gap:34px; height:60px}
-.brand{display:flex; align-items:center; gap:9px; font-family:"Instrument Sans",sans-serif; font-weight:600; font-size:18px; letter-spacing:-.03em}
-.brand .box{width:24px;height:24px;border-radius:5px;background:var(--ink); display:grid; place-items:center}
-.brand .box svg{width:15px;height:15px}
-.nav ul{display:flex; gap:24px; list-style:none; margin:0 auto 0 0; padding:0; font-size:13.5px; color:var(--tx-2)}
-.nav ul a:hover{color:var(--teal)}
-
-/* hero */
-.hero{display:grid; grid-template-columns:1fr 1fr; min-height:600px; border-bottom:1px solid var(--line)}
-.hero-l{background:var(--ink); color:var(--on-ink); display:flex; align-items:center; padding:clamp(48px,6vw,80px) clamp(28px,4.5vw,72px)}
-.hero-l .in{max-width:520px; margin-left:auto; width:100%}
-.hero h1{font-size:clamp(38px,4.9vw,66px); color:var(--on-ink); letter-spacing:-.03em; line-height:1.04}
-.hero h1 .q{color:var(--teal-2)}
-.hero .sub{color:var(--on-ink-2); font-size:15.5px; margin-top:24px; max-width:46ch}
-.hero .acts{display:flex; gap:10px; margin-top:30px; flex-wrap:wrap}
-.hero-r{position:relative; background:var(--bone-2); display:flex; align-items:center; padding:clamp(32px,4vw,64px) clamp(28px,4vw,64px); overflow:hidden}
-.plaster{position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.9}
-.hero-r .in{position:relative; width:100%; max-width:560px}
-
-/* console card */
-.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-.card-top{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 15px; border-bottom:1px solid var(--line); font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--tx-3)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--teal); display:inline-block; margin-right:7px; animation:pulse 2.6s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
-.log{padding:6px 15px 10px}
-.ev{display:grid; grid-template-columns:46px 1fr; gap:12px; padding:11px 0; border-bottom:1px solid var(--line); font-size:13px; opacity:0; transform:translateY(5px); animation:in .5s ease forwards}
-.ev:last-child{border-bottom:0}
-.ev .t{color:var(--tx-3); font-size:11.5px; font-variant-numeric:tabular-nums; padding-top:2px}
-.ev .m{color:var(--tx-2); line-height:1.5}
-.ev .m b{color:var(--tx); font-weight:500}
-.ev .m i{font-style:normal; color:var(--teal)}
-@keyframes in{to{opacity:1; transform:none}}
-.ev:nth-child(1){animation-delay:.2s}.ev:nth-child(2){animation-delay:.8s}
-.ev:nth-child(3){animation-delay:1.4s}.ev:nth-child(4){animation-delay:2s}
-.ev:nth-child(5){animation-delay:2.6s}
-.card-foot{padding:11px 15px; background:var(--teal-wash); color:var(--teal); font-size:11px; letter-spacing:.07em; text-transform:uppercase; border-top:1px solid var(--line)}
-@media (prefers-reduced-motion:reduce){.ev{animation:none;opacity:1;transform:none}.dot{animation:none;opacity:1}}
-
-/* trust */
-.trust{background:var(--bone-2); border-bottom:1px solid var(--line); padding:26px 0}
-.trust-in{display:flex; align-items:center; gap:28px; flex-wrap:wrap}
-.trust .lab{font-size:13px; color:var(--tx-2); max-width:16ch; line-height:1.4}
-.badges{display:flex; gap:8px; flex-wrap:wrap; margin-left:auto}
-.badge{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:10px 15px; font-size:12.5px; color:var(--tx-2)}
-.badge b{display:block; font-family:"Instrument Sans",sans-serif; font-weight:600; color:var(--tx); font-size:12.5px; letter-spacing:0}
-
-/* generic grids */
-.g3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:52px}
-.g4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:52px}
-.tile{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:26px 24px; display:flex; flex-direction:column; gap:9px}
-.band.ink .tile{background:var(--ink-soft); border-color:var(--on-ink-line)}
-.tile h3{font-size:17px}
-.tile p{font-size:14px; color:var(--tx-2)}
-.band.ink .tile p{color:var(--on-ink-2)}
-
-/* split feature */
-.split{display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(32px,5vw,72px); align-items:center; margin-top:52px}
-.linkrow{border-top:1px solid var(--line); padding:15px 0; display:flex; gap:16px; align-items:baseline}
-.linkrow:last-child{border-bottom:1px solid var(--line)}
-.linkrow b{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:15px; flex:0 0 auto; min-width:132px}
-.linkrow span{font-size:13.5px; color:var(--tx-2)}
-
-/* contrast */
-.vs{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:52px}
-.pane{border:1px solid var(--line); border-radius:var(--r); padding:28px 26px 30px; background:var(--bone-3)}
-.pane.now{background:var(--paper); border-color:var(--teal)}
-.pane .tag{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tx-3)}
-.pane.now .tag{color:var(--teal)}
-.pane h3{font-size:clamp(20px,2.3vw,26px); margin:12px 0 8px}
-.pane .note{font-size:14px; color:var(--tx-2); margin-bottom:20px}
-.steps{list-style:none; margin:0; padding:0}
-.steps li{display:grid; grid-template-columns:20px 1fr; gap:13px; padding:14px 0; border-top:1px solid var(--line); font-size:14px; color:var(--tx-2); line-height:1.55}
-.steps li b{display:block; color:var(--tx); font-weight:500; font-family:"Instrument Sans",sans-serif; font-size:14.5px; margin-bottom:2px}
-.steps .ic{width:18px;height:18px;margin-top:3px}
-.verdict{margin-top:22px; border-radius:var(--r); padding:13px 15px; font-size:13.5px; line-height:1.55}
-.verdict.neg{background:var(--clay-wash); color:var(--clay)}
-.verdict.pos{background:var(--teal-wash); color:var(--teal)}
-.verdict b{font-weight:600}
-
-/* caps */
-.caps{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:48px}
-.cap{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:18px 17px}
-.cap .k{font-size:10.5px; letter-spacing:.11em; color:var(--teal); text-transform:uppercase}
-.cap b{display:block; font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:14.5px; margin:6px 0 4px}
-.cap span{font-size:12.5px; color:var(--tx-2); line-height:1.45}
-
-/* aimx */
-.aimx{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:52px}
-.ax{background:var(--ink-soft); border:1px solid var(--on-ink-line); border-radius:var(--r); padding:26px 22px; display:flex; flex-direction:column; gap:12px}
-.ax .let{font-family:"Instrument Serif",Georgia,serif; font-size:52px; line-height:.9; color:var(--teal-2)}
-.ax h3{font-size:16px}
-.ax p{font-size:13.5px; color:var(--on-ink-2)}
-.ax ul{margin:2px 0 0; padding-left:15px; font-size:12.5px; color:var(--on-ink-3); display:flex; flex-direction:column; gap:4px}
-
-/* timeline */
-.tl{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:52px; border-top:1px solid var(--line)}
-.tl > div{padding:24px 22px 0 0; position:relative}
-.tl > div::before{content:""; position:absolute; top:-3.5px; left:0; width:6px; height:6px; border-radius:50%; background:var(--teal)}
-.tl .w{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:9px}
-.tl h3{font-size:16.5px; margin-bottom:7px}
-.tl p{font-size:13.5px; color:var(--tx-2)}
-
-/* stats */
-.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px}
-.st{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:24px 22px}
-.st .v{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:clamp(28px,3.2vw,40px); letter-spacing:-.035em; font-variant-numeric:tabular-nums}
-.st .l{font-size:13px; color:var(--tx-2); margin-top:6px; line-height:1.45}
-.st.hi .v{color:var(--teal)}
-.fine{margin-top:18px; font-size:11.5px; color:var(--tx-3); line-height:1.55; max-width:100ch}
-
-/* quote */
-.quote{text-align:center; max-width:900px; margin:0 auto}
-.quote p{font-family:"Instrument Serif",Georgia,serif; font-size:clamp(24px,3.4vw,40px); line-height:1.24; letter-spacing:-.01em}
-.quote .by{margin-top:26px; font-size:13px; color:var(--tx-2)}
-.quote .by b{display:block; color:var(--tx); font-weight:500}
-
-/* chips */
-.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:32px}
-.chip{border:1px solid var(--line); border-radius:var(--r); padding:8px 14px; font-size:12.5px; color:var(--tx-2); background:var(--paper)}
-.band.ink .chip{background:var(--ink-soft); border-color:var(--on-ink-line); color:var(--on-ink-2)}
-
-/* cta */
-.cta{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap}
-
-/* footer */
-footer{background:var(--bone-2); border-top:1px solid var(--line); padding:64px 0 32px}
-.fg{display:grid; grid-template-columns:1.5fr repeat(4,1fr); gap:32px}
-.fg h4{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tx-3); font-family:Inter,sans-serif; font-weight:500; margin-bottom:14px}
-.fg a{display:block; font-size:13.5px; color:var(--tx-2); padding:4px 0}
-.fg a:hover{color:var(--teal)}
-.fbot{margin-top:44px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--tx-3)}
-
-@media (max-width:1000px){
-  .hero{grid-template-columns:1fr}
-  .hero-l .in{margin-left:0}
-  .hero-r{min-height:440px}
-  .split,.vs{grid-template-columns:1fr}
-  .g4,.aimx,.tl,.stats,.caps{grid-template-columns:1fr 1fr}
-  .nav ul{display:none}
-  .fg{grid-template-columns:1fr 1fr}
-  .tl > div{padding-right:14px}
-}
-@media (max-width:620px){
-  .g3,.g4,.aimx,.tl,.stats,.caps,.fg{grid-template-columns:1fr}
-  .linkrow{flex-direction:column; gap:4px}
-}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+<header><div class="wrap nav">
+<a class="brand" href="/"><span class="box"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 11h3.4l2-4.8 2.6 9L12.4 11H18" stroke="#EFEDEB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Nanoheal</a>
+<ul><li class="has-menu"><a href="/platform/">Platform</a><div class="menu"><a href="/platform/">Overview — AIM-X<span>The whole framework in one loop</span></a><a href="/platform/automate/">Automate<span>Resolution without a script</span></a><a href="/platform/intelligence/">Intelligence<span>The semantic context layer</span></a><a href="/platform/manage/">Manage &amp; evolve<span>Where autonomy goes next</span></a><a href="/platform/deliverexperience/">Experience<span>The patented DEX score</span></a></div></li><li><a href="/why-nanoheal/why-not-scripts/">Why not scripts</a></li><li><a href="/#value">Outcomes</a></li><li><a href="/#partners">Partners</a></li></ul>
+<a class="btn btn-ink" href="/#demo">Schedule a Demo</a>
+</div></header>
+<main>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top">
-      <span class="box">
-        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 11h3.4l2-4.8 2.6 9L12.4 11H18" stroke="#EFEDEB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      Nanoheal
-    </a>
-    <ul>
-      <li><a href="#difference">Platform</a></li>
-      <li><a href="#aimx">AIM-X</a></li>
-      <li><a href="#value">Outcomes</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#resources">Resources</a></li>
-    </ul>
-    <a class="btn btn-ink" href="#demo">Schedule a Demo</a>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-l">
-    <div class="in">
-      <h1>Automation that triggers on the symptom, <span class="q">not on a script.</span></h1>
-      <p class="sub">DEX made the digital workplace measurable. Nanoheal makes it autonomous — resolving issues the moment the operating system reports them. No scripts to write. Nothing left running to watch.</p>
-      <div class="acts">
-        <a class="btn btn-solid" href="#demo">Schedule a Demo</a>
-        <a class="btn btn-line" href="#difference">See how it triggers</a>
-      </div>
+  <div class="hero-l"><div class="in">
+    <h1>Automation that triggers on the symptom, <span class="q">not on a script.</span></h1>
+    <p class="sub">DEX made the digital workplace measurable. Nanoheal makes it autonomous &mdash;
+    resolving issues the moment the operating system reports them. No scripts to write.
+    Nothing left running to watch.</p>
+    <div class="acts">
+      <a class="btn btn-solid" href="/#demo">Schedule a Demo</a>
+      <a class="btn btn-line" href="/why-nanoheal/why-not-scripts/">See how it triggers</a>
     </div>
-  </div>
+  </div></div>
   <div class="hero-r">
     <canvas class="plaster" id="plaster" aria-hidden="true"></canvas>
     <div class="in">
-      <div class="card" role="img" aria-label="A Windows event log entry for a failed print spooler is recognised, matched to a knowledge entry, and remediated by engine capabilities in 1.6 seconds, with no script deployed and no background probing.">
-        <div class="card-top"><span><span class="dot"></span>Endpoint · live</span><span>No polling</span></div>
-        <div class="log">
-          <div class="ev"><span class="t">00.00</span><span class="m">OS emits <b>Event 7031</b> — Print Spooler terminated unexpectedly</span></div>
-          <div class="ev"><span class="t">00.03</span><span class="m">Engine recognises the symptom <i>as reported</i> — no probe, no scan</span></div>
-          <div class="ev"><span class="t">00.41</span><span class="m">Intelligence matches knowledge <i>KB · spooler-corrupt-queue</i></span></div>
-          <div class="ev"><span class="t">00.88</span><span class="m">Capabilities selected: <b>stop service · purge queue · repair key · restart</b></span></div>
-          <div class="ev"><span class="t">01.62</span><span class="m">Resolved. Ticket never raised. <i>Knowledge reused fleet-wide</i></span></div>
-        </div>
-        <div class="card-foot">0 lines of script shipped · 0 background probes</div>
-      </div>
-    </div>
+<div class="card" role="img" aria-label="A Windows event log entry for a failed print spooler
+is recognised, matched to a knowledge entry, and remediated by engine capabilities in 1.6
+seconds, with no script deployed and no background probing.">
+  <div class="card-top"><span><span class="dot"></span>Endpoint &middot; live</span><span>No polling</span></div>
+  <div class="log">
+    <div class="ev"><span class="t">00.00</span><span class="m">OS emits <b>Event 7031</b> &mdash; Print Spooler terminated unexpectedly</span></div>
+    <div class="ev"><span class="t">00.03</span><span class="m">Engine recognises the symptom <i>as reported</i> &mdash; no probe, no scan</span></div>
+    <div class="ev"><span class="t">00.41</span><span class="m">Intelligence matches knowledge <i>KB &middot; spooler-corrupt-queue</i></span></div>
+    <div class="ev"><span class="t">00.88</span><span class="m">Capabilities selected: <b>stop service &middot; purge queue &middot; repair key &middot; restart</b></span></div>
+    <div class="ev"><span class="t">01.62</span><span class="m">Resolved. Ticket never raised. <i>Knowledge reused fleet-wide</i></span></div>
   </div>
-</section>
-
-<!-- TRUST -->
-<div class="trust">
-  <div class="wrap trust-in">
-    <p class="lab">Recognised across the DEX category.</p>
-    <div class="badges">
-      <span class="badge"><b>Gartner</b>27+ mentions · 4.6/5 Peer Insights</span>
-      <span class="badge"><b>ISG Provider Lens™</b>Rising Star, DEX</span>
-      <span class="badge"><b>Forrester</b>DEX Landscape, Q2 2026</span>
-      <span class="badge"><b>Patented</b>DEX scoring · US 9,477,573</span>
-    </div>
-  </div>
+  <div class="card-foot">0 lines of script shipped &middot; 0 background probes</div>
 </div>
-
-<!-- GAP -->
-<section class="band" id="gap">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">Where it stalls</p>
-      <h2 class="h2">Measuring the workplace is solved. Improving it is where every platform stops.</h2>
-      <p class="lede">Analytics tell you a fleet is drifting. Turning that into a fix is still a bespoke software project — specified, scripted, tested, approved, then maintained forever.</p>
-    </div>
-    <div class="g3">
-      <div class="tile"><h3>Weeks per fix.</h3><p>Specify, script, test, approve, publish. From scratch, for every single issue — before one endpoint benefits.</p></div>
-      <div class="tile"><h3>Code that rots.</h3><p>The estate drifts and scripts break. Maintaining what exists crowds out building what's next.</p></div>
-      <div class="tile"><h3>So it stops.</h3><p>Coverage stalls at the top call drivers. The long tail — most of what reaches the service desk — stays manual.</p></div>
-    </div>
+</div>
   </div>
 </section>
 
-<!-- QUOTE -->
-<section class="band bone2">
-  <div class="wrap quote">
-    <p>“DEX became a dashboard. The tickets kept coming.”</p>
-    <p class="by"><b>The problem was never detection.</b>It was the economics of building the fix.</p>
+<div class="trust" id="proof"><div class="wrap trust-in">
+  <p class="lab">Recognised across the DEX category.</p>
+  <div class="badges">
+    <span class="badge"><b>Gartner</b>27+ mentions &middot; 4.6/5 Peer Insights</span>
+    <span class="badge"><b>ISG Provider Lens&trade;</b>Rising Star, DEX</span>
+    <span class="badge"><b>Forrester</b>DEX Landscape, Q2 2026</span>
+    <span class="badge"><b>Patented</b>DEX scoring &middot; US 9,477,573</span>
   </div>
-</section>
+</div></div>
 
-<!-- THE DIFFERENCE -->
 <section class="band" id="difference">
   <div class="wrap">
     <div class="head">
       <p class="label">The difference</p>
       <h2 class="h2">Scripts have to go looking for a problem. Nanoheal is told.</h2>
-      <p class="lede">Every operating system already announces its own failures — event logs, service states, crashes, the error the user is staring at. Script-based automation ignores that channel and rebuilds detection from scratch. Nanoheal listens to it.</p>
+      <p class="lede">Every operating system already announces its own failures &mdash; event logs,
+      service states, crashes, the error the user is staring at. Script-based automation ignores
+      that channel and rebuilds detection from scratch. Nanoheal listens to it.</p>
     </div>
 
     <div class="vs">
@@ -375,313 +79,152 @@ footer{background:var(--bone-2); border-top:1px solid var(--line); padding:64px 
         <h3>Write code, ship it, hope it holds.</h3>
         <p class="note">The prevailing model across the category.</p>
         <ul class="steps">
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6.5 5 3 9l3.5 4M11.5 5 15 9l-3.5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
-            <span><b>An engineer writes a script.</b>PowerShell, Bash, shell — new code for every symptom and every variation of it.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2.5v7M9 9.5 6 7M9 9.5 12 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/><rect x="2.5" y="11.5" width="13" height="4" rx="1" stroke="currentColor" stroke-width="1.3" opacity=".5"/></svg>
-            <span><b>It is pushed to the fleet.</b>Payloads accumulate. Every new fix adds weight to every endpoint.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.3" opacity=".5"/><path d="M9 5.5V9l2.5 1.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/></svg>
-            <span><b>It has to keep polling.</b>To catch a symptom, the script stays resident and re-checks on an interval — burning CPU, memory and battery on machines that are mostly fine.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 14 9 4l6 10z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" opacity=".5"/><path d="M9 8.5v2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/></svg>
-            <span><b>Then the estate moves.</b>A patch, a policy, a new OS build — and the script fails silently until somebody notices.</span>
-          </li>
+          <li><span class="ic"></span><span><b>An engineer writes a script.</b>New code for every
+          symptom, and every variation of it.</span></li>
+          <li><span class="ic"></span><span><b>It is pushed to the fleet.</b>Payloads accumulate.
+          Every new fix adds weight to every endpoint.</span></li>
+          <li><span class="ic"></span><span><b>It has to keep polling.</b>To catch a symptom the
+          script stays resident and re-checks on an interval &mdash; burning CPU, memory and
+          battery on machines that are mostly fine.</span></li>
+          <li><span class="ic"></span><span><b>Then the estate moves.</b>A patch, a policy, a new
+          OS build &mdash; and it fails silently until somebody notices.</span></li>
         </ul>
-        <p class="verdict neg"><b>The real cost:</b> detection you paid to build, and pay again to run, on every device, all the time.</p>
+        <p class="verdict neg"><b>The real cost:</b> detection you paid to build, and pay again
+        to run, on every device, all the time.</p>
       </div>
-
       <div class="pane now">
-        <p class="tag">Nanoheal · symptom-triggered</p>
+        <p class="tag">Nanoheal &middot; symptom-triggered</p>
         <h3>The symptom is the trigger. No script exists.</h3>
         <p class="note">Detection is free, because the OS already did it.</p>
         <ul class="steps">
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9h2.8l2-4.2 2.5 8.4 2-4.2H16" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><b>The OS reports the symptom.</b>An event log entry, a service failure, a crash, an error surfaced to the user. Nanoheal understands it in the form the OS already produces.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="var(--teal)" stroke-width="1.3"/><circle cx="9" cy="9" r="2.2" fill="var(--teal)"/></svg>
-            <span><b>Intelligence reads the context.</b>The semantic context layer resolves what this symptom means <em>here</em> — against DEX signals, your SOPs, ITSM history, CMDB and policy.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="5.5" height="5.5" rx="1" stroke="var(--teal)" stroke-width="1.3"/><rect x="10" y="2.5" width="5.5" height="5.5" rx="1" stroke="var(--teal)" stroke-width="1.3"/><rect x="2.5" y="10" width="5.5" height="5.5" rx="1" stroke="var(--teal)" stroke-width="1.3"/><rect x="10" y="10" width="5.5" height="5.5" rx="1" fill="var(--teal)"/></svg>
-            <span><b>It selects a capability, not code.</b>The engine exposes an API for what a device can actually do. Intelligence picks the right capability and supplies its parameters from the knowledge base.</span>
-          </li>
-          <li>
-            <svg class="ic" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5 7.3 13.5 15 4.8" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><b>The engine executes it.</b>Sealed, versioned, guardrailed. Knowledge is what ships — small, portable, valid on every OS build the engine supports.</span>
-          </li>
+          <li><span class="ic"></span><span><b>The OS reports the symptom.</b>An event log entry,
+          a service failure, a crash, an error surfaced to the user.</span></li>
+          <li><span class="ic"></span><span><b>Intelligence reads the context.</b>What this symptom
+          means <em>here</em> &mdash; against DEX signals, your SOPs, ITSM history and CMDB.</span></li>
+          <li><span class="ic"></span><span><b>It selects a capability, not code.</b>The engine
+          exposes an API for what a device can do. Intelligence picks the right capability and
+          supplies its parameters.</span></li>
+          <li><span class="ic"></span><span><b>The engine executes it.</b>Sealed, versioned,
+          guardrailed. Knowledge is what ships &mdash; small and portable.</span></li>
         </ul>
-        <p class="verdict pos"><b>The result:</b> no script authored, no payload bloat, nothing probing in the background — and a fix that arrives the moment the symptom does.</p>
+        <p class="verdict pos"><b>The result:</b> no script authored, no payload bloat, nothing
+        probing in the background &mdash; and a fix that arrives the moment the symptom does.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ENGINE -->
-<section class="band bone2" id="engine">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">The engine</p>
-      <h2 class="h2">The intelligence doesn't write code. It chooses from what the device can already do.</h2>
-      <p class="lede">Device operations are exposed as a governed capability API. The knowledge layer describes <em>what</em> to do; the engine owns <em>how</em>. That separation is why a fix is kilobytes of knowledge instead of a codebase you maintain.</p>
-    </div>
-    <div class="caps">
-      <div class="cap"><span class="k">FS</span><b>Files &amp; folders</b><span>Delete, move, copy, repair permissions, reclaim space, restore paths</span></div>
-      <div class="cap"><span class="k">REG</span><b>Registry &amp; plists</b><span>Create, modify, remove and restore keys and values, with rollback</span></div>
-      <div class="cap"><span class="k">SVC</span><b>Services &amp; processes</b><span>Stop, start, reset, terminate, re-register, repair dependencies</span></div>
-      <div class="cap"><span class="k">CFG</span><b>Config &amp; policy</b><span>Settings, profiles, drift correction, compliance enforcement</span></div>
-      <div class="cap"><span class="k">APP</span><b>Software &amp; patch</b><span>Install, repair, roll back, version control, licence reclaim</span></div>
-      <div class="cap"><span class="k">NET</span><b>Network</b><span>Adapters, DNS, proxy, VPN, Wi-Fi profile repair</span></div>
-      <div class="cap"><span class="k">USR</span><b>Identity &amp; profile</b><span>Directory actions, profile repair, credential and session tasks</span></div>
-      <div class="cap"><span class="k">ORCH</span><b>Beyond the device</b><span>ITSM tickets and changes, IT management platforms, workplace enablers</span></div>
+    <div style="margin-top:32px">
+      <a class="btn btn-line" href="/why-nanoheal/why-not-scripts/">The full technical case &mdash;
+      why not scripts</a>
     </div>
   </div>
 </section>
 
-<!-- AIM-X -->
-<section class="band ink" id="aimx">
+<section class="band bone2">
   <div class="wrap">
     <div class="head">
       <p class="label">The framework</p>
-      <h2 class="h2">AIM-X. Automate with Intelligence. Manage the eXperience.</h2>
-      <p class="lede">A continuous loop that turns DEX insight into action, and action into a better experience. Every outcome becomes intelligence; every insight creates the next opportunity for autonomy.</p>
+      <h2 class="h2">AIM-X. One loop, and the whole point is that it doesn't stop.</h2>
+      <p class="lede">Automate with Intelligence. Manage the eXperience. Every outcome becomes
+      intelligence; every insight creates the next opportunity for autonomy.</p>
     </div>
-    <div class="aimx">
-      <div class="ax"><span class="let">A</span><h3>Automate</h3><p>Fix, execute, orchestrate — across device, ITSM, IT management and workplace platforms.</p><ul><li>Autoheal remediation</li><li>IT tasks &amp; workflows</li><li>Policy compliance</li></ul></div>
-      <div class="ax"><span class="let">I</span><h3>Intelligence</h3><p>The semantic context layer senses, learns and contextualises what is happening and how your organisation solves it.</p><ul><li>DEX analytics &amp; signals</li><li>IT knowledge and SOPs</li><li>ITSM, CMDB, workplace context</li></ul></div>
-      <div class="ax"><span class="let">M</span><h3>Manage &amp; evolve</h3><p>Identify where autonomy is worth having next, prioritise it, and expand coverage continuously.</p><ul><li>Autonomy opportunity finding</li><li>Prioritisation by impact</li><li>Compounding coverage</li></ul></div>
-      <div class="ax"><span class="let">X</span><h3>eXperience</h3><p>The measured outcome, on a patented DEX scoring methodology — so improvement is visible rather than asserted.</p><ul><li>Patented DEX Score</li><li>US 9,477,573</li><li>An outcome you can contract on</li></ul></div>
+    <div class="next"><a href="/platform/automate/"><span class="k">A</span><b>Automate</b><span>Resolution without a script, delivered three ways.</span></a><a href="/platform/intelligence/"><span class="k">I</span><b>Intelligence</b><span>The semantic context layer that decides what a symptom means here.</span></a><a href="/platform/manage/"><span class="k">M</span><b>Manage &amp; evolve</b><span>How coverage compounds instead of stalling at the top call drivers.</span></a></div>
+    <div style="margin-top:22px">
+      <a class="btn btn-line" href="/platform/">See the whole AIM-X loop</a>
     </div>
   </div>
 </section>
 
-<!-- VALUE -->
 <section class="band" id="value">
   <div class="wrap">
     <div class="head">
-      <p class="label">Path to value</p>
+      <p class="label">Proven in production</p>
       <h2 class="h2">Most platforms start empty. Nanoheal starts with 1,200+.</h2>
-      <p class="lede">Pre-built remediations, IT tasks and compliance configurations ship on day one — and your own team extends them in plain language, without an engineering backlog.</p>
+      <p class="lede">Pre-built remediations, IT tasks and compliance configurations ship on day
+      one, and your own team extends them in plain language.</p>
     </div>
-
-    <div class="tl">
-      <div><p class="w">Day one</p><h3>1,200+ configurations, live.</h3><p>Remediations, IT tasks and policy compliance, matched against your top call drivers immediately.</p></div>
-      <div><p class="w">First weeks</p><h3>The DEX Score starts moving.</h3><p>Measured on the patented scoring methodology, so the improvement is visible — not asserted.</p></div>
-      <div><p class="w">Every quarter</p><h3>Your team adds more.</h3><p>IT describes a task in plain language; the context layer compiles the workflow. No code written or generated.</p></div>
-      <div><p class="w">From there</p><h3>Coverage compounds.</h3><p>Across device, ITSM, IT management and workplace systems — progressively autonomous.</p></div>
-    </div>
-
-    <p class="label" style="margin-top:56px">Proven in production — Fortune 100 manufacturer</p>
+    <p class="label" style="margin-top:44px">Fortune 100 manufacturer</p>
     <div class="stats">
       <div class="st"><div class="v">~200K</div><div class="l">endpoints under management</div></div>
       <div class="st"><div class="v">150+</div><div class="l">automations live</div></div>
-      <div class="st"><div class="v">17%</div><div class="l">of tickets autohealed — nobody involved</div></div>
+      <div class="st"><div class="v">17%</div><div class="l">of tickets autohealed &mdash; nobody involved</div></div>
       <div class="st"><div class="v">35%</div><div class="l">overall ticket avoidance</div></div>
     </div>
-    <p class="label" style="margin-top:36px">Worth — per 10,000 employees per year</p>
+    <p class="label" style="margin-top:32px">Worth &mdash; per 10,000 employees per year</p>
     <div class="stats">
       <div class="st hi"><div class="v">$1.0M</div><div class="l">service-desk cost avoided</div></div>
       <div class="st hi"><div class="v">$8.6M</div><div class="l">productivity recovered, on a 10-point DEX gain</div></div>
       <div class="st"><div class="v">0</div><div class="l">scripts written, deployed or maintained</div></div>
       <div class="st"><div class="v">0</div><div class="l">background probes running to detect symptoms</div></div>
     </div>
-    <p class="fine">Illustrative model. Cost avoided: 35% overall ticket avoidance on 1.0 ticket/employee/month at $25 blended cost (HDI / MetricNet range). Productivity: industry research indicates a 10-point DEX Score gain returns approximately 22 minutes per employee per week, valued at $45/hour fully loaded. DEX Score methodology patented — US 9,477,573.</p>
+    <p class="fine">Illustrative model. Cost avoided: 35% overall ticket avoidance on 1.0
+    ticket/employee/month at $25 blended cost (HDI / MetricNet range). Productivity: industry
+    research indicates a 10-point DEX Score gain returns approximately 22 minutes per employee
+    per week, valued at $45/hour fully loaded. DEX Score methodology patented &mdash; US 9,477,573.</p>
   </div>
 </section>
 
-<!-- LIBRARY -->
-<section class="band bone2" id="library">
+<section class="band bone2" id="markets">
   <div class="wrap">
     <div class="head">
-      <p class="label">How the library grows</p>
-      <h2 class="h2">Created once. Then it runs every time — and every new issue makes the library bigger.</h2>
-      <p class="lede">This is why coverage compounds instead of stalling at the top call drivers. The next automation costs almost nothing, so the long tail finally gets built.</p>
+      <p class="label">Who runs on Nanoheal</p>
+      <h2 class="h2">Same engine, whether you run 500 endpoints or 200,000.</h2>
     </div>
     <div class="g3">
-      <div class="tile">
-        <p class="label">Create · once</p>
-        <h3>Knowledge, not code.</h3>
-        <p>AI drafts the knowledge from plain intent in English. IT validates it once. Compiled and sealed — nothing generated at runtime.</p>
-      </div>
-      <div class="tile">
-        <p class="label">Run · every time</p>
-        <h3>Three ways, one fix.</h3>
-        <p><b>Autoheal</b> — nobody involved. <b>Self-service</b> — the employee resolves it. <b>Assisted</b> — the service desk, in a single action.</p>
-      </div>
-      <div class="tile">
-        <p class="label">Grow · continuously</p>
-        <h3>Every symptom feeds back.</h3>
-        <p>A new issue appears, becomes validated knowledge, and turns into permanent, reusable, fleet-wide capability.</p>
-      </div>
+      <div class="tile"><h3>Enterprise IT.</h3><p>Fortune 1000 estates across manufacturing,
+      technology services and SaaS &mdash; typically replacing a DEX tool that measures well and
+      acts poorly.</p></div>
+      <div class="tile"><h3>Global system integrators.</h3><p>Delivered inside an existing managed
+      workplace service. Your contract, your client, your delivery model &mdash; with an autonomy
+      layer your competitors cannot price.</p></div>
+      <div class="tile"><h3>OEMs, support channels and SMB.</h3><p>Multi-tenant from the ground up,
+      so the same automation library serves a support channel's whole book of business.</p></div>
+    </div>
+    <div class="chips">
+      <span class="chip">Windows</span><span class="chip">macOS</span><span class="chip">Linux</span>
+      <span class="chip">VDI</span><span class="chip">iOS</span><span class="chip">Android</span>
+      <span class="chip">IoT</span><span class="chip">Cloud</span><span class="chip">On-prem</span>
+      <span class="chip">Airgapped</span><span class="chip">Multi-tenant or dedicated</span>
     </div>
   </div>
 </section>
 
-<!-- REACH -->
-<section class="band ink">
-  <div class="wrap split">
-    <div class="head">
-      <p class="label">Runs everywhere</p>
-      <h2 class="h2">One engine. One context layer. Every place your people work.</h2>
-    </div>
-    <div>
-      <div class="chips">
-        <span class="chip">Windows</span><span class="chip">macOS</span><span class="chip">Linux</span>
-        <span class="chip">VDI</span><span class="chip">iOS</span><span class="chip">Android</span><span class="chip">IoT</span>
-        <span class="chip">Cloud</span><span class="chip">On-prem</span><span class="chip">Airgapped</span>
-        <span class="chip">Multi-tenant or dedicated</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PARTNERS -->
 <section class="band" id="partners">
   <div class="wrap split">
     <div class="head">
       <p class="label">For service providers</p>
       <h2 class="h2">You already run the digital workplace. We make it autonomous.</h2>
-      <p class="lede">Delivered inside your existing service — your contract, your client, your delivery model.</p>
-      <a class="btn btn-line" href="#demo" style="align-self:flex-start">Partner with Nanoheal</a>
+      <p class="lede">Delivered inside your existing service &mdash; your contract, your client,
+      your delivery model.</p>
     </div>
     <div>
       <div class="linkrow"><b>A differentiated bid</b><span>An autonomy commitment your competitors cannot price.</span></div>
       <div class="linkrow"><b>Margin, kept</b><span>Deflection comes from resolution, not from thinning the support team.</span></div>
       <div class="linkrow"><b>A contractable outcome</b><span>Patented DEX measurement makes the improvement provable.</span></div>
-      <div class="linkrow"><b>Day-one content</b><span>1,200+ configurations, plus a knowledge layer your engineers extend in plain language.</span></div>
+      <div class="linkrow"><b>Day-one content</b><span>1,200+ configurations your engineers extend in plain language.</span></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="band ink" id="demo">
-  <div class="wrap">
-    <div class="head">
-      <h2 class="h2">See a symptom resolve itself.</h2>
-      <p class="lede">Bring us your top three call drivers. We'll show you the same three resolving on a live endpoint — with no script written, and nothing left running to watch for them.</p>
-      <div class="cta">
-        <a class="btn btn-solid" href="#demo">Schedule a Demo</a>
-        <a class="btn btn-line" href="#value">See the business case</a>
-      </div>
+  <div class="wrap"><div class="head">
+    <h2 class="h2">See a symptom resolve itself.</h2>
+    <p class="lede">Bring us your top three call drivers. We'll show you the same three resolving
+    on a live endpoint &mdash; with no script written, and nothing left running to watch for them.</p>
+    <div class="cta">
+      <a class="btn btn-solid" href="/#demo">Schedule a Demo</a>
+      <a class="btn btn-line" href="/why-nanoheal/why-not-scripts/">Read the technical case</a>
     </div>
-  </div>
+  </div></div>
 </section>
 
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="fg">
-      <div>
-        <a class="brand" href="#top" style="margin-bottom:14px">
-          <span class="box"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 11h3.4l2-4.8 2.6 9L12.4 11H18" stroke="#EFEDEB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Nanoheal
-        </a>
-        <p style="font-size:13px;color:var(--tx-3);max-width:32ch;margin-top:12px">Turning the digital workplace autonomous. Utah · Bangalore · Manila.</p>
-      </div>
-      <div>
-        <h4>Platform</h4>
-        <a href="#difference">Symptom-triggered automation</a>
-        <a href="#engine">Capability engine</a>
-        <a href="#aimx">Semantic context layer</a>
-        <a href="#aimx">DEX measurement</a>
-        <a href="#library">Knowledge library</a>
-      </div>
-      <div>
-        <h4>Solutions</h4>
-        <a href="#value">Ticket deflection</a>
-        <a href="#library">Self-service &amp; assisted</a>
-        <a href="#engine">Policy compliance</a>
-        <a href="#engine">IT task automation</a>
-        <a href="#value">DEX improvement programme</a>
-      </div>
-      <div id="resources">
-        <h4>Resources</h4>
-        <a href="#value">Business case model</a>
-        <a href="#library">Customer stories</a>
-        <a href="#difference">Why not scripts</a>
-        <a href="#demo">Documentation</a>
-        <a href="#demo">Blog</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#partners">Partners</a>
-        <a href="#demo">About</a>
-        <a href="#demo">Careers</a>
-        <a href="#demo">Contact</a>
-        <a href="#demo">Trust &amp; security</a>
-      </div>
-    </div>
-    <div class="fbot">
-      <span>© 2026 Nanoheal. DEX Score methodology patented — US 9,477,573.</span>
-      <span>Privacy · Terms · Trust Center</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-// Warm carved-plaster texture behind the hero card — echoes the reference site's
-// relief photography without shipping an image.
-(function(){
-  var c = document.getElementById('plaster');
-  if(!c) return;
-  var ctx = c.getContext('2d'), w, h;
-  function dark(){
-    var t = document.documentElement.getAttribute('data-theme');
-    if(t === 'dark') return true;
-    if(t === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-  function draw(){
-    w = c.width = c.offsetWidth; h = c.height = c.offsetHeight;
-    if(!w || !h) return;
-    var d = dark();
-    ctx.fillStyle = d ? '#1C1918' : '#E4E1DF';
-    ctx.fillRect(0,0,w,h);
-    var img = ctx.getImageData(0,0,w,h), p = img.data;
-    // low-frequency value noise -> relief-like banding
-    var g = 46, grid = [];
-    for(var i=0;i<(g+1)*(g+1);i++) grid.push(Math.random());
-    function val(x,y){
-      // tile the sample space so higher octaves can never index past the grid
-      x = x - Math.floor(x); y = y - Math.floor(y);
-      var gx = x*g, gy = y*g, x0 = gx|0, y0 = gy|0;
-      if(x0 >= g) x0 = g-1; if(y0 >= g) y0 = g-1;
-      var fx = gx-x0, fy = gy-y0;
-      var sx = fx*fx*(3-2*fx), sy = fy*fy*(3-2*fy);
-      var a = grid[y0*(g+1)+x0], b = grid[y0*(g+1)+x0+1];
-      var cc = grid[(y0+1)*(g+1)+x0], dd = grid[(y0+1)*(g+1)+x0+1];
-      return (a+(b-a)*sx) + ((cc+(dd-cc)*sx) - (a+(b-a)*sx))*sy;
-    }
-    for(var y=0;y<h;y++){
-      for(var x=0;x<w;x++){
-        var n = val(x/w, y/h)*1.0 + val(x/w*2.3, y/h*2.3)*0.5;
-        // contour the field so it reads as carved ridges, then soften
-        var ridge = Math.abs(Math.sin(n*7.0));
-        var v = (ridge*0.55 + n*0.25);
-        var amt = d ? v*26 - 8 : v*30 - 12;
-        var k = (y*w+x)*4;
-        p[k] += amt; p[k+1] += amt*0.96; p[k+2] += amt*0.9;
-      }
-    }
-    ctx.putImageData(img,0,0);
-    // soften the left edge into the panel
-    var grd = ctx.createLinearGradient(0,0,w*0.5,0);
-    grd.addColorStop(0, d ? 'rgba(28,25,24,.85)' : 'rgba(228,225,223,.85)');
-    grd.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
-  }
-  var t; function go(){ clearTimeout(t); t = setTimeout(draw, 120); }
-  draw(); window.addEventListener('resize', go);
-  var mq = window.matchMedia('(prefers-color-scheme: dark)');
-  (mq.addEventListener ? mq.addEventListener('change', go) : mq.addListener(go));
-})();
-</script>
+<footer><div class="wrap"><div class="fg">
+<div><a class="brand" href="/"><span class="box"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 11h3.4l2-4.8 2.6 9L12.4 11H18" stroke="#EFEDEB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Nanoheal</a>
+<p style="font-size:13px;color:var(--tx-3);max-width:32ch;margin-top:12px">Turning the digital
+workplace autonomous. Utah &middot; Bangalore &middot; Manila.</p></div>
+<div><h4>Platform</h4><a href="/platform/">AIM-X overview</a><a href="/platform/automate/">Automate</a><a href="/platform/intelligence/">Intelligence</a><a href="/platform/manage/">Manage &amp; evolve</a><a href="/platform/deliverexperience/">Experience</a></div><div><h4>Why Nanoheal</h4><a href="/why-nanoheal/why-not-scripts/">Why not scripts</a><a href="/#value">Time to value</a><a href="/#proof">Analyst recognition</a><a href="/#value">Business case</a></div><div><h4>Solutions</h4><a href="/platform/automate/">Ticket deflection</a><a href="/platform/automate/">Self-service &amp; assisted</a><a href="/platform/manage/">Policy compliance</a><a href="/platform/automate/">IT task automation</a></div><div><h4>Company</h4><a href="/#partners">Partners</a><a href="/#demo">About</a><a href="/#demo">Careers</a><a href="/#demo">Contact</a></div></div>
+<div class="fbot"><span>&copy; 2026 Nanoheal. DEX Score methodology patented &mdash; US 9,477,573.</span>
+<span>Privacy &middot; Terms &middot; Trust Center</span></div></div></footer>
+<script src="/assets/plaster.js"></script>
 </body>
 </html>

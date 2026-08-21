@@ -3,13 +3,33 @@
 Static homepage for Nanoheal. Plain HTML/CSS — no build step, no dependencies.
 
 ```
-index.html                    the homepage (self-contained; Google Fonts is the only external request)
-404.html                      not-found page
-sitemap.xml                   XML sitemap — only "/" is live; the rest is commented out
-robots.txt
-SITEMAP.md                    the information architecture + positioning rationale
+build.py                      generates every page from the shared shell — run after editing
+pages.py                      page bodies and the AIM-X diagram — THIS is what you edit
+assets/site.css               design tokens and all styling
+assets/plaster.js             the hero's generated texture
+index.html                    generated — homepage
+platform/index.html           generated — AIM-X overview
+platform/automate/            generated — A
+platform/intelligence/        generated — I
+platform/manage/              generated — M
+platform/deliverexperience/   generated — X
+platform/innovate/            redirect to /platform/intelligence/ (old URL)
+why-nanoheal/why-not-scripts/ generated — the technical case
+404.html, robots.txt, sitemap.xml
+SITEMAP.md                    information architecture + positioning rationale
 .github/workflows/pages.yml   deploys to GitHub Pages on every push to main
 ```
+
+## Editing content
+
+Do **not** hand-edit the generated `index.html` files — they are overwritten. Edit
+`pages.py`, then:
+
+```bash
+python3 build.py && git add -A && git commit -m "copy update" && git push
+```
+
+Nav, footer and `<head>` live in `build.py` so they can't drift between pages.
 
 ## Deploying
 
@@ -64,10 +84,10 @@ Three things this repo does not solve, in priority order:
 Use Pages to get the positioning in front of people this week. Decide the real stack
 after the messaging has survived a few customer conversations.
 
-## Editing
+## Styling
 
-Everything is in `index.html`. Design tokens are CSS custom properties in the `:root`
-block at the top — colour, radius and the light/dark palettes. There are three theme
+Design tokens are CSS custom properties in the `:root` block of `assets/site.css`
+— colour, radius and the light/dark palettes. There are three theme
 states to keep in sync: bare `:root` (light), `@media (prefers-color-scheme: dark)`
 guarded by `:root:not([data-theme="light"])`, and `:root[data-theme="dark"]`.
 
