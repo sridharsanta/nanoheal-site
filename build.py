@@ -6,7 +6,7 @@ commit the generated .html files — GitHub Pages serves them directly.
 
 Page bodies live in pages.py. This file owns the shell only.
 """
-import os, pathlib
+import os, re, pathlib
 from pages import PAGES, AIMX_DIAGRAM
 
 ROOT = pathlib.Path(__file__).parent
@@ -118,6 +118,22 @@ SHELL = """<!DOCTYPE html>
 """
 
 
+def relativise(html, depth):
+    """Rewrite root-absolute hrefs/srcs to depth-relative ones.
+
+    GitHub Pages serves a project repo from /<repo>/, so "/assets/site.css"
+    resolves to the domain root and 404s. Relative paths work under a subpath
+    AND at a domain root, so the same build serves both.
+    """
+    prefix = "../" * depth
+
+    def rep(m):
+        attr, path = m.group(1), m.group(2)
+        return '%s="%s"' % (attr, (prefix + path) or "./")
+
+    return re.sub(r'\b(href|src)="/([^"]*)"', rep, html)
+
+
 def build():
     written = []
     for path, page in PAGES.items():
@@ -126,6 +142,9 @@ def build():
             title=page["title"], desc=page["desc"], path=path, mark=MARK,
             nav=nav_html(path), body=body, footer=footer_html(),
             scripts=page.get("scripts", ""))
+        stripped = path.strip("/")
+        depth = stripped.count("/") + 1 if stripped else 0
+        html = relativise(html, depth)
         out = ROOT / (path.lstrip("/") + "index.html")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html)
