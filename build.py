@@ -105,6 +105,7 @@ SHELL = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>(function(){{try{{var t=localStorage.getItem("nh-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}}catch(e){{}}}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
@@ -121,6 +122,10 @@ SHELL = """<!DOCTYPE html>
 <header><div class="wrap nav">
 <a class="brand" href="/"><span class="box">{mark}</span>Nanoheal</a>
 <ul>{nav}</ul>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"></path></svg>
+<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"></path></svg>
+</button>
 <a class="btn btn-ink" href="/#demo">Schedule a Demo</a>
 </div></header>
 <main>
@@ -128,6 +133,7 @@ SHELL = """<!DOCTYPE html>
 </main>
 {footer}
 {scripts}
+<script src="/assets/theme.js"></script>
 <script src="/assets/devmarks.js"></script>
 </body>
 </html>
