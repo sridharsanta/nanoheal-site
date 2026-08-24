@@ -23,8 +23,7 @@
     ".ps > div", ".loop-legend > div", ".linkrow", ".next a",
     "table.spec tbody tr", ".chip", ".btn", ".loop",
     ".scope-glabel", ".scope-card-text", ".scope-pill", ".scope-stat-label", ".scope-bracket span",
-    ".pf-collabel", ".pf-pipetitle", ".pf-io-title", ".pf-io-desc", ".pf-step-title", ".pf-step-desc",
-    ".pf-ev-title", ".pf-ev-list", ".pf-ev-cloudtext"
+    ".os-card > p", ".os-flow", ".sig-step", ".sig-proof", ".chain-node"
   ].join(",");
 
   var on = false, marks = [], toast;

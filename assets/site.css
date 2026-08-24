@@ -402,6 +402,31 @@ table.spec td.bad{color:var(--clay)}
   .pf-arrow2{display:none}
 }
 
+/* operating-system category grid */
+.os-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px}
+.os-card{border:1px solid var(--line); border-radius:calc(var(--r) * 2); background:var(--paper); padding:28px 24px; display:flex; flex-direction:column}
+.os-num{font-family:"Instrument Serif",Georgia,serif; font-size:16px; color:var(--teal); margin-bottom:14px}
+.os-card h3{font-size:19px; margin-bottom:8px}
+.os-card p{font-size:14px; color:var(--tx-2); line-height:1.5}
+.os-flow{margin-top:18px; padding-top:16px; border-top:1px solid var(--line); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); font-weight:600}
+@media (max-width:1000px){.os-grid{grid-template-columns:1fr}}
+
+/* signal flow: automate issues / compliance & governance */
+.sig-flow{max-width:540px; margin:40px auto 0}
+.sig-step{border:1px solid var(--line); border-radius:var(--r); background:var(--paper); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap}
+.sig-step.warn{border-color:var(--clay); background:var(--clay-wash)}
+.sig-step.done{border-color:var(--teal); background:var(--teal-wash); justify-content:center}
+.sig-k{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--tx-3)}
+.sig-step.warn .sig-k{color:var(--clay)}
+.sig-step.done .sig-k{color:var(--teal); font-weight:600; font-size:14.5px; letter-spacing:0; text-transform:none}
+.sig-v{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:15px; color:var(--tx); text-align:right}
+.sig-arrow{text-align:center; color:var(--teal); font-size:15px; opacity:.55; padding:4px 0}
+.sig-proof{text-align:center; margin-top:22px; font-size:13px; color:var(--tx-3); letter-spacing:.02em}
+@media (max-width:480px){
+  .sig-step{flex-direction:column; gap:4px}
+  .sig-v{text-align:left}
+}
+
 /* ecosystem chain */
 .chain{display:flex; align-items:stretch; flex-wrap:wrap; gap:0; margin-top:40px}
 .chain-node{flex:1; min-width:140px; border:1px solid var(--line); border-radius:var(--r); background:var(--paper); padding:18px 16px; text-align:center}
