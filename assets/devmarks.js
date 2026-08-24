@@ -23,7 +23,7 @@
     ".ps > div", ".loop-legend > div", ".linkrow", ".next a",
     "table.spec tbody tr", ".chip", ".btn", ".loop",
     ".scope-glabel", ".scope-card-text", ".scope-pill", ".scope-stat-label", ".scope-bracket span",
-    ".os-card > p", ".os-flow", ".sig-step", ".sig-proof", ".chain-node"
+    ".os-cap-title", ".os-cap-desc", ".sig-step", ".chain-node"
   ].join(",");
 
   var on = false, marks = [], toast;
@@ -239,6 +239,12 @@
   }
   addEventListener("resize", reflow);
   addEventListener("scroll", reflow, { passive: true });
+  // CSS-only tab panels (.ostabs) change which content is visible without a
+  // resize/scroll event, so overlay boxes on the newly-shown panel would
+  // otherwise stay stale until the next reflow trigger.
+  addEventListener("change", function (e) {
+    if (e.target && e.target.name === "ostab") reflow();
+  });
 
   addEventListener("keydown", function (e) {
     if (e.key !== "e" && e.key !== "E") return;

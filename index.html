@@ -72,102 +72,96 @@ seconds, with no script deployed and no background probing.">
       <p class="lede">One intelligence layer that sees what&rsquo;s happening, understands the
       context, and acts &mdash; across every device, every policy and every system IT depends on.</p>
     </div>
-    <div class="os-grid">
-      <div class="os-card">
-        <p class="os-num">01</p>
-        <h3>Automate Issues</h3>
-        <p>Catch the problem. Fix it before it becomes a ticket. Nanoheal listens for symptoms
-        reported by the operating system and application environment.</p>
-        <p class="os-flow">Detect &rarr; Understand &rarr; Resolve</p>
+
+    <div class="ostabs">
+      <input type="radio" name="ostab" id="ostab-1" class="ostabs-radio" checked>
+      <input type="radio" name="ostab" id="ostab-2" class="ostabs-radio">
+      <input type="radio" name="ostab" id="ostab-3" class="ostabs-radio">
+
+      <div class="ostabs-nav">
+        <label for="ostab-1">Automate Issues</label>
+        <label for="ostab-2">Compliance &amp; Governance</label>
+        <label for="ostab-3">Orchestrate the IT Ecosystem</label>
       </div>
-      <div class="os-card">
-        <p class="os-num">02</p>
-        <h3>Compliance &amp; Governance</h3>
-        <p>Know what&rsquo;s out of policy. Put it right. Compliance becomes continuous action,
-        not periodic checking.</p>
-        <p class="os-flow">Observe &rarr; Identify &rarr; Remediate &rarr; Prove</p>
+
+      <div class="ostabs-panel" id="panel-1">
+        <div class="osshot">
+          <div class="osshot-content">
+            <div class="sig-flow">
+              <div class="sig-step"><span class="sig-k">OS reports</span><span class="sig-v">VPN service failed</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step"><span class="sig-k">Context</span><span class="sig-v">Device + network + history + policy</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Restart &rarr; repair &rarr; verify</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step done">✓ Resolved</div>
+            </div>
+          </div>
+          <div class="osshot-image"><span>Screenshot &mdash; Automate Issues</span></div>
+        </div>
+        <div class="os-cap">
+          <p class="os-cap-title">Catch the problem. Fix it before it becomes a ticket.</p>
+          <p class="os-cap-desc">Nanoheal listens for symptoms reported by the operating system
+ and application environment, then decides what to do about them on the device, in
+ real time. No script. No polling. No ticket.</p>
+        </div>
       </div>
-      <div class="os-card">
-        <p class="os-num">03</p>
-        <h3>Orchestrate the IT Ecosystem</h3>
-        <p>The work doesn&rsquo;t stop at the device. Neither does Nanoheal &mdash; one context
-        layer, no-code, across every system IT already runs.</p>
-        <p class="os-flow">Device &rarr; ITSM &rarr; IT systems &rarr; Human agent</p>
+
+      <div class="ostabs-panel" id="panel-2">
+        <div class="osshot">
+          <div class="osshot-content">
+            <div class="sig-flow">
+              <div class="sig-step"><span class="sig-k">Estate</span><span class="sig-v">3,412 devices</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step warn"><span class="sig-k">Observed</span><span class="sig-v">247 non-compliant</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Identifies the deviation, applies policy</span></div>
+              <div class="sig-arrow">&darr;</div>
+              <div class="sig-step done"><span class="sig-k">✓ 3,412 compliant</span></div>
+            </div>
+          </div>
+          <div class="osshot-image"><span>Screenshot &mdash; Compliance &amp; Governance</span></div>
+        </div>
+        <div class="os-cap">
+          <p class="os-cap-title">Know what&rsquo;s out of policy. Put it right.</p>
+          <p class="os-cap-desc">Observe &rarr; identify &rarr; remediate &rarr; prove. Nanoheal
+          finds the deviation and applies the policy itself &mdash; compliance becomes continuous
+          action, not periodic checking.</p>
+        </div>
+      </div>
+
+      <div class="ostabs-panel" id="panel-3">
+        <div class="osshot stack">
+          <div class="osshot-content">
+            <div class="chain">
+              <div class="chain-node origin"><span class="chain-title">Device</span><span class="chain-desc">Autoheal, self-service, assisted IT</span></div>
+              <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
+              <div class="chain-node"><span class="chain-title">ITSM</span><span class="chain-desc">Tickets raised, updated and closed</span></div>
+              <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
+              <div class="chain-node"><span class="chain-title">IT management</span><span class="chain-desc">Software, patch, policy, compliance</span></div>
+              <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
+              <div class="chain-node"><span class="chain-title">Workplace systems</span><span class="chain-desc">Directory, identity, any standard API</span></div>
+              <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
+              <div class="chain-node"><span class="chain-title">Human agent</span><span class="chain-desc">Only when judgement is genuinely needed</span></div>
+            </div>
+          </div>
+          <div class="osshot-image"><span>Screenshot &mdash; Orchestrate the IT Ecosystem</span></div>
+        </div>
+        <div class="os-cap">
+          <p class="os-cap-title">The work doesn&rsquo;t stop at the device. Neither does Nanoheal.</p>
+          <p class="os-cap-desc">A digital workplace problem may begin on a device. The work
+          required to resolve it usually doesn&rsquo;t end there &mdash; one context layer decides
+          what to do, then acts wherever the work actually belongs, no code.</p>
+          <div style="margin-top:20px">
+            <a class="btn btn-line" href="platform/orchestration/">How orchestration works</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band" id="automate-issues">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">01 &mdash; Automate Issues</p>
-      <h2 class="h2">Catch the problem. Fix it before it becomes a ticket.</h2>
-      <p class="lede">Nanoheal listens for symptoms reported by the operating system and
-      application environment &mdash; then decides what to do about them, on the device, in
-      real time.</p>
-    </div>
-    <div class="sig-flow">
-      <div class="sig-step"><span class="sig-k">OS reports</span><span class="sig-v">VPN service failed</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step"><span class="sig-k">Context</span><span class="sig-v">Device + network + history + policy</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Restart &rarr; repair &rarr; verify</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step done">✓ Resolved</div>
-    </div>
-    <p class="sig-proof">No script. No polling. No ticket.</p>
-  </div>
-</section>
-
-<section class="band bone2" id="compliance-governance">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">02 &mdash; Compliance &amp; Governance</p>
-      <h2 class="h2">Know what&rsquo;s out of policy. Put it right.</h2>
-      <p class="lede">Observe &rarr; Identify &rarr; Remediate &rarr; Prove. Nanoheal finds the
-      deviation and applies the policy &mdash; it doesn&rsquo;t just report it.</p>
-    </div>
-    <div class="sig-flow">
-      <div class="sig-step"><span class="sig-k">Estate</span><span class="sig-v">3,412 devices</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step warn"><span class="sig-k">Observed</span><span class="sig-v">247 non-compliant</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Identifies the deviation, applies policy</span></div>
-      <div class="sig-arrow">&darr;</div>
-      <div class="sig-step done"><span class="sig-k">✓ 3,412 compliant</span></div>
-    </div>
-    <p class="sig-proof">Compliance becomes continuous action, not periodic checking.</p>
-  </div>
-</section>
-
-<section class="band" id="orchestrate-ecosystem">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">03 &mdash; Orchestrate the IT Ecosystem</p>
-      <h2 class="h2">The work doesn&rsquo;t stop at the device. Neither does Nanoheal.</h2>
-      <p class="lede">A digital workplace problem may begin on a device. The work required to
-      resolve it usually doesn&rsquo;t end there. One context layer decides what to do, then acts
-      wherever the work actually belongs &mdash; no code.</p>
-    </div>
-    <div class="chain">
-      <div class="chain-node origin"><span class="chain-title">Device</span><span class="chain-desc">Autoheal, self-service, assisted IT</span></div>
-      <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-      <div class="chain-node"><span class="chain-title">ITSM</span><span class="chain-desc">Tickets raised, updated and closed</span></div>
-      <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-      <div class="chain-node"><span class="chain-title">IT management</span><span class="chain-desc">Software, patch, policy, compliance</span></div>
-      <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-      <div class="chain-node"><span class="chain-title">Workplace systems</span><span class="chain-desc">Directory, identity, any standard API</span></div>
-      <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-      <div class="chain-node"><span class="chain-title">Human agent</span><span class="chain-desc">Only when judgement is genuinely needed</span></div>
-    </div>
-    <div style="margin-top:30px">
-      <a class="btn btn-line" href="platform/orchestration/">How orchestration works</a>
-    </div>
-  </div>
-</section>
-
-<section class="band bone2" id="scope">
+<section class="band" id="scope">
   <div class="wrap">
     <div class="head">
       <p class="label">The foundation underneath</p>
@@ -217,7 +211,7 @@ seconds, with no script deployed and no background probing.">
   </div>
 </section>
 
-<section class="band" id="value">
+<section class="band bone2" id="value">
   <div class="wrap">
     <div class="head">
       <p class="label">Proven in production</p>
@@ -239,7 +233,7 @@ seconds, with no script deployed and no background probing.">
   </div>
 </section>
 
-<section class="band bone2" id="solutions">
+<section class="band" id="solutions">
   <div class="wrap">
     <div class="head">
       <p class="label">Who it&rsquo;s for</p>
