@@ -426,9 +426,11 @@ table.spec td.bad{color:var(--clay)}
 .os-cap-title{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:15.5px; color:var(--tx); margin-bottom:8px; line-height:1.4}
 .os-cap-desc{font-size:13.5px; color:var(--tx-2); line-height:1.6}
 
+#ostab-0:checked ~ .os-layout label[for="ostab-0"],
 #ostab-1:checked ~ .os-layout label[for="ostab-1"],
 #ostab-2:checked ~ .os-layout label[for="ostab-2"],
 #ostab-3:checked ~ .os-layout label[for="ostab-3"]{color:var(--tx); font-weight:600}
+#ostab-0:checked ~ .os-layout #obody-0,
 #ostab-1:checked ~ .os-layout #obody-1,
 #ostab-2:checked ~ .os-layout #obody-2,
 #ostab-3:checked ~ .os-layout #obody-3{display:block}
@@ -438,6 +440,7 @@ table.spec td.bad{color:var(--clay)}
   border:1.5px dashed var(--line-2); border-radius:calc(var(--r) * 2); background-color:var(--bone-2);
   background-image:repeating-linear-gradient(135deg, transparent, transparent 11px, var(--line) 11px, var(--line) 12px)}
 .os-visual-panel span{background:var(--paper); border:1px solid var(--line); border-radius:99px; padding:8px 18px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--tx-3)}
+#ostab-0:checked ~ .os-layout #opanel-0,
 #ostab-1:checked ~ .os-layout #opanel-1,
 #ostab-2:checked ~ .os-layout #opanel-2,
 #ostab-3:checked ~ .os-layout #opanel-3{display:flex}

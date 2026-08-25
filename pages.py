@@ -217,12 +217,23 @@ PAGES["/"] = {
     </div>
 
     <div class="ostabs">
-      <input type="radio" name="ostab" id="ostab-1" class="ostabs-radio" checked>
+      <input type="radio" name="ostab" id="ostab-0" class="ostabs-radio" checked>
+      <input type="radio" name="ostab" id="ostab-1" class="ostabs-radio">
       <input type="radio" name="ostab" id="ostab-2" class="ostabs-radio">
       <input type="radio" name="ostab" id="ostab-3" class="ostabs-radio">
 
       <div class="os-layout">
         <div class="os-accordion">
+          <div class="os-acc-item">
+            <label for="ostab-0" class="os-acc-label">DEX Intelligence</label>
+            <div class="os-acc-body" id="obody-0">
+              <p class="os-cap-title">DEX intelligence doesn&rsquo;t end in a dashboard</p>
+              <p class="os-cap-desc">Continuously measure the digital workplace across devices,
+              applications, networks and employee experience. Surface anomalies, trends and
+              emerging issues, understand their impact, and turn every insight into an
+              opportunity to improve and automate.</p>
+            </div>
+          </div>
           <div class="os-acc-item">
             <label for="ostab-1" class="os-acc-label">Automate Issues</label>
             <div class="os-acc-body" id="obody-1">
@@ -250,6 +261,7 @@ PAGES["/"] = {
         </div>
 
         <div class="os-visual">
+          <div class="os-visual-panel" id="opanel-0"><span>Screenshot &mdash; DEX Intelligence</span></div>
           <div class="os-visual-panel" id="opanel-1"><span>Screenshot &mdash; Automate Issues</span></div>
           <div class="os-visual-panel" id="opanel-2"><span>Screenshot &mdash; Compliance &amp; Governance</span></div>
           <div class="os-visual-panel" id="opanel-3"><span>Screenshot &mdash; Orchestrate the IT Ecosystem</span></div>
