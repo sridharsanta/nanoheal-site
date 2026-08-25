@@ -172,6 +172,33 @@ def nextcards(items):
     return f'<div class="next">{a}</div>'
 
 
+def shot(bar, label, caption):
+    """Product screenshot frame.
+
+    The grid placeholder inside .shot-frame is a stand-in: when the real
+    capture exists, swap the whole <div class="shot-frame"> for an
+    <img src="/assets/shots/....png" alt="..."> and nothing else changes.
+    """
+    return f"""<figure class="shot">
+<div class="shot-bar"><i></i><i></i><i></i><span>{bar}</span></div>
+<div class="shot-frame"><span>{label}</span></div>
+<figcaption>{caption}</figcaption>
+</figure>"""
+
+
+def cards(items, three=False):
+    a = "".join(
+        f'<a href="{h}"><span class="k">{k}</span><h3>{t}</h3><p>{d}</p>'
+        f'<span class="more">{m} &rarr;</span></a>' for k, t, h, d, m in items)
+    return f'<div class="cards{" three" if three else ""}">{a}</div>'
+
+
+def metrics(items):
+    a = "".join(f'<div class="metric"><em>{e}</em><b>{n}</b><span>{d}</span></div>'
+                for e, n, d in items)
+    return f'<div class="metrics">{a}</div>'
+
+
 PAGES = {}
 
 # ── / ────────────────────────────────────────────────────────────────────────
@@ -199,7 +226,7 @@ PAGES["/"] = {
 </section>
 
 <div class="trust" id="proof"><div class="wrap trust-in">
-  <p class="lab">Recognised across the DEX category.</p>
+  <p class="lab"><a href="/resources/analysts/">Recognised across the DEX category.</a></p>
   <div class="badges">
     <span class="badge"><b>Gartner</b>27+ mentions &middot; 4.6/5 Peer Insights</span>
     <span class="badge"><b>ISG Provider Lens&trade;</b>Rising Star, DEX</span>
@@ -232,6 +259,9 @@ PAGES["/"] = {
               applications, networks and employee experience. Surface anomalies, trends and
               emerging issues, understand their impact, and turn every insight into an
               opportunity to improve and automate.</p>
+              <div style="margin-top:16px">
+                <a class="btn btn-line" href="/platform/dex-intelligence/">Inside DEX Intelligence</a>
+              </div>
             </div>
           </div>
           <div class="os-acc-item">
@@ -239,6 +269,9 @@ PAGES["/"] = {
             <div class="os-acc-body" id="obody-1">
               <p class="os-cap-title">Turn every symptom into a reusable capability</p>
               <p class="os-cap-desc">The context layer gives intelligence the knowledge needed to extend its capabilities to new symptoms across the OS, applications, and resources — without code. Validate once, then make it available through Autoheal, Self-service, or Assisted IT</p>
+              <div style="margin-top:16px">
+                <a class="btn btn-line" href="/platform/automate/">How automation works</a>
+              </div>
             </div>
           </div>
           <div class="os-acc-item">
@@ -246,6 +279,9 @@ PAGES["/"] = {
             <div class="os-acc-body" id="obody-2">
               <p class="os-cap-title">IT management automated. Compliance continuously enforced</p>
               <p class="os-cap-desc">The context layer gives intelligence the knowledge to extend its capabilities without code — automating software, patches, security updates and policies by persona, while continuously detecting and restoring drift to keep the fleet compliant.</p>
+              <div style="margin-top:16px">
+                <a class="btn btn-line" href="/platform/compliance-governance/">Compliance &amp; governance</a>
+              </div>
             </div>
           </div>
           <div class="os-acc-item">
@@ -293,17 +329,23 @@ PAGES["/"] = {
       <h2 class="h2">Most platforms start empty. Nanoheal starts with 1,200+.</h2>
       <p class="lede">Pre-built remediations, IT tasks and compliance configurations ship on day
       one, and your own team extends them in plain language.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-line" href="/platform/automation-library/">Inside the library</a>
+        <a class="btn btn-line" href="/resources/outcomes/">Outcomes &amp; business case</a>
+      </div>
     </div>
     <p class="label" style="margin-top:44px">Who runs on Nanoheal &mdash; same engine, whether you run 500 endpoints or 200,000</p>
     <div class="g3" style="margin-top:20px">
       <div class="tile"><h3>Enterprise IT.</h3><p>Fortune 1000 estates across manufacturing,
       technology services and SaaS &mdash; typically replacing a DEX tool that measures well and
-      acts poorly.</p></div>
+      acts poorly. <a href="/solutions/internal-it/" style="color:var(--teal)">Internal IT &rarr;</a></p></div>
       <div class="tile"><h3>Global system integrators.</h3><p>Delivered inside an existing managed
       workplace service. Your contract, your client, your delivery model &mdash; with an autonomy
-      layer your competitors cannot price.</p></div>
+      layer your competitors cannot price.
+      <a href="/solutions/service-providers/" style="color:var(--teal)">Service providers &rarr;</a></p></div>
       <div class="tile"><h3>OEMs, support channels and SMB.</h3><p>Multi-tenant from the ground up,
-      so the same automation library serves a support channel's whole book of business.</p></div>
+      so the same automation library serves a support channel's whole book of business.
+      <a href="/solutions/oem-channel/" style="color:var(--teal)">OEM &amp; channel &rarr;</a></p></div>
     </div>
   </div>
 </section>
@@ -324,6 +366,7 @@ PAGES["/"] = {
         <div class="linkrow"><b>Less manual work</b><span>Automate IT tasks across devices and systems.</span></div>
         <div class="linkrow"><b>Better experience</b><span>Improve DEX continuously, not just measure it.</span></div>
         <div class="linkrow"><b>A more autonomous workplace</b><span>Every resolved symptom becomes reusable knowledge, so the estate needs less firefighting over time.</span></div>
+        <div style="margin-top:22px"><a class="btn btn-line" href="/solutions/internal-it/">For internal IT</a></div>
       </div>
       <div class="forwho">
         <p class="label">For service providers</p>
@@ -332,6 +375,7 @@ PAGES["/"] = {
         <div class="linkrow"><b>Protect margin</b><span>Deflection comes from automation and resolution, not reducing the team.</span></div>
         <div class="linkrow"><b>Prove outcomes</b><span>Measure the improvement and make autonomy an outcome you can stand behind.</span></div>
         <div class="linkrow"><b>Expand coverage</b><span>Start with pre-built capabilities and continuously add more without an engineering backlog.</span></div>
+        <div style="margin-top:22px"><a class="btn btn-line" href="/solutions/service-providers/">For service providers</a></div>
       </div>
     </div>
   </div>
@@ -340,49 +384,93 @@ PAGES["/"] = {
 
 # ── /platform/ ───────────────────────────────────────────────────────────────
 PAGES["/platform/"] = {
- "title": "The Digital Experience Automation platform \u2014 Nanoheal",
- "desc": "Everything you expect from DEX. Then the ability to act on what it tells you. "
-         "Measurement, intelligence, autonomous action and proof, on one engine.",
+ "title": "Platform \u2014 the operating system for the digital workplace \u2014 Nanoheal",
+ "desc": "One platform that measures the digital workplace, automates the issues it finds, "
+         "keeps the estate compliant and orchestrates the rest of IT \u2014 on one engine, "
+         "one context layer and one knowledge library.",
  "body": phero(
    '<a href="/">Home</a> &nbsp;/&nbsp; Platform',
    "Platform overview",
-   "The Digital Experience Automation platform.",
-   "Everything you expect from DEX. Then the ability to act on what it tells you. Measurement "
-   "feeds a context layer, the context layer decides what a symptom means here, action runs "
-   "wherever the work belongs, and the outcome is scored \u2014 which reveals the next gap "
-   "worth closing.") + """
+   "The operating system for the digital workplace.",
+   "Intelligence continuously measures experience, gathers context, identifies new opportunities "
+   "to automate, resolves issues as they emerge, keeps devices and environments compliant, and "
+   "orchestrates work across the IT ecosystem \u2014 all on one engine, one context layer and "
+   "one knowledge library.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/digital-experience-automation/">How it works, end to end</a></div>') + """
 
 <section class="band">
   <div class="wrap">
     <div class="head">
-      <p class="label">The four layers</p>
-      <h2 class="h2">Measure. Understand. Act. Improve.</h2>
-      <p class="lede">Not four products you assemble &mdash; four things that have to be true at
-      the same time, running on one engine, one context layer and one knowledge library.</p>
+      <p class="label">What the platform does</p>
+      <h2 class="h2">Four things, and they are not four products.</h2>
+      <p class="lede">Each one is the input to the next. Measurement finds the opportunity,
+      automation closes it, governance keeps it closed, and orchestration carries the work into
+      the systems where the rest of it lives.</p>
     </div>
-    <div class="tl">
-      <div><p class="w">DEX</p><h3>Measure the experience</h3><p>Devices, applications, network,
-      collaboration and employee experience, scored on a patented methodology.</p></div>
-      <div><p class="w">Intelligence</p><h3>Understand the context</h3><p>DEX signals, IT
-      knowledge, SOPs, ITSM history, CMDB and workplace context.</p></div>
-      <div><p class="w">DXA</p><h3>Act on the experience</h3><p>Resolve, autoheal, self-service,
-      IT tasks, workflows and orchestration across the ecosystem.</p></div>
-      <div><p class="w">Outcome</p><h3>Measure the result</h3><p>DEX score, ticket avoidance,
-      productivity and automation coverage &mdash; proof, not assertion.</p></div>
-    </div>
-    <div style="margin-top:30px;display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn btn-line" href="/digital-experience/">Digital Experience</a>
-      <a class="btn btn-line" href="/digital-experience-automation/">Digital Experience Automation</a>
-    </div>
+    """ + cards([
+      ("01", "DEX Intelligence", "/platform/dex-intelligence/",
+       "Continuously measure devices, applications, networks and employee experience. Surface "
+       "anomalies, trends and emerging issues, understand their impact, and turn every insight "
+       "into an opportunity to improve and automate.",
+       "DEX intelligence doesn't end in a dashboard"),
+      ("02", "Automate Issues", "/platform/automate/",
+       "The context layer gives intelligence the knowledge to extend its capabilities to new "
+       "symptoms across the OS, applications and resources &mdash; without code. Validate once, "
+       "then deliver through autoheal, self-service or assisted IT.",
+       "Turn every symptom into a reusable capability"),
+      ("03", "Compliance &amp; Governance", "/platform/compliance-governance/",
+       "Software, patches, security updates and policies automated by persona, with drift "
+       "continuously detected and restored &mdash; on the same engine that heals the device, "
+       "not a second agent.",
+       "IT management automated, compliance enforced"),
+      ("04", "Orchestrate the IT Ecosystem", "/platform/orchestration/",
+       "The device is where the symptom shows up, rarely where the work ends. APIs, MCP servers, "
+       "data and system capabilities become no-code building blocks for analysis, action and "
+       "orchestration across IT.",
+       "The device is just the beginning"),
+    ]) + """
+    """ + shot("nanoheal &middot; console",
+               "Screenshot &mdash; unified console",
+               "<b>One console, four jobs.</b> Experience measurement, the automation library, "
+               "compliance posture and ecosystem orchestration are views onto the same estate "
+               "and the same knowledge \u2014 not four products sharing a login.") + """
   </div>
 </section>
 
 <section class="band bone2">
   <div class="wrap">
     <div class="head">
+      <p class="label">What makes it possible</p>
+      <h2 class="h2">The layer under all four.</h2>
+      <p class="lede">Every pillar above runs on the same three things: a context layer that
+      decides what a symptom means <em>here</em>, a fixed capability engine that already knows how
+      to act, and a knowledge library that starts full and keeps growing.</p>
+    </div>
+    """ + nextcards([
+      ("I", "Intelligence &amp; context", "/platform/intelligence/",
+       "How the right capability gets chosen, and why it isn't generated code."),
+      ("NL", "Workflows in plain language", "/platform/workflows/",
+       "Describe the task. The context layer compiles it."),
+      ("1,200+", "Automation library", "/platform/automation-library/",
+       "What ships on day one, and how it grows without an engineering backlog."),
+    ]) + nextcards([
+      ("X", "Experience score", "/platform/experience-score/",
+       "The patented DEX score \u2014 the number the whole loop optimises."),
+      ("M", "Continuous improvement", "/platform/manage/",
+       "What to automate next, ranked by what it would actually return."),
+      ("&rarr;", "Why not scripts", "/why-nanoheal/why-not-scripts/",
+       "The technical case for symptom-triggered automation, in full."),
+    ]) + """
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
       <p class="label">The framework underneath</p>
       <h2 class="h2">AIM-X. Automate with Intelligence. Manage the eXperience.</h2>
-      <p class="lede">Internally the four layers run as a closed loop we call AIM-X. Nobody has to
+      <p class="lede">Internally the four pillars run as a closed loop we call AIM-X. Nobody has to
       learn the acronym to buy the platform &mdash; but if you want to know why coverage compounds
       instead of stalling, this is the mechanism.</p>
     </div>
@@ -408,41 +496,10 @@ PAGES["/platform/"] = {
       system that gets cheaper to extend over time.</p>
       <p class="pull">Coverage compounds when the next automation costs almost nothing. That is
       the entire argument, and every part of AIM-X exists to serve it.</p>
-      <p>The four stages are not four products. They are four things that have to be true at the
+      <p>The four pillars are not four products. They are four things that have to be true at the
       same time for the loop to close, and they run on one engine, one context layer and one
       knowledge library.</p>
     </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <div class="head">
-      <p class="label">The four stages</p>
-      <h2 class="h2">What each stage solves.</h2>
-    </div>
-    """ + nextcards([
-      ("A", "Automate", "/platform/automate/",
-       "Remediation is a software project. It shouldn't be."),
-      ("I", "Intelligence", "/platform/intelligence/",
-       "Telemetry says what happened. Not what your organisation does about it."),
-      ("M", "Manage &amp; evolve", "/platform/manage/",
-       "Coverage stalls at the top call drivers. Here's why it doesn't have to."),
-    ]) + nextcards([
-      ("X", "Experience", "/platform/deliverexperience/",
-       "Improvement gets asserted. Yours will be scored."),
-      ("&rarr;", "Observe &amp; predict", "/platform/observe-predict/",
-       "Analytics, forecasting and anomaly detection &mdash; the input to all of it."),
-      ("&rarr;", "Why not scripts", "/why-nanoheal/why-not-scripts/",
-       "The technical case, in full."),
-    ]) + nextcards([
-      ("&rarr;", "IT operations", "/platform/it-operations/",
-       "Software distribution, patch and device policy on the same engine."),
-      ("&rarr;", "Orchestration", "/platform/orchestration/",
-       "ServiceNow, Active Directory, anything with a standard API. No code."),
-      ("&rarr;", "Workflows &amp; natural language", "/platform/workflows/",
-       "Describe the task; the context layer compiles it."),
-    ]) + """
   </div>
 </section>
 """ + CTA}
@@ -518,9 +575,9 @@ PAGES["/digital-experience/"] = {
     """ + nextcards([
       ("&rarr;", "Digital Experience Automation", "/digital-experience-automation/",
        "What happens after the insight: context, action and outcome."),
-      ("&rarr;", "Observe &amp; predict", "/platform/observe-predict/",
+      ("&rarr;", "Observe &amp; predict", "/platform/dex-intelligence/",
        "Analytics, forecasting and anomaly detection in depth."),
-      ("&rarr;", "Experience scoring", "/platform/deliverexperience/",
+      ("&rarr;", "Experience scoring", "/platform/experience-score/",
        "The patented DEX score, and why improvement is scored not claimed."),
     ]) + """
   </div>
@@ -616,7 +673,7 @@ PAGES["/digital-experience-automation/"] = {
     ]) + nextcards([
       ("&rarr;", "Orchestration", "/platform/orchestration/",
        "Acting across ITSM, directory and any system with a standard API."),
-      ("&rarr;", "IT operations", "/platform/it-operations/",
+      ("&rarr;", "IT operations", "/platform/compliance-governance/",
        "Software, patch and policy on the same engine."),
       ("&rarr;", "Digital Experience", "/digital-experience/",
        "The DEX measurement foundation underneath all of it."),
@@ -721,12 +778,12 @@ PAGES["/why-nanoheal/why-dxa/"] = {
 
 # ── /platform/automate/ ──────────────────────────────────────────────────────
 PAGES["/platform/automate/"] = {
- "title": "Automate — resolution without a script — Nanoheal",
+ "title": "Automate Issues — resolution without a script — Nanoheal",
  "desc": "Every remediation is normally a bespoke software project. Nanoheal triggers on the "
          "symptom the OS already reports and executes governed capabilities instead of code.",
  "body": phero(
-   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Automate',
-   "A &mdash; Automate",
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Automate Issues',
+   "02 &mdash; Automate Issues",
    "Remediation is a software project. It shouldn&rsquo;t be.",
    "Specify, script, test, approve, publish &mdash; then maintain it forever as the estate drifts. "
    "That cost is why automation coverage stops at the top call drivers everywhere else \u2014 and "
@@ -746,6 +803,12 @@ PAGES["/platform/automate/"] = {
       written or generated, so there is nothing to security-review line by line, and nothing that
       breaks when a build changes underneath it.</p></div>
     </div>
+
+    """ + shot("nanoheal &middot; automation library",
+               "Screenshot &mdash; knowledge entry",
+               "<b>What an automation actually is here.</b> The trigger the OS emits, the "
+               "capabilities selected, the guardrails it runs under and the validation record "
+               "\u2014 kilobytes of sealed knowledge, with no code to review line by line.") + """
 
     <div class="issues">
       <div class="issue">
@@ -795,7 +858,7 @@ PAGES["/platform/automate/"] = {
           reports, or by a forecast before the symptom arrives.</p></div>
           <div class="tile"><h3>Run.</h3><p>Software distribution, patch management and routine IT
           tasks &mdash; the day-to-day operation of the estate.
-          <a href="/platform/it-operations/" style="color:var(--teal)">IT operations &rarr;</a></p></div>
+          <a href="/platform/compliance-governance/" style="color:var(--teal)">IT operations &rarr;</a></p></div>
           <div class="tile"><h3>Enforce.</h3><p>Device compliance policy, with drift treated as a
           symptom that triggers its own correction rather than a line in a report.</p></div>
         </div>
@@ -825,8 +888,15 @@ PAGES["/platform/automate/"] = {
         <div class="prose" style="margin-top:20px">
           <p>Worth a direct comparison: the closest published figure in the category is roughly
           220 automations alongside 1,300 sensors. Sensors measure. Configurations act. The gap
-          between those two numbers is the gap this page is about.</p>
+          between those two numbers is the gap this page is about.
+          <a href="/platform/automation-library/" style="color:var(--teal)">See what ships on day
+          one &rarr;</a></p>
         </div>
+        """ + shot("nanoheal &middot; resolution timeline",
+                   "Screenshot &mdash; live resolution",
+                   "<b>Symptom to resolved, on one endpoint.</b> The OS event, the knowledge "
+                   "match, the capabilities that ran and the verified end state \u2014 the same "
+                   "trace the service desk sees when a ticket never gets raised.") + """
       </div>
     </div>
 
@@ -900,7 +970,7 @@ PAGES["/platform/intelligence/"] = {
           the thing that writes the library.</p>
           <p>The same mechanism produces every class of work on this platform &mdash;
           <a href="/platform/automate/" style="color:var(--teal)">remediation</a>,
-          <a href="/platform/it-operations/" style="color:var(--teal)">software, patch and policy</a>,
+          <a href="/platform/compliance-governance/" style="color:var(--teal)">software, patch and policy</a>,
           and <a href="/platform/orchestration/" style="color:var(--teal)">actions in ITSM, directory
           and other IT systems</a>. One authoring mechanism, not four.</p>
         </div>
@@ -929,7 +999,7 @@ PAGES["/platform/intelligence/"] = {
         <p class="lead">Reasoning across the estate is only useful if it can act across the estate.</p>
         <div class="g3" style="margin-top:26px">
           <div class="tile"><h3>Device.</h3><p>Endpoint remediation, plus
-          <a href="/platform/it-operations/" style="color:var(--teal)">software, patch and policy</a>
+          <a href="/platform/compliance-governance/" style="color:var(--teal)">software, patch and policy</a>
           &mdash; all on the one capability engine.</p></div>
           <div class="tile"><h3>ITSM and directory.</h3><p>Creates, updates and closes tickets and
           changes; acts in Active Directory and identity platforms.</p></div>
@@ -955,7 +1025,7 @@ PAGES["/platform/intelligence/"] = {
     """ + nextcards([
       ("A", "Automate", "/platform/automate/", "What the capability API can actually do."),
       ("M", "Manage &amp; evolve", "/platform/manage/", "Turning outcomes into the next automation."),
-      ("X", "Experience", "/platform/deliverexperience/", "Proving any of it worked."),
+      ("X", "Experience", "/platform/experience-score/", "Proving any of it worked."),
     ]) + """
   </div>
 </section>
@@ -1028,7 +1098,7 @@ PAGES["/platform/manage/"] = {
     </div>
 
     """ + nextcards([
-      ("X", "Experience", "/platform/deliverexperience/", "The score that proves the expansion worked."),
+      ("X", "Experience", "/platform/experience-score/", "The score that proves the expansion worked."),
       ("A", "Automate", "/platform/automate/", "What gets created, and how it runs."),
       ("&rarr;", "Why not scripts", "/why-nanoheal/why-not-scripts/", "Why maintenance is the real cost."),
     ]) + """
@@ -1036,8 +1106,8 @@ PAGES["/platform/manage/"] = {
 </section>
 """ + CTA}
 
-# ── /platform/deliverexperience/ ─────────────────────────────────────────────
-PAGES["/platform/deliverexperience/"] = {
+# ── /platform/experience-score/ ─────────────────────────────────────────────
+PAGES["/platform/experience-score/"] = {
  "title": "Experience — the patented DEX score — Nanoheal",
  "desc": "Digital experience improvement is usually asserted. Nanoheal measures it on a patented "
          "scoring methodology (US 9,477,573), so the outcome can be proven and contracted on.",
@@ -1240,18 +1310,20 @@ PAGES["/why-nanoheal/why-not-scripts/"] = {
 </section>
 """ + CTA}
 
-# ── /platform/observe-predict/ ───────────────────────────────────────────────
-PAGES["/platform/observe-predict/"] = {
- "title": "Observe & predict — analytics, forecasting, anomaly detection — Nanoheal",
- "desc": "Everything a DEX platform measures, plus forecasting and anomaly detection — and it "
-         "feeds an engine that can act on what it finds.",
+# ── /platform/dex-intelligence/ ───────────────────────────────────────────────
+PAGES["/platform/dex-intelligence/"] = {
+ "title": "DEX Intelligence — measure, forecast, detect, act — Nanoheal",
+ "desc": "Continuously measure devices, applications, networks and employee experience — then "
+         "turn every anomaly, trend and emerging issue into an opportunity to automate.",
  "body": phero(
-   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Observe &amp; predict',
-   "Observe &amp; predict",
-   "Analytics is table stakes. We hold the table.",
-   "Fleet-wide measurement, forecasting and anomaly detection &mdash; scored on a patented DEX "
-   "methodology. The difference is not what Nanoheal sees. It is that what Nanoheal sees is wired "
-   "to something that can act on it.") + """
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; DEX Intelligence',
+   "01 &mdash; DEX Intelligence",
+   "DEX intelligence doesn&rsquo;t end in a dashboard.",
+   "Continuously measure the digital workplace across devices, applications, networks and "
+   "employee experience. Surface anomalies, trends and emerging issues, understand their impact, "
+   "and turn every insight into an opportunity to improve and automate.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/platform/automate/">Then see what it triggers</a></div>') + """
 
 <section class="band">
   <div class="wrap">
@@ -1267,6 +1339,13 @@ PAGES["/platform/observe-predict/"] = {
       engine to execute. There is no handoff, because there is nowhere to hand off to.</p></div>
     </div>
 
+    """ + shot("nanoheal &middot; experience overview",
+               "Screenshot &mdash; experience overview",
+               "<b>Fleet DEX score, and what is moving it.</b> Device, application, network and "
+               "sentiment scores over time, with the populations dragging the number down ranked "
+               "by how many employees they affect \u2014 and an <em>Automate this</em> action on "
+               "every row.") + """
+
     <div class="issues">
       <div class="issue">
         <p class="n">01 &mdash; Measure</p>
@@ -1275,7 +1354,7 @@ PAGES["/platform/observe-predict/"] = {
         connectivity quality, boot and logon times, crash and hang patterns, resource pressure,
         configuration drift &mdash; across Windows, macOS, Linux, VDI, mobile and IoT.</p>
         <div class="prose" style="margin-top:20px">
-          <p>It resolves to a single <a href="/platform/deliverexperience/" style="color:var(--teal)">DEX
+          <p>It resolves to a single <a href="/platform/experience-score/" style="color:var(--teal)">DEX
           Score</a> on a patented methodology, which matters for a reason most scores don't survive:
           it is defined independently of any release, so a ten-point gain means the same thing in
           Q3 that it meant in Q1.</p>
@@ -1322,28 +1401,81 @@ PAGES["/platform/observe-predict/"] = {
           everywhere it exists, including on the machines where nobody has complained yet.</p>
         </div>
       </div>
+
+      <div class="issue">
+        <p class="n">05 &mdash; Coverage</p>
+        <h3>The whole digital workplace, not just the endpoint.</h3>
+        <p class="lead">Four domains, measured against the same score, so a regression in one is
+        comparable to a regression in another.</p>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Device experience.</h3><p>Boot and logon, CPU, memory and disk
+          pressure, battery, crashes and hangs, driver and firmware health, configuration drift
+          &mdash; Windows, macOS, Linux, VDI, mobile and IoT.</p></div>
+          <div class="tile"><h3>Application experience.</h3><p>Launch and response times, crash
+          and hang rates, version spread, licence usage and reclaim candidates, adoption of the
+          apps you have paid for.</p></div>
+          <div class="tile"><h3>Network &amp; collaboration.</h3><p>Connectivity quality, Wi-Fi and
+          VPN behaviour, latency to the services that matter, and meeting and call quality as the
+          employee actually experienced it.</p></div>
+        </div>
+        <div class="g3" style="margin-top:14px">
+          <div class="tile"><h3>Employee experience.</h3><p>Sentiment collected in context rather
+          than in an annual survey, tied to the device and application evidence from the same
+          moment.</p></div>
+          <div class="tile"><h3>Change and campaign impact.</h3><p>What a rollout did to the
+          score, per population, so a migration can be stopped at 5% instead of explained at
+          100%.</p></div>
+          <div class="tile"><h3>Persona and population.</h3><p>Segment by role, site, device
+          class or business unit &mdash; the unit an automation is later targeted at.</p></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">06 &mdash; The handoff that isn&rsquo;t one</p>
+        <h3>Every insight is an automation opportunity.</h3>
+        <p class="lead">This is the part that separates intelligence from reporting. A finding
+        here does not become a JIRA ticket for the automation team &mdash; it becomes a candidate
+        the platform can already act on.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>When a condition is detected on a population, Nanoheal already knows which
+          capabilities would correct it, how many employees are affected, and what the score would
+          be worth if it were fixed. If knowledge for that condition exists in the library, it can
+          be targeted immediately. If it doesn't, the
+          <a href="/platform/intelligence/" style="color:var(--teal)">context layer authors the
+          entry</a> and a human validates it once.</p>
+          <p class="pull">The measurement doesn't hand you a finding. It hands you a fix, priced by how many people it helps.</p>
+        </div>
+        """ + shot("nanoheal &middot; automation opportunities",
+                   "Screenshot &mdash; automation opportunities",
+                   "<b>Ranked by what it would actually return.</b> Detected conditions with "
+                   "affected population, estimated ticket volume and projected DEX gain \u2014 "
+                   "each with the capability set that would resolve it, ready to validate.") + """
+      </div>
     </div>
 
     """ + nextcards([
       ("I", "Intelligence", "/platform/intelligence/", "What turns a finding into an action."),
       ("A", "Automate", "/platform/automate/", "The engine that executes it."),
-      ("X", "Experience", "/platform/deliverexperience/", "The score all of it moves."),
+      ("X", "Experience", "/platform/experience-score/", "The score all of it moves."),
     ]) + """
   </div>
 </section>
 """ + CTA}
 
-# ── /platform/it-operations/ ─────────────────────────────────────────────────
-PAGES["/platform/it-operations/"] = {
- "title": "IT operations — software, patch and policy on one engine — Nanoheal",
- "desc": "Software distribution, patch management and device compliance policy run on the same "
-         "capability engine and knowledge layer as remediation — not a separate tool.",
+# ── /platform/compliance-governance/ ─────────────────────────────────────────────────
+PAGES["/platform/compliance-governance/"] = {
+ "title": "Compliance & Governance — IT management automated — Nanoheal",
+ "desc": "Software, patches, security updates and policy automated by persona, with drift "
+         "continuously detected and restored — on the same engine that heals the device.",
  "body": phero(
-   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; IT operations',
-   "IT operations",
-   "The same engine that heals the device also runs it.",
-   "Software distribution, patch management, device compliance policy. Not a second product and "
-   "not a second agent &mdash; the same capability engine, driven by the same knowledge layer.") + """
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Compliance &amp; Governance',
+   "03 &mdash; Compliance &amp; Governance",
+   "IT management automated. Compliance continuously enforced.",
+   "The context layer gives intelligence the knowledge to extend its capabilities without code "
+   "&mdash; automating software, patches, security updates and policies by persona, while "
+   "continuously detecting and restoring drift to keep the fleet compliant.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/solutions/compliance-audit/">The audit-readiness case</a></div>') + """
 
 <section class="band">
   <div class="wrap">
@@ -1359,6 +1491,12 @@ PAGES["/platform/it-operations/"] = {
       are the same underlying operations against files, registry, services and configuration. One
       capability set covers all of it.</p></div>
     </div>
+
+    """ + shot("nanoheal &middot; compliance posture",
+               "Screenshot &mdash; compliance posture",
+               "<b>Desired state, actual state, and the gap closing itself.</b> Policy, patch and "
+               "software compliance by persona and population, with drifted devices shown against "
+               "the correction already queued for them.") + """
 
     <div class="issues">
       <div class="issue">
@@ -1410,6 +1548,30 @@ PAGES["/platform/it-operations/"] = {
           almost nothing, they finally get built.</p>
         </div>
       </div>
+
+      <div class="issue">
+        <p class="n">05 &mdash; Governance</p>
+        <h3>Autonomy you can hand to an auditor.</h3>
+        <p class="lead">Automation that runs unattended has to be governable, or it does not get
+        approved. Every capability is signed and versioned, every action is scoped by policy, and
+        every execution is recorded.</p>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Validated once.</h3><p>A human approves the knowledge entry before
+          it is ever trusted, and the approval is versioned with it. Nothing self-authors its way
+          into production.</p></div>
+          <div class="tile"><h3>Scoped by policy.</h3><p>Which populations, which maintenance
+          windows, which blast radius, which actions require a human in the loop &mdash; checked
+          before anything runs, not asserted afterwards.</p></div>
+          <div class="tile"><h3>Evidenced.</h3><p>What ran, where, when, under which version and
+          with what result &mdash; exportable as the evidence pack an audit asks for, not
+          reconstructed from logs.</p></div>
+        </div>
+        """ + shot("nanoheal &middot; evidence &amp; audit trail",
+                   "Screenshot &mdash; evidence and audit trail",
+                   "<b>Every unattended action, accounted for.</b> Execution history by policy, "
+                   "population and capability version, with the approval record attached to each "
+                   "knowledge entry.") + """
+      </div>
     </div>
 
     """ + nextcards([
@@ -1427,8 +1589,8 @@ PAGES["/platform/orchestration/"] = {
  "desc": "The context layer spans the IT ecosystem. ServiceNow, Active Directory and any system "
          "with a standard API are integrated without writing code.",
  "body": phero(
-   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Orchestration',
-   "Orchestration &amp; integration",
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Orchestrate the IT Ecosystem',
+   "04 &mdash; Orchestrate the IT Ecosystem",
    "Most fixes don&rsquo;t end on the device.",
    "A stale credential is resolved in the directory. A resolved incident has to be closed in "
    "ITSM. A licence is reclaimed in a SaaS console. Automation confined to the endpoint stops "
@@ -1449,6 +1611,12 @@ PAGES["/platform/orchestration/"] = {
       The context layer handles authentication, calls, mapping and error handling. No connector is
       written, so no connector is maintained.</p></div>
     </div>
+
+    """ + shot("nanoheal &middot; ecosystem orchestration",
+               "Screenshot &mdash; cross-system run",
+               "<b>One resolution, four systems, unattended.</b> The device action, the directory "
+               "change, the ITSM update and the licence reclaim shown as a single governed run "
+               "\u2014 with the guardrails each step was checked against.") + """
 
     <div class="issues">
       <div class="issue">
@@ -1521,7 +1689,7 @@ PAGES["/platform/orchestration/"] = {
     """ + nextcards([
       ("I", "Intelligence", "/platform/intelligence/", "The context layer this runs on."),
       ("&rarr;", "Workflows", "/platform/workflows/", "Building it in plain language."),
-      ("&rarr;", "IT operations", "/platform/it-operations/", "The device-side half."),
+      ("&rarr;", "IT operations", "/platform/compliance-governance/", "The device-side half."),
     ]) + """
   </div>
 </section>
@@ -1627,6 +1795,1101 @@ PAGES["/platform/workflows/"] = {
       ("&rarr;", "Orchestration", "/platform/orchestration/", "Where these workflows can act."),
       ("I", "Intelligence", "/platform/intelligence/", "What compiles the description."),
       ("M", "Manage &amp; evolve", "/platform/manage/", "Deciding what to author next."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /platform/automation-library/ ────────────────────────────────────────────
+PAGES["/platform/automation-library/"] = {
+ "title": "Automation library — 1,200+ configurations on day one — Nanoheal",
+ "desc": "Most automation platforms start empty. Nanoheal ships 1,200+ pre-built remediations, "
+         "IT tasks and compliance configurations, and your own team extends them in plain "
+         "language.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/platform/">Platform</a> &nbsp;/&nbsp; Automation library',
+   "The library",
+   "Most platforms start empty. Nanoheal starts with 1,200+.",
+   "Pre-built remediations, IT tasks and compliance configurations ship on day one, matched "
+   "against your existing top call drivers &mdash; not an empty canvas with a tutorial.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/platform/workflows/">How your team adds to it</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">An empty platform is a project, not a product.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Day one is a blank canvas.</h3>
+      <p>The platform arrives with a framework and a best-practice guide. Everything that will
+      ever run on it has to be identified, authored, tested and approved by your team &mdash; so
+      the first measurable outcome is a quarter away, and the business case is a promise.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Day one is coverage.</h3>
+      <p>1,200+ validated configurations are already there. We map them against your top call
+      drivers before you sign anything, so the conversation is about which ones you switch on
+      first, not about how long the build takes.</p></div>
+    </div>
+
+    """ + shot("nanoheal &middot; library",
+               "Screenshot &mdash; automation library",
+               "<b>Browse, target, switch on.</b> Configurations by category, platform and "
+               "delivery mode, with the populations they apply to and the validation state of "
+               "each entry.") + """
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; What&rsquo;s in it</p>
+        <h3>Three classes of work, one library.</h3>
+        <p class="lead">The library is not a remediation catalogue with IT tasks bolted on. All
+        three classes are the same kind of object, because the engine underneath does not
+        distinguish between them.</p>
+        <div class="tblwrap">
+          <table class="spec">
+            <thead><tr><th>Class</th><th>Examples</th><th>Trigger</th></tr></thead>
+            <tbody>
+              <tr><td>Resolve</td><td>Service failures, application crashes and hangs, profile corruption, print and peripheral faults, connectivity and VPN repair, disk pressure, certificate problems</td><td>The symptom the OS reports, or a forecast before it arrives</td></tr>
+              <tr><td>Run</td><td>Software install, repair and rollback, patch rings and verification, drive and printer mapping, onboarding and offboarding sequences, licence reclaim</td><td>Request, schedule or campaign</td></tr>
+              <tr><td>Enforce</td><td>Security configuration, encryption state, required software, profile and policy baselines, persona-specific standards</td><td>Drift, treated as a symptom of its own</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Why the number matters</p>
+        <h3>Sensors measure. Configurations act.</h3>
+        <p class="lead">The closest published figure in the category is roughly 220 automations
+        alongside 1,300 sensors. That ratio is the category's shape in one line: enormous
+        investment in seeing, modest investment in doing.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>The gap is not an oversight. Sensors are cheap to add because they are declarative;
+          automations are expensive because each one is authored code that has to be maintained
+          forever. Nanoheal's library is large for the same structural reason the competition's is
+          small: here, an automation is also declarative.</p>
+          <p class="pull">Ask any vendor how many automations ship on day one, and how many of
+          them you will have to maintain.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; How it grows</p>
+        <h3>Your estate&rsquo;s long tail, not just the common cases.</h3>
+        <p class="lead">The 1,200+ cover what every estate has. What no library can ship is the
+        line-of-business application your industry runs, the bespoke VPN profile, the internal
+        tool that half the company depends on.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Those get added the same way the built-in entries were: someone describes the symptom
+          and the fix in plain language, the
+          <a href="/platform/intelligence/" style="color:var(--teal)">context layer authors the
+          entry</a>, a human validates it once, and it joins the library for the whole estate.
+          Because there is no code, the cost of the two-hundredth addition is roughly the cost of
+          the second.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">04 &mdash; Multi-tenant</p>
+        <h3>Built once, available across every tenant you run.</h3>
+        <p class="lead">For service providers and support channels, the library is the asset. A
+        configuration validated for one client can be published across the book of business
+        without rebuilding it per tenant, with tenant-level scoping and guardrails intact.</p>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("A", "Automate Issues", "/platform/automate/", "What an entry is, and how it runs."),
+      ("NL", "Workflows", "/platform/workflows/", "Adding your own in plain language."),
+      ("M", "Continuous improvement", "/platform/manage/", "What to add next, and why."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/ ──────────────────────────────────────────────────────────────
+PAGES["/solutions/"] = {
+ "title": "Solutions — one platform, different value depending who runs it — Nanoheal",
+ "desc": "Ticket deflection, self-service, IT task automation and compliance — for internal IT "
+         "teams, service providers and support channels.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; Solutions',
+   "Who it&rsquo;s for",
+   "One platform. Different value, depending who&rsquo;s running it.",
+   "Whether IT sits inside your company or you deliver it as a service, it is the same autonomous "
+   "platform &mdash; the same engine, the same library, the same guardrails. What changes is what "
+   "you are trying to get out of it.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">By outcome</p>
+      <h2 class="h2">Start from the number you have been asked to move.</h2>
+      <p class="lede">Each of these is the same mechanism pointed at a different problem. They are
+      not modules, and none of them is priced separately.</p>
+    </div>
+    """ + cards([
+      ("01", "Ticket deflection &amp; autoheal", "/solutions/ticket-deflection/",
+       "Resolve the top call drivers at the moment the OS reports them, before the employee "
+       "notices there was anything to call about.",
+       "Fewer tickets, without a smaller team"),
+      ("02", "Employee self-service", "/solutions/self-service/",
+       "Offer the validated fix at the moment of failure and let the employee apply it &mdash; "
+       "deflection without the service desk touching it.",
+       "The fix, offered in context"),
+      ("03", "IT task automation", "/solutions/it-task-automation/",
+       "Software, patch, onboarding, peripherals, profile work &mdash; the routine operation of "
+       "an estate, on the engine that already heals it.",
+       "The work that never justified a project"),
+      ("04", "Compliance &amp; audit readiness", "/solutions/compliance-audit/",
+       "Policy that corrects drift instead of reporting it, and an evidence pack you can hand to "
+       "an auditor without reconstructing it from logs.",
+       "Enforced, not asserted"),
+    ]) + """
+  </div>
+</section>
+
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">By who you are</p>
+      <h2 class="h2">Same engine, whether you run 500 endpoints or 200,000.</h2>
+      <p class="lede">Multi-tenant from the ground up, so the commercial shape of your IT
+      organisation is a configuration question rather than a different product.</p>
+    </div>
+    """ + cards([
+      ("IT", "Internal IT", "/solutions/internal-it/",
+       "Fortune 1000 estates across manufacturing, technology services and SaaS &mdash; typically "
+       "replacing a DEX tool that measures well and acts poorly.",
+       "Do more with the team you have"),
+      ("MSP", "Service providers &amp; GSIs", "/solutions/service-providers/",
+       "Delivered inside an existing managed workplace service. Your contract, your client, your "
+       "delivery model &mdash; with an autonomy layer your competitors cannot price.",
+       "Differentiate the service you already run"),
+      ("OEM", "OEMs, channel &amp; SMB", "/solutions/oem-channel/",
+       "Multi-tenant from the ground up, so the same automation library serves a support "
+       "channel's whole book of business.",
+       "One library, every tenant"),
+    ], three=True) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/ticket-deflection/ ────────────────────────────────────────────
+PAGES["/solutions/ticket-deflection/"] = {
+ "title": "Ticket deflection & autoheal — Nanoheal",
+ "desc": "Deflection that comes from resolving issues, not from making it harder to raise a "
+         "ticket. Triggered by the symptom the OS reports, with no script and nothing polling.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; Ticket deflection',
+   "By outcome",
+   "Deflection should mean resolved, not discouraged.",
+   "Most deflection programmes work by putting something between the employee and the service "
+   "desk &mdash; a portal, a bot, a form. Autoheal works by removing the reason for the contact "
+   "before the employee has one.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Bring us your top three call drivers</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Every deflection number is really two different numbers.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Contacts moved, not removed.</h3>
+      <p>A chatbot answers, a portal article is read, a form is submitted. The contact is recorded
+      somewhere cheaper, which is worth something &mdash; but the employee still lost the time,
+      and the underlying fault is still on the device tomorrow.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>The fault is gone before the call.</h3>
+      <p>The OS reports the symptom, knowledge matches it, capabilities correct it. There is no
+      contact to route because there is nothing left to report &mdash; and the same knowledge now
+      covers every other machine in the estate with the same condition.</p></div>
+    </div>
+
+    """ + metrics([
+      ("In production", "17%", "of tickets autohealed at a Fortune 100 manufacturer running "
+       "~200,000 endpoints"),
+      ("In production", "35%", "overall ticket avoidance across autoheal, self-service and "
+       "assisted resolution"),
+      ("Day one", "1,200+", "pre-built configurations mapped against your existing call drivers "
+       "before you build anything"),
+      ("Per endpoint", "0", "background probes &mdash; detection is the signal the OS already "
+       "emits"),
+    ]) + """
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Where the volume actually is</p>
+        <h3>The top ten drivers, then a very long tail.</h3>
+        <p class="lead">Most estates can name their top ten call drivers, and most automation
+        programmes cover them. Then coverage stops, because the eleventh costs as much to automate
+        as the first and returns a tenth as much.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>That is the arithmetic that caps deflection in the thirty-percent range everywhere
+          else. When an automation is knowledge rather than code, the eleventh costs almost
+          nothing &mdash; and so does the hundredth. The tail is where the remaining deflection
+          lives, and it only gets built if the unit cost collapses first.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Three ways the same fix lands</p>
+        <h3>One validated entry, three delivery modes.</h3>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Autoheal.</h3><p>Resolved before anyone notices. No ticket, no
+          contact, no interruption &mdash; and no employee had to describe a technical problem in
+          their own words.</p></div>
+          <div class="tile"><h3>Self-service.</h3><p>The employee is offered the fix at the moment
+          of failure and applies it themselves.
+          <a href="/solutions/self-service/" style="color:var(--teal)">More &rarr;</a></p></div>
+          <div class="tile"><h3>Assisted.</h3><p>The agent executes the same capability in a single
+          action &mdash; no runbook to follow, no elevation risk, no variation between agents.</p></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; What it does to the desk</p>
+        <h3>The team doesn&rsquo;t shrink. The work changes.</h3>
+        <p class="lead">Deflection that comes from automation frees capacity rather than removing
+        it. The contacts that remain are the ones that genuinely need a human, and the ones that
+        don't stop arriving.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>For service providers this distinction is commercial, not philosophical: margin
+          improves because the same team covers more estate, and the outcome is defensible in a
+          QBR because the DEX score moved with it.
+          <a href="/solutions/service-providers/" style="color:var(--teal)">The service provider
+          case &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("A", "Automate Issues", "/platform/automate/", "The mechanism underneath this outcome."),
+      ("&rarr;", "Why not scripts", "/why-nanoheal/why-not-scripts/", "Why the unit cost collapses."),
+      ("$", "Outcomes", "/resources/outcomes/", "The numbers and the model behind them."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/self-service/ ─────────────────────────────────────────────────
+PAGES["/solutions/self-service/"] = {
+ "title": "Employee self-service — the fix offered in context — Nanoheal",
+ "desc": "Self-service that offers the validated fix at the moment of failure, rather than a "
+         "search box and a knowledge article.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; Employee self-service',
+   "By outcome",
+   "Self-service fails when it asks the employee to diagnose.",
+   "A portal search box assumes the person can name their problem in your vocabulary. The device "
+   "already knows what went wrong &mdash; so the fix can be offered rather than looked up.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Adoption is low because the interaction is backwards.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Search, read, give up, call.</h3>
+      <p>The employee has to notice something is wrong, decide it is IT's problem, find the
+      portal, guess the right words, read an article written for a technician, and follow it
+      correctly. Each step loses people. The last step is the phone.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>The fix appears where the failure did.</h3>
+      <p>The symptom is already known, so the offer is specific: one action, in context, at the
+      moment it happened. No diagnosis is asked of the employee, and no article has to be written
+      for them to misread.</p></div>
+    </div>
+
+    """ + shot("nanoheal &middot; employee experience",
+               "Screenshot &mdash; in-context self-service",
+               "<b>One offer, one action.</b> The employee sees the specific fix for the "
+               "condition their device just reported, with the same validated knowledge an "
+               "autoheal or an agent would have used.") + """
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Why the content problem disappears</p>
+        <h3>Nobody writes an article. The knowledge already exists.</h3>
+        <p class="lead">Traditional self-service has a permanent content backlog: every new issue
+        needs an article, every article needs an owner, and accuracy decays with every OS release.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Here, the self-service offer is the same validated knowledge entry that autoheal and
+          the service desk use. There is one artefact, maintained once, delivered three ways
+          &mdash; so self-service coverage grows automatically as the
+          <a href="/platform/automation-library/" style="color:var(--teal)">library</a> grows.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Where you would choose it over autoheal</p>
+        <h3>When the employee should be in the loop.</h3>
+        <p class="lead">Not everything should happen silently. A fix that restarts an application,
+        interrupts a call, forces a reboot or touches personal data is better offered than
+        imposed.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>The delivery mode is a property of the knowledge entry and its guardrails, set once
+          when it is validated. The same condition can autoheal on a kiosk and prompt on an
+          executive laptop, without a second automation being built.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; What it does to the score</p>
+        <h3>Deflection that shows up in the experience number.</h3>
+        <p class="lead">Every self-service resolution is an outcome the platform measured
+        end-to-end: the condition before, the action taken, the condition after, and its effect on
+        the <a href="/platform/experience-score/" style="color:var(--teal)">DEX score</a> for that
+        population.</p>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Ticket deflection", "/solutions/ticket-deflection/", "The wider deflection picture."),
+      ("A", "Automate Issues", "/platform/automate/", "The one entry behind all three modes."),
+      ("X", "Experience score", "/platform/experience-score/", "How the improvement is proven."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/it-task-automation/ ───────────────────────────────────────────
+PAGES["/solutions/it-task-automation/"] = {
+ "title": "IT task automation — software, patch and the routine work — Nanoheal",
+ "desc": "Software distribution, patch, onboarding, peripherals and profile work automated on the "
+         "same engine that heals the device — no second agent, no scripts.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; IT task automation',
+   "By outcome",
+   "The work that never justified an automation project.",
+   "Individually small, collectively enormous: drive mappings, printer setup, profile resets, "
+   "certificate renewal, disk cleanup, onboarding sequences, software repair. Nobody funds a "
+   "project for any one of them, so a human keeps doing all of them.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Routine work is automated last, and it is most of the work.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Prioritised out, every quarter.</h3>
+      <p>Automation capacity goes to the biggest call drivers, which is rational. The routine
+      request queue is never the biggest single driver &mdash; it is fifty small ones &mdash; so
+      it never reaches the top of the list, and the estate keeps paying for it in agent minutes.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Small tasks stop being expensive.</h3>
+      <p>Describing a task in plain language and validating it once is cheap enough that the
+      fifty small ones are worth doing. That is the whole reason this category of work finally
+      gets automated.</p></div>
+    </div>
+
+    """ + shot("nanoheal &middot; task workflows",
+               "Screenshot &mdash; task authoring",
+               "<b>Described, not built.</b> A request described in plain language, compiled into "
+               "a sealed capability sequence, scoped to a population and validated once before it "
+               "is trusted.") + """
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Software and patch</p>
+        <h3>Deploy, repair, roll back, reclaim.</h3>
+        <p class="lead">Install and update across the fleet or a targeted population, with repair
+        for failed installs and rollback when a version misbehaves. Patch is assessed, staged,
+        deployed and then <em>verified on the device</em> rather than inferred from a deployment
+        record.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Because distribution shares the engine with remediation, a failed install is not a
+          report you chase &mdash; it is a symptom, and it triggers its own repair.
+          <a href="/platform/compliance-governance/" style="color:var(--teal)">Compliance &amp;
+          Governance &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Requests and lifecycle</p>
+        <h3>Onboarding, offboarding, and everything in between.</h3>
+        <p class="lead">A joiner sequence touches the device, the directory, the ITSM record and
+        several SaaS consoles. Automating only the device half leaves the coordination &mdash; and
+        the errors &mdash; with a human.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Because the context layer reaches the rest of IT without a connector build, the whole
+          sequence runs as one governed action across systems.
+          <a href="/platform/orchestration/" style="color:var(--teal)">Orchestration &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; Who authors them</p>
+        <h3>The person who knows the task writes it.</h3>
+        <p class="lead">Plain language in, sealed capability out. The service desk lead who knows
+        exactly how a printer gets reconfigured does not need an engineer to translate it, and no
+        code is produced that somebody then owns.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Four ways the same workflow can start: a symptom, a forecast, a request, or a
+          schedule.
+          <a href="/platform/workflows/" style="color:var(--teal)">Workflows in plain language
+          &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Compliance &amp; Governance", "/platform/compliance-governance/", "Software, patch and policy in depth."),
+      ("NL", "Workflows", "/platform/workflows/", "How a task gets described."),
+      ("1,200+", "Automation library", "/platform/automation-library/", "What already exists on day one."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/compliance-audit/ ─────────────────────────────────────────────
+PAGES["/solutions/compliance-audit/"] = {
+ "title": "Compliance & audit readiness — Nanoheal",
+ "desc": "Policy that corrects drift instead of reporting it, with a per-device evidence trail "
+         "you can hand to an auditor.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; Compliance &amp; audit readiness',
+   "By outcome",
+   "A non-compliance report is a finding. Putting the device back is the job.",
+   "Most estates can tell you exactly how many devices are out of policy. Far fewer can correct "
+   "them without a project, and fewer still can evidence what happened afterwards.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Between what policy says and what the device does.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Detected, reported, remediated by hand.</h3>
+      <p>A profile fails to apply. Encryption is off on a laptop that reimaged badly. A required
+      agent is missing. The console reports it accurately &mdash; and then somebody works through
+      the list, or the list is quietly accepted as background noise.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Drift is a symptom, so it triggers a fix.</h3>
+      <p>Desired state is described in the same knowledge layer as everything else. When actual
+      state diverges, the divergence is the trigger &mdash; the correction runs on the same engine
+      that heals the device, with no script and no separate remediation tool.</p></div>
+    </div>
+
+    """ + shot("nanoheal &middot; audit evidence",
+               "Screenshot &mdash; evidence pack",
+               "<b>What ran, where, when, and under whose approval.</b> Per-device compliance "
+               "history with capability versions and the validation record attached &mdash; "
+               "exportable, not reconstructed from logs.") + """
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Continuous, not periodic</p>
+        <h3>Compliance measured the way experience is measured.</h3>
+        <p class="lead">A quarterly scan tells you the state of the estate on the day of the scan.
+        Continuous evaluation tells you the state now, and how long each device spent outside
+        policy &mdash; which is the number an auditor is actually asking about.</p>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Persona-aware</p>
+        <h3>One baseline per population, not one per estate.</h3>
+        <p class="lead">A developer workstation, a call-centre desktop, a shared clinical device
+        and an executive laptop cannot share a single standard without the standard becoming
+        meaningless.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Baselines are defined per persona and enforced per persona, and the same condition
+          can be corrected silently on one population and prompted on another &mdash; a property
+          of the guardrails, not a second automation.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; Governed autonomy</p>
+        <h3>Unattended action that survives review.</h3>
+        <p class="lead">Automation that corrects production devices without a human present only
+        gets approved if it can be constrained and evidenced.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Every capability is signed and versioned; every knowledge entry is validated by a
+          human once and the approval is versioned with it; every action is scoped by policy for
+          population, window and blast radius, checked <em>before</em> execution; every run is
+          recorded with its result.
+          <a href="/platform/compliance-governance/" style="color:var(--teal)">How governance
+          works &rarr;</a></p>
+          <p class="pull">If you cannot show an auditor what ran and who approved it, autonomy
+          never leaves the pilot.</p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("03", "Compliance &amp; Governance", "/platform/compliance-governance/", "The platform pillar in full."),
+      ("&rarr;", "IT task automation", "/solutions/it-task-automation/", "Patch, software and the routine work."),
+      ("I", "Intelligence", "/platform/intelligence/", "Guardrails, and how they are checked."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/internal-it/ ──────────────────────────────────────────────────
+PAGES["/solutions/internal-it/"] = {
+ "title": "Internal IT — do more with the team you have — Nanoheal",
+ "desc": "For enterprise IT and digital workplace teams: fewer tickets, less manual work, and a "
+         "digital experience that improves continuously instead of being measured continuously.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; Internal IT',
+   "For internal IT",
+   "Do more with the team you have.",
+   "Fortune 1000 estates across manufacturing, technology services and SaaS &mdash; typically "
+   "replacing a DEX tool that measures well and acts poorly, or sitting alongside one until the "
+   "renewal conversation makes the choice obvious.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/resources/outcomes/">See the business case</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">What changes</p>
+      <h2 class="h2">Four things a digital workplace team gets asked for.</h2>
+      <p class="lede">None of these are new asks. What is new is being able to move them without
+      more headcount and without an automation engineering function.</p>
+    </div>
+    <div class="forwho-grid">
+      <div class="forwho">
+        <p class="label">The ask</p>
+        <h3>What you are measured on.</h3>
+        <div class="linkrow"><b>Fewer tickets</b><span>Resolve issues before they reach the service desk &mdash; 17% autohealed and 35% overall avoidance in production at ~200,000 endpoints.</span></div>
+        <div class="linkrow"><b>Less manual work</b><span>Automate IT tasks across devices and the systems around them, including the long tail nobody funded.</span></div>
+        <div class="linkrow"><b>Better experience</b><span>Improve DEX continuously rather than reporting it monthly, on a score that is defined independently of any release.</span></div>
+        <div class="linkrow"><b>A more autonomous workplace</b><span>Every resolved symptom becomes reusable knowledge, so the estate needs less firefighting each quarter than the last.</span></div>
+      </div>
+      <div class="forwho">
+        <p class="label">The constraint</p>
+        <h3>Why it usually stalls.</h3>
+        <div class="linkrow"><b>No automation team</b><span>Automation lands on the people already running the estate, so it happens between incidents or not at all.</span></div>
+        <div class="linkrow"><b>Coverage caps out</b><span>The top ten drivers get automated. The eleventh costs the same and returns a tenth as much, so it never happens.</span></div>
+        <div class="linkrow"><b>Drift breaks what exists</b><span>Scripts written against last year's build fail quietly after a patch, and maintenance eats the roadmap.</span></div>
+        <div class="linkrow"><b>Proof is contested</b><span>Improvement is asserted from a vendor-defined score that moves when the vendor changes it.</span></div>
+      </div>
+    </div>
+
+    """ + shot("nanoheal &middot; programme view",
+               "Screenshot &mdash; autonomy programme",
+               "<b>Coverage, deflection and score, on one view.</b> Automations live, tickets "
+               "avoided, populations improved and the next opportunities ranked by what they "
+               "would return.") + """
+  </div>
+</section>
+
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Where teams start</p>
+      <h2 class="h2">Your top three call drivers, on a live endpoint.</h2>
+      <p class="lede">Because 1,200+ configurations ship on day one, the first proof point does
+      not require a build. The usual sequence looks like this.</p>
+    </div>
+    <div class="issues">
+      <div class="issue">
+        <p class="n">Week one</p>
+        <h3>Match the library against the drivers you already have.</h3>
+        <p class="lead">Your ticket categories are mapped against existing configurations. What is
+        already covered gets switched on and targeted; what is not becomes the first authoring
+        candidates.</p>
+      </div>
+      <div class="issue">
+        <p class="n">First quarter</p>
+        <h3>Autoheal on the common cases, self-service on the disruptive ones.</h3>
+        <p class="lead">The same validated knowledge serves both, so the choice is a guardrail
+        setting per population rather than two pieces of work.</p>
+      </div>
+      <div class="issue">
+        <p class="n">Every quarter after</p>
+        <h3>The tail, ranked by return.</h3>
+        <p class="lead">The platform surfaces where manual work still is and what closing it would
+        be worth, so the roadmap comes from the estate rather than from a workshop.
+        <a href="/platform/manage/" style="color:var(--teal)">Continuous improvement &rarr;</a></p>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("$", "Outcomes &amp; business case", "/resources/outcomes/", "The numbers, and the model behind them."),
+      ("&rarr;", "Ticket deflection", "/solutions/ticket-deflection/", "The deflection argument in full."),
+      ("&rarr;", "Why DEX alone isn't enough", "/why-nanoheal/why-dxa/", "If you already own a DEX tool."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/service-providers/ ────────────────────────────────────────────
+PAGES["/solutions/service-providers/"] = {
+ "title": "Service providers & GSIs — an autonomy layer inside your delivery model — Nanoheal",
+ "desc": "Add autonomy to a managed workplace service without changing how you deliver it. Your "
+         "contract, your client, your delivery model — multi-tenant from the ground up.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; Service providers &amp; GSIs',
+   "For service providers",
+   "Deliver more value from the service you already run.",
+   "Delivered inside an existing managed workplace service. Your contract, your client, your "
+   "delivery model &mdash; with an autonomy layer your competitors cannot price.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Talk to us about a deal</a>'
+   '<a class="btn btn-line" href="/company/partners/">Partner model</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Deflection promises are priced in, and then delivered by hand.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Margin comes out of the team.</h3>
+      <p>A workplace deal is won on a deflection commitment. The automation to deliver it is a
+      services line item, built per client, maintained per client. When the numbers get tight, the
+      only lever left is the size of the team on the account.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>Margin comes out of the work.</h3>
+      <p>1,200+ configurations arrive with the platform and the rest are authored without an
+      engineering team. Deflection comes from resolving issues, so the same headcount covers more
+      estate rather than the estate covering fewer people.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Multi-tenant by design</p>
+        <h3>Build once, publish across the book of business.</h3>
+        <p class="lead">A configuration validated for one client can be published to others with
+        tenant-level scoping and guardrails intact. The library becomes an asset of your practice
+        rather than a per-account cost.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>That is also what makes small accounts economic: the same automation library serves a
+          500-seat client and a 200,000-seat client, and the marginal cost of onboarding the small
+          one is close to zero.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; Inside your delivery model</p>
+        <h3>Not a product you resell. A layer you deliver.</h3>
+        <p class="lead">Your contract, your service desk, your SLAs, your brand in front of the
+        client. Nanoheal runs underneath, and the outcome it produces is attributable to your
+        service.</p>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Differentiate.</h3><p>Add autonomy without changing your delivery
+          model or retraining the account team.</p></div>
+          <div class="tile"><h3>Protect margin.</h3><p>Deflection comes from automation and
+          resolution, not from reducing the team the client is paying for.</p></div>
+          <div class="tile"><h3>Prove outcomes.</h3><p>A patented, vendor-independent score means
+          the improvement in the QBR is measured rather than asserted.</p></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; What you can commit to</p>
+        <h3>Bid autonomy you can actually deliver.</h3>
+        <p class="lead">Deflection commitments are only safe if the cost of hitting them is
+        predictable. When automations are knowledge rather than code, the cost of the next hundred
+        is knowable at bid time.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Expand coverage continuously without an engineering backlog: start with the pre-built
+          library on day one of the transition, and keep adding through the life of the contract
+          without a change request for each addition.
+          <a href="/resources/outcomes/" style="color:var(--teal)">The numbers &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("1,200+", "Automation library", "/platform/automation-library/", "The asset your practice compounds."),
+      ("&rarr;", "OEMs, channel &amp; SMB", "/solutions/oem-channel/", "If your book is many small tenants."),
+      ("&rarr;", "Partners", "/company/partners/", "How we work with GSIs and channels."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /solutions/oem-channel/ ──────────────────────────────────────────────────
+PAGES["/solutions/oem-channel/"] = {
+ "title": "OEMs, channel & SMB — multi-tenant from the ground up — Nanoheal",
+ "desc": "One automation library serving a support channel's whole book of business, with "
+         "tenant-level scoping — the same engine at 500 endpoints as at 200,000.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/solutions/">Solutions</a> &nbsp;/&nbsp; OEMs, channel &amp; SMB',
+   "For OEMs and support channels",
+   "One library. Every tenant you support.",
+   "Multi-tenant from the ground up, so the same automation library serves a support channel's "
+   "whole book of business &mdash; and a 500-endpoint client gets the same engine as a "
+   "200,000-endpoint one.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head"><p class="label">The issue</p>
+      <h2 class="h2">Small accounts can&rsquo;t carry a per-account automation build.</h2></div>
+    <div class="ps">
+      <div><p class="t">What normally happens</p><h3>Automation is for the big logos only.</h3>
+      <p>Enterprise-grade automation requires an enterprise-grade project. The economics never
+      work below a certain seat count, so the long tail of the channel is supported the way it
+      always was: by people, on the phone, one device at a time.</p></div>
+      <div class="fix"><p class="t">What Nanoheal does</p><h3>The build is amortised across the book.</h3>
+      <p>Author once, publish to every tenant that needs it. The marginal cost of extending
+      coverage to another client is a targeting decision, not a project &mdash; which is what
+      makes autonomy viable at SMB scale.</p></div>
+    </div>
+
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Tenancy</p>
+        <h3>Isolation where it matters, sharing where it pays.</h3>
+        <p class="lead">Data, policy and guardrails are scoped per tenant. Knowledge is shareable
+        across tenants by choice, so an entry proven on one estate strengthens the whole book
+        without leaking anything between clients.</p>
+      </div>
+
+      <div class="issue">
+        <p class="n">02 &mdash; For device OEMs</p>
+        <h3>Support the hardware after it ships.</h3>
+        <p class="lead">Driver and firmware faults, thermal and battery degradation, imaging
+        defects and returns driven by software problems all show up as symptoms the OS already
+        reports.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>Resolving them in place reduces support contacts and no-fault-found returns, and the
+          same telemetry shows which build, model or component is generating them &mdash; on the
+          fleet, before the pattern reaches a warranty report.</p>
+        </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">03 &mdash; Onboarding a tenant</p>
+        <h3>Day one is coverage, not configuration.</h3>
+        <p class="lead">A new client starts with the 1,200+ pre-built configurations plus whatever
+        your practice has already added. There is no per-tenant authoring phase before the first
+        outcome.</p>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Service providers &amp; GSIs", "/solutions/service-providers/", "The managed-service case."),
+      ("1,200+", "Automation library", "/platform/automation-library/", "What every tenant starts with."),
+      ("&rarr;", "Partners", "/company/partners/", "How the partnership works."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /resources/ ──────────────────────────────────────────────────────────────
+PAGES["/resources/"] = {
+ "title": "Resources — understand the category, and the proof — Nanoheal",
+ "desc": "The DEX and DXA category explained, the technical case for symptom-triggered "
+         "automation, production outcomes and analyst recognition.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; Resources',
+   "Resources",
+   "The argument, and the evidence for it.",
+   "Two things are worth your time before a demo: understanding why measuring the workplace "
+   "turned out not to be enough, and seeing what happens to the numbers when the doing gets "
+   "solved as well.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Understand the category</p>
+      <h2 class="h2">DEX made the workplace visible. DXA makes it actionable.</h2>
+      <p class="lede">Digital Experience Automation is the evolution of DEX, not a replacement for
+      it. These four pages make that case from first principles.</p>
+    </div>
+    """ + cards([
+      ("01", "What is DEX", "/digital-experience/",
+       "Measure, forecast, detect, diagnose, prove &mdash; the five questions a digital "
+       "experience platform has to answer, and what gets measured to answer them.",
+       "The measuring half"),
+      ("02", "What is DXA", "/digital-experience-automation/",
+       "Insight becomes action, and action becomes the next insight. The loop a dashboard "
+       "cannot close on its own.",
+       "The acting half"),
+      ("03", "Why DEX alone isn't enough", "/why-nanoheal/why-dxa/",
+       "One half of the problem was solved. The other half was outsourced to your engineers, "
+       "one script at a time.",
+       "The category argument"),
+      ("04", "Why not scripts", "/why-nanoheal/why-not-scripts/",
+       "The technical case for symptom-triggered automation over PowerShell remediation &mdash; "
+       "detection cost, payload weight, and what estate drift does to authored code.",
+       "The technical case"),
+    ]) + """
+  </div>
+</section>
+
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Proof</p>
+      <h2 class="h2">What it did, and who has looked at it.</h2>
+    </div>
+    """ + cards([
+      ("$", "Outcomes &amp; business case", "/resources/outcomes/",
+       "Production numbers from a Fortune 100 estate, and the model for turning ticket "
+       "avoidance and recovered employee time into a figure a CFO will accept.",
+       "The numbers"),
+      ("&#9733;", "Analyst recognition", "/resources/analysts/",
+       "Gartner Peer Insights, ISG Provider Lens Rising Star for DEX, Forrester's DEX "
+       "landscape, and the patented scoring methodology.",
+       "Third-party view"),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /resources/outcomes/ ─────────────────────────────────────────────────────
+PAGES["/resources/outcomes/"] = {
+ "title": "Outcomes & business case — Nanoheal",
+ "desc": "Production results from a Fortune 100 estate of ~200,000 endpoints, and the model for "
+         "valuing ticket avoidance and recovered employee time.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/resources/">Resources</a> &nbsp;/&nbsp; Outcomes',
+   "Proof",
+   "What autonomy is worth, and how the number is built.",
+   "Two separate things are worth separating: what has actually happened in production, and what "
+   "a model projects for an estate of a given size. Both are below, labelled.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Model it for your estate</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">In production</p>
+      <h2 class="h2">Fortune 100 manufacturer, ~200,000 endpoints.</h2>
+      <p class="lede">These are measured results from a live estate, not a projection.</p>
+    </div>
+    """ + metrics([
+      ("Measured", "150+", "automations live in production"),
+      ("Measured", "17%", "of tickets resolved by autoheal, with no human contact"),
+      ("Measured", "35%", "overall ticket avoidance across autoheal, self-service and assisted"),
+      ("Measured", "~200K", "endpoints on one engine, one library, one context layer"),
+    ]) + """
+    <div class="prose" style="margin-top:34px">
+      <p>The 17% and the 35% are worth reading together. Autoheal is the share where nobody was
+      involved at all &mdash; no ticket, no contact, no employee time lost. The wider figure adds
+      the contacts that were resolved at first touch by self-service or by an agent executing a
+      single validated capability instead of following a runbook.</p>
+      <p class="pull">Deflection that comes from resolution is durable. Deflection that comes from
+      friction is a queue somewhere else.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Illustrative model</p>
+      <h2 class="h2">Per 10,000 employees, per year.</h2>
+      <p class="lede">This is a model, not a measured result. It is shown with its inputs so you
+      can replace them with yours &mdash; the arithmetic matters more than our defaults.</p>
+    </div>
+    """ + metrics([
+      ("Modelled", "$1.0M", "IT cost avoided &mdash; contacts that never reach a human, at your "
+       "blended cost per ticket"),
+      ("Modelled", "$8.6M", "employee productivity recovered &mdash; disruption time returned to "
+       "the people being paid for it"),
+      ("Input", "Ticket mix", "your top call drivers, matched against the 1,200+ pre-built "
+       "configurations before anything is built"),
+      ("Input", "Rates", "your cost per contact and your loaded employee cost &mdash; both "
+       "numbers you already have"),
+    ]) + """
+    <div class="prose" style="margin-top:34px">
+      <p>The productivity figure is nearly nine times the IT saving, and that ratio is the honest
+      argument for autonomy. The service desk cost of a broken VPN profile is one contact. The
+      business cost is the hour before the contact, the interruption after it, and the same
+      condition sitting unreported on a few thousand other machines.</p>
+      <p>Which is also why the <a href="/platform/experience-score/" style="color:var(--teal)">DEX
+      score</a> matters commercially: a patented methodology defined independently of any release
+      means a ten-point gain means the same thing in Q3 as it did in Q1, so the improvement can be
+      priced rather than argued about.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Where the numbers come from</p>
+      <h2 class="h2">Four levers, one loop.</h2>
+    </div>
+    """ + nextcards([
+      ("&rarr;", "Ticket deflection", "/solutions/ticket-deflection/", "Contacts that never happen."),
+      ("&rarr;", "IT task automation", "/solutions/it-task-automation/", "Agent minutes returned."),
+      ("&rarr;", "Compliance &amp; audit", "/solutions/compliance-audit/", "Remediation effort and audit cost."),
+    ]) + nextcards([
+      ("X", "Experience score", "/platform/experience-score/", "The number the improvement is measured on."),
+      ("M", "Continuous improvement", "/platform/manage/", "How the next opportunity is ranked and priced."),
+      ("1,200+", "Automation library", "/platform/automation-library/", "Why value starts on day one."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /resources/analysts/ ─────────────────────────────────────────────────────
+PAGES["/resources/analysts/"] = {
+ "title": "Analyst recognition — Nanoheal",
+ "desc": "Gartner Peer Insights, ISG Provider Lens Rising Star for DEX, Forrester's DEX "
+         "landscape, and the patented DEX scoring methodology.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/resources/">Resources</a> &nbsp;/&nbsp; Analyst recognition',
+   "Proof",
+   "Recognised across the DEX category.",
+   "Nanoheal is assessed as a digital experience platform by the analysts who cover the category, "
+   "and rated by the practitioners who run it.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Third-party view</p>
+      <h2 class="h2">Where we appear, and what for.</h2>
+    </div>
+    """ + metrics([
+      ("Gartner", "4.6/5", "Peer Insights rating across 27+ mentions from verified practitioners"),
+      ("ISG", "Rising Star", "ISG Provider Lens\\u2122, Digital Experience"),
+      ("Forrester", "Q2 2026", "Included in the DEX landscape"),
+      ("Patent", "US 9,477,573", "DEX scoring methodology, held by Nanoheal"),
+    ]) + """
+    <div class="prose" style="margin-top:34px">
+      <p>Analyst coverage of this category is organised around measurement, which is where the
+      category started. It is a fair way to be assessed and we hold that table &mdash;
+      <a href="/platform/dex-intelligence/" style="color:var(--teal)">measurement, forecasting,
+      anomaly detection and root cause</a> are all present, and the score underneath them is
+      patented rather than proprietary-and-adjustable.</p>
+      <p>The part the category's evaluation criteria do not yet weight heavily is what happens
+      after a finding: whether the platform can resolve it, run the estate, enforce policy and
+      orchestrate the systems around the device on the same engine, without shipping code to every
+      endpoint. That is the comparison worth making in a bake-off, and it is the one we ask for.</p>
+      <p class="pull">Ask each vendor how many automations ship on day one &mdash; and how many of
+      them you will have to maintain.</p>
+    </div>
+    """ + nextcards([
+      ("$", "Outcomes", "/resources/outcomes/", "Production numbers and the ROI model."),
+      ("X", "Experience score", "/platform/experience-score/", "What the patent actually covers."),
+      ("&rarr;", "Why DEX alone isn't enough", "/why-nanoheal/why-dxa/", "The category argument."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /company/ ────────────────────────────────────────────────────────────────
+PAGES["/company/"] = {
+ "title": "About Nanoheal — turning the digital workplace autonomous",
+ "desc": "Nanoheal builds the operating system for the digital workplace: DEX intelligence wired "
+         "to a governed capability engine, so insight becomes action without code.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; Company',
+   "About",
+   "We build the half of DEX that was left to your engineers.",
+   "Nanoheal is a digital experience automation platform. It measures the digital workplace the "
+   "way a DEX tool does, and then does something a dashboard cannot: it resolves what it finds, "
+   "runs and governs the estate, and orchestrates the systems around the device \\u2014 without "
+   "shipping code to a single endpoint.",
+   '<div class="acts"><a class="btn btn-solid" href="/#demo">Schedule a Demo</a>'
+   '<a class="btn btn-line" href="/platform/">See the platform</a></div>') + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">What we believe</p>
+      <h2 class="h2">Knowledge, not code.</h2>
+      <p class="lede">One conviction shapes every design decision in the product, and it is worth
+      stating plainly because it is testable.</p>
+    </div>
+    <div class="prose" style="margin-top:32px">
+      <p>An automation should not be a piece of software. The moment a fix is authored as code,
+      somebody owns it forever: it has to be reviewed, deployed to every endpoint, kept resident
+      to detect the thing it fixes, and rewritten when the estate moves underneath it. That cost
+      is why automation coverage across this entire category stops at the top call drivers.</p>
+      <p>So Nanoheal ships knowledge instead. The operating system already reports the symptom, so
+      nothing has to poll for it. The engine already exposes the capabilities, so nothing has to
+      be generated. What a new automation adds is a small, sealed, versioned description of what
+      to do &mdash; validated once by a human, then reusable across the estate.</p>
+      <p class="pull">Coverage compounds when the next automation costs almost nothing. Everything
+      else in the product follows from that.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Who runs on Nanoheal</p>
+      <h2 class="h2">Same engine, whether you run 500 endpoints or 200,000.</h2>
+    </div>
+    <div class="g3" style="margin-top:20px">
+      <div class="tile"><h3>Enterprise IT.</h3><p>Fortune 1000 estates across manufacturing,
+      technology services and SaaS &mdash; typically replacing a DEX tool that measures well and
+      acts poorly. <a href="/solutions/internal-it/" style="color:var(--teal)">More &rarr;</a></p></div>
+      <div class="tile"><h3>Global system integrators.</h3><p>Delivered inside an existing managed
+      workplace service. Your contract, your client, your delivery model.
+      <a href="/solutions/service-providers/" style="color:var(--teal)">More &rarr;</a></p></div>
+      <div class="tile"><h3>OEMs, support channels and SMB.</h3><p>Multi-tenant from the ground up,
+      so one automation library serves a whole book of business.
+      <a href="/solutions/oem-channel/" style="color:var(--teal)">More &rarr;</a></p></div>
+    </div>
+
+    <p class="label" style="margin-top:52px">Where we are</p>
+    <div class="g3" style="margin-top:20px">
+      <div class="tile"><h3>Utah.</h3><p>North America.</p></div>
+      <div class="tile"><h3>Bangalore.</h3><p>Engineering and platform.</p></div>
+      <div class="tile"><h3>Manila.</h3><p>Service delivery and support.</p></div>
+    </div>
+
+    """ + nextcards([
+      ("&rarr;", "Partners", "/company/partners/", "GSIs, OEMs and support channels."),
+      ("&#9733;", "Analyst recognition", "/resources/analysts/", "Gartner, ISG, Forrester."),
+      ("$", "Outcomes", "/resources/outcomes/", "What it has done in production."),
+    ]) + """
+  </div>
+</section>
+""" + CTA}
+
+
+# ── /company/partners/ ───────────────────────────────────────────────────────
+PAGES["/company/partners/"] = {
+ "title": "Partners — GSIs, OEMs and support channels — Nanoheal",
+ "desc": "Nanoheal is delivered inside existing managed workplace services. Multi-tenant, "
+         "white-labelled under your delivery model, with an automation library your practice owns.",
+ "body": phero(
+   '<a href="/">Home</a> &nbsp;/&nbsp; <a href="/company/">Company</a> &nbsp;/&nbsp; Partners',
+   "Partners",
+   "An autonomy layer inside the service you already deliver.",
+   "Most Nanoheal estates reach the client through a partner. The platform is built for that: "
+   "multi-tenant, delivered under your contract and your brand, with the automation library "
+   "accruing to your practice rather than to us.") + """
+
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">How it works</p>
+      <h2 class="h2">Three things partners ask first.</h2>
+    </div>
+    <div class="issues">
+      <div class="issue">
+        <p class="n">01 &mdash; Ownership</p>
+        <h3>Your contract, your client, your delivery model.</h3>
+        <p class="lead">Nanoheal sits underneath the workplace service you already run. The service
+        desk stays yours, the SLAs stay yours, and the improvement is attributable to your service
+        rather than to a tool the client bought separately.</p>
+      </div>
+      <div class="issue">
+        <p class="n">02 &mdash; The library is an asset</p>
+        <h3>Author once, publish across the book of business.</h3>
+        <p class="lead">Configurations validated on one account can be published to others with
+        tenant-level scoping intact. What your practice builds compounds across every client you
+        support, instead of being rebuilt per engagement.
+        <a href="/platform/automation-library/" style="color:var(--teal)">The library &rarr;</a></p>
+      </div>
+      <div class="issue">
+        <p class="n">03 &mdash; The commercial case</p>
+        <h3>Bid deflection you can price.</h3>
+        <p class="lead">Deflection commitments are only safe when the cost of hitting them is
+        predictable. Knowledge-based automation makes the cost of the next hundred automations
+        knowable at bid time, which is what lets autonomy appear in the proposal rather than in
+        the transformation roadmap.
+        <a href="/solutions/service-providers/" style="color:var(--teal)">The service provider
+        case &rarr;</a></p>
+      </div>
+    </div>
+
+    """ + nextcards([
+      ("MSP", "Service providers &amp; GSIs", "/solutions/service-providers/", "The full argument."),
+      ("OEM", "OEMs, channel &amp; SMB", "/solutions/oem-channel/", "Many tenants, one library."),
+      ("&rarr;", "Talk to us", "/#demo", "Partner conversations start the same way: a live endpoint."),
     ]) + """
   </div>
 </section>

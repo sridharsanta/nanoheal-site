@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <script>(function(){try{var t=localStorage.getItem("nh-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Why not scripts — Nanoheal</title>
-<meta name="description" content="The technical case for symptom-triggered automation over PowerShell-based remediation: detection cost, payload growth, estate drift and the maintenance curve.">
-<meta property="og:title" content="Why not scripts — Nanoheal">
-<meta property="og:description" content="The technical case for symptom-triggered automation over PowerShell-based remediation: detection cost, payload growth, estate drift and the maintenance curve.">
+<title>Analyst recognition — Nanoheal</title>
+<meta name="description" content="Gartner Peer Insights, ISG Provider Lens Rising Star for DEX, Forrester's DEX landscape, and the patented DEX scoring methodology.">
+<meta property="og:title" content="Analyst recognition — Nanoheal">
+<meta property="og:description" content="Gartner Peer Insights, ISG Provider Lens Rising Star for DEX, Forrester's DEX landscape, and the patented DEX scoring methodology.">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://nanoheal.com/why-nanoheal/why-not-scripts/">
+<link rel="canonical" href="https://nanoheal.com/resources/analysts/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
@@ -27,117 +27,30 @@
 </div></header>
 <main>
 <section class="phero"><div class="wrap">
-<p class="crumb"><a href="../../">Home</a> &nbsp;/&nbsp; Why Nanoheal &nbsp;/&nbsp; Why not scripts</p><p class="k">The technical case</p>
-<h1>Scripts have to go looking for a problem. Nanoheal is told.</h1><p class="sub">This is the argument in full, for the person who will actually have to believe it: the endpoint engineer who has written these scripts and maintained them.</p></div></section>
+<p class="crumb"><a href="../../">Home</a> &nbsp;/&nbsp; <a href="../../resources/">Resources</a> &nbsp;/&nbsp; Analyst recognition</p><p class="k">Proof</p>
+<h1>Recognised across the DEX category.</h1><p class="sub">Nanoheal is assessed as a digital experience platform by the analysts who cover the category, and rated by the practitioners who run it.</p></div></section>
 
 <section class="band">
   <div class="wrap">
-    <div class="prose">
-      <p>Script-based remediation is not a bad idea. It was the only available idea. If the
-      platform gives you a way to run arbitrary code on an endpoint, then every fix becomes a
-      program, and everything that follows &mdash; the review cycle, the packaging, the version
-      matrix, the breakage &mdash; follows from that one decision.</p>
-      <p>The argument here is not that scripts don't work. It is that <strong>they carry three
-      costs that don't show up in a demo</strong>, and all three scale with the thing you actually
-      want, which is coverage.</p>
+    <div class="head">
+      <p class="label">Third-party view</p>
+      <h2 class="h2">Where we appear, and what for.</h2>
     </div>
-
-    <div class="issues">
-      <div class="issue">
-        <p class="n">Cost one</p>
-        <h3>You pay to build detection the OS already performed.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>Consider a print spooler that has died. Windows knows. It writes Event 7031 to the
-          system log at the moment it happens, without being asked, at no cost to anybody.</p>
-          <p>A script cannot receive that. To act on it, something has to be watching &mdash; a
-          scheduled task that wakes and re-reads the log, a resident process that subscribes and
-          stays alive, a management agent that sweeps on an interval. Whichever you choose, you
-          have rebuilt a detector for information that was already published, and you now run it
-          on every machine in the fleet forever.</p>
-          <p class="pull">The polling interval is a straight trade between how fast you detect and
-          how much you burn. There is no setting that is good at both.</p>
-          <p>Set it tight and you pay in CPU, memory and battery on the overwhelming majority of
-          machines that are healthy. Set it loose and the employee has already opened a ticket
-          before the automation notices. Nanoheal doesn't sit anywhere on that trade-off, because
-          it consumes the signal the OS emits rather than going to look for it. Detection latency
-          is milliseconds and the idle cost is nil.</p>
-        </div>
-      </div>
-
-      <div class="issue">
-        <p class="n">Cost two</p>
-        <h3>Every fix adds permanent weight to every endpoint.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>One script is nothing. Two hundred scripts, each with its own detection logic,
-          logging, error handling and scheduling, is an agent that has quietly become a
-          significant workload &mdash; and it lands hardest on VDI, where the cost is multiplied
-          by session density, and on laptops, where it shows up as battery life.</p>
-          <p>This is the mechanism behind a pattern most IT leaders will recognise: automation
-          coverage that plateaus not because the team ran out of ideas, but because nobody wants
-          to push more weight onto the fleet.</p>
-          <p>Nanoheal's execution capabilities are a fixed, signed set that ships once. Adding the
-          two-hundredth automation adds a knowledge entry measured in kilobytes. The engine's
-          footprint at 1,200 configurations is the engine's footprint at twelve.</p>
-        </div>
-      </div>
-
-      <div class="issue">
-        <p class="n">Cost three</p>
-        <h3>Code assumes an estate that has already changed.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>A script encodes the environment as it was on the day it was written: this path, this
-          key, this service name, this OS build. Every one of those is a dependency on something
-          outside your control. A feature update relocates the path. A GPO change removes the
-          permission. A vendor renames the service.</p>
-          <p>The failure mode is the expensive part &mdash; scripts usually fail <em>silently</em>.
-          The automation stops working, the tickets quietly return, and it surfaces weeks later in
-          a ticket review as a mystery regression.</p>
-          <p>Separating <strong>what</strong> from <strong>how</strong> is what avoids this. The
-          knowledge entry says "repair the spooler's queue state." The engine owns how that is done
-          on each platform and build, and is updated centrally as one component rather than as two
-          hundred independent scripts.</p>
-        </div>
-      </div>
+    <div class="metrics"><div class="metric"><em>Gartner</em><b>4.6/5</b><span>Peer Insights rating across 27+ mentions from verified practitioners</span></div><div class="metric"><em>ISG</em><b>Rising Star</b><span>ISG Provider Lens\u2122, Digital Experience</span></div><div class="metric"><em>Forrester</em><b>Q2 2026</b><span>Included in the DEX landscape</span></div><div class="metric"><em>Patent</em><b>US 9,477,573</b><span>DEX scoring methodology, held by Nanoheal</span></div></div>
+    <div class="prose" style="margin-top:34px">
+      <p>Analyst coverage of this category is organised around measurement, which is where the
+      category started. It is a fair way to be assessed and we hold that table &mdash;
+      <a href="../../platform/dex-intelligence/" style="color:var(--teal)">measurement, forecasting,
+      anomaly detection and root cause</a> are all present, and the score underneath them is
+      patented rather than proprietary-and-adjustable.</p>
+      <p>The part the category's evaluation criteria do not yet weight heavily is what happens
+      after a finding: whether the platform can resolve it, run the estate, enforce policy and
+      orchestrate the systems around the device on the same engine, without shipping code to every
+      endpoint. That is the comparison worth making in a bake-off, and it is the one we ask for.</p>
+      <p class="pull">Ask each vendor how many automations ship on day one &mdash; and how many of
+      them you will have to maintain.</p>
     </div>
-
-    <div class="head" style="margin-top:64px">
-      <p class="label">Side by side</p>
-      <h2 class="h2">The same fix, both ways.</h2>
-    </div>
-    <div class="tblwrap">
-      <table class="spec">
-        <thead><tr><th>&nbsp;</th><th>Script-based</th><th>Nanoheal</th></tr></thead>
-        <tbody>
-          <tr><td>Detection</td><td class="bad">Rebuilt per fix; polls on an interval</td><td class="good">The OS event is the trigger</td></tr>
-          <tr><td>Idle cost</td><td class="bad">CPU, memory and battery on every device, continuously</td><td class="good">None &mdash; nothing is watching</td></tr>
-          <tr><td>Detection latency</td><td class="bad">Up to one polling interval</td><td class="good">Milliseconds</td></tr>
-          <tr><td>What ships</td><td class="bad">Executable code, per fix</td><td class="good">Sealed knowledge, kilobytes</td></tr>
-          <tr><td>Agent growth</td><td class="bad">Linear with automation count</td><td class="good">Flat</td></tr>
-          <tr><td>Time to first fix</td><td class="bad">Weeks &mdash; specify, script, test, approve, publish</td><td class="good">Day one, from 1,200+ pre-built configurations</td></tr>
-          <tr><td>On estate drift</td><td class="bad">Fails silently until someone notices</td><td class="good">Engine updated centrally; knowledge unaffected</td></tr>
-          <tr><td>Security review</td><td class="bad">Per script, line by line, every revision</td><td class="good">Capability set reviewed once; entries carry no code</td></tr>
-          <tr><td>Who can create one</td><td class="bad">An engineer who writes PowerShell</td><td class="good">Anyone in IT who can describe the task</td></tr>
-          <tr><td>Cost of the next one</td><td class="bad">Roughly the same as the last</td><td class="good">Approaching zero</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose" style="margin-top:52px">
-      <h3>The fair objection</h3>
-      <p>A reasonable engineer will point out that a script can do <em>anything</em>, and a fixed
-      capability set cannot. That is true, and it is the actual trade being made.</p>
-      <p>The answer is that the capability set covers the operations endpoint remediation genuinely
-      consists of &mdash; files, registry, services, processes, configuration, software, network,
-      identity &mdash; and that the long tail of real tickets is overwhelmingly recombination of
-      those primitives with different parameters, not novel computation. Where something truly
-      exceptional is required, orchestration to an external system remains available. What you
-      give up is the ability to write arbitrary code on the endpoint. What you get back is that
-      nobody has to maintain arbitrary code on the endpoint.</p>
-      <p class="pull">Coverage stalls in script-based estates for a reason that has nothing to do
-      with ambition. Change the cost of the next automation and the ceiling moves.</p>
-    </div>
-
-    <div class="next"><a href="../../platform/automate/"><span class="k">A</span><b>Automate</b><span>The capability API, in detail.</span></a><a href="../../platform/intelligence/"><span class="k">I</span><b>Intelligence</b><span>How the parameters get chosen.</span></a><a href="../../platform/"><span class="k">&rarr;</span><b>The AIM-X loop</b><span>Where this sits in the whole framework.</span></a></div>
+    <div class="next"><a href="../../resources/outcomes/"><span class="k">$</span><b>Outcomes</b><span>Production numbers and the ROI model.</span></a><a href="../../platform/experience-score/"><span class="k">X</span><b>Experience score</b><span>What the patent actually covers.</span></a><a href="../../why-nanoheal/why-dxa/"><span class="k">&rarr;</span><b>Why DEX alone isn't enough</b><span>The category argument.</span></a></div>
   </div>
 </section>
 

@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <script>(function(){try{var t=localStorage.getItem("nh-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Why not scripts — Nanoheal</title>
-<meta name="description" content="The technical case for symptom-triggered automation over PowerShell-based remediation: detection cost, payload growth, estate drift and the maintenance curve.">
-<meta property="og:title" content="Why not scripts — Nanoheal">
-<meta property="og:description" content="The technical case for symptom-triggered automation over PowerShell-based remediation: detection cost, payload growth, estate drift and the maintenance curve.">
+<title>Outcomes & business case — Nanoheal</title>
+<meta name="description" content="Production results from a Fortune 100 estate of ~200,000 endpoints, and the model for valuing ticket avoidance and recovered employee time.">
+<meta property="og:title" content="Outcomes & business case — Nanoheal">
+<meta property="og:description" content="Production results from a Fortune 100 estate of ~200,000 endpoints, and the model for valuing ticket avoidance and recovered employee time.">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://nanoheal.com/why-nanoheal/why-not-scripts/">
+<link rel="canonical" href="https://nanoheal.com/resources/outcomes/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
@@ -27,117 +27,57 @@
 </div></header>
 <main>
 <section class="phero"><div class="wrap">
-<p class="crumb"><a href="../../">Home</a> &nbsp;/&nbsp; Why Nanoheal &nbsp;/&nbsp; Why not scripts</p><p class="k">The technical case</p>
-<h1>Scripts have to go looking for a problem. Nanoheal is told.</h1><p class="sub">This is the argument in full, for the person who will actually have to believe it: the endpoint engineer who has written these scripts and maintained them.</p></div></section>
+<p class="crumb"><a href="../../">Home</a> &nbsp;/&nbsp; <a href="../../resources/">Resources</a> &nbsp;/&nbsp; Outcomes</p><p class="k">Proof</p>
+<h1>What autonomy is worth, and how the number is built.</h1><p class="sub">Two separate things are worth separating: what has actually happened in production, and what a model projects for an estate of a given size. Both are below, labelled.</p><div class="acts"><a class="btn btn-solid" href="../../#demo">Model it for your estate</a></div></div></section>
 
 <section class="band">
   <div class="wrap">
-    <div class="prose">
-      <p>Script-based remediation is not a bad idea. It was the only available idea. If the
-      platform gives you a way to run arbitrary code on an endpoint, then every fix becomes a
-      program, and everything that follows &mdash; the review cycle, the packaging, the version
-      matrix, the breakage &mdash; follows from that one decision.</p>
-      <p>The argument here is not that scripts don't work. It is that <strong>they carry three
-      costs that don't show up in a demo</strong>, and all three scale with the thing you actually
-      want, which is coverage.</p>
+    <div class="head">
+      <p class="label">In production</p>
+      <h2 class="h2">Fortune 100 manufacturer, ~200,000 endpoints.</h2>
+      <p class="lede">These are measured results from a live estate, not a projection.</p>
     </div>
-
-    <div class="issues">
-      <div class="issue">
-        <p class="n">Cost one</p>
-        <h3>You pay to build detection the OS already performed.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>Consider a print spooler that has died. Windows knows. It writes Event 7031 to the
-          system log at the moment it happens, without being asked, at no cost to anybody.</p>
-          <p>A script cannot receive that. To act on it, something has to be watching &mdash; a
-          scheduled task that wakes and re-reads the log, a resident process that subscribes and
-          stays alive, a management agent that sweeps on an interval. Whichever you choose, you
-          have rebuilt a detector for information that was already published, and you now run it
-          on every machine in the fleet forever.</p>
-          <p class="pull">The polling interval is a straight trade between how fast you detect and
-          how much you burn. There is no setting that is good at both.</p>
-          <p>Set it tight and you pay in CPU, memory and battery on the overwhelming majority of
-          machines that are healthy. Set it loose and the employee has already opened a ticket
-          before the automation notices. Nanoheal doesn't sit anywhere on that trade-off, because
-          it consumes the signal the OS emits rather than going to look for it. Detection latency
-          is milliseconds and the idle cost is nil.</p>
-        </div>
-      </div>
-
-      <div class="issue">
-        <p class="n">Cost two</p>
-        <h3>Every fix adds permanent weight to every endpoint.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>One script is nothing. Two hundred scripts, each with its own detection logic,
-          logging, error handling and scheduling, is an agent that has quietly become a
-          significant workload &mdash; and it lands hardest on VDI, where the cost is multiplied
-          by session density, and on laptops, where it shows up as battery life.</p>
-          <p>This is the mechanism behind a pattern most IT leaders will recognise: automation
-          coverage that plateaus not because the team ran out of ideas, but because nobody wants
-          to push more weight onto the fleet.</p>
-          <p>Nanoheal's execution capabilities are a fixed, signed set that ships once. Adding the
-          two-hundredth automation adds a knowledge entry measured in kilobytes. The engine's
-          footprint at 1,200 configurations is the engine's footprint at twelve.</p>
-        </div>
-      </div>
-
-      <div class="issue">
-        <p class="n">Cost three</p>
-        <h3>Code assumes an estate that has already changed.</h3>
-        <div class="prose" style="margin-top:16px">
-          <p>A script encodes the environment as it was on the day it was written: this path, this
-          key, this service name, this OS build. Every one of those is a dependency on something
-          outside your control. A feature update relocates the path. A GPO change removes the
-          permission. A vendor renames the service.</p>
-          <p>The failure mode is the expensive part &mdash; scripts usually fail <em>silently</em>.
-          The automation stops working, the tickets quietly return, and it surfaces weeks later in
-          a ticket review as a mystery regression.</p>
-          <p>Separating <strong>what</strong> from <strong>how</strong> is what avoids this. The
-          knowledge entry says "repair the spooler's queue state." The engine owns how that is done
-          on each platform and build, and is updated centrally as one component rather than as two
-          hundred independent scripts.</p>
-        </div>
-      </div>
+    <div class="metrics"><div class="metric"><em>Measured</em><b>150+</b><span>automations live in production</span></div><div class="metric"><em>Measured</em><b>17%</b><span>of tickets resolved by autoheal, with no human contact</span></div><div class="metric"><em>Measured</em><b>35%</b><span>overall ticket avoidance across autoheal, self-service and assisted</span></div><div class="metric"><em>Measured</em><b>~200K</b><span>endpoints on one engine, one library, one context layer</span></div></div>
+    <div class="prose" style="margin-top:34px">
+      <p>The 17% and the 35% are worth reading together. Autoheal is the share where nobody was
+      involved at all &mdash; no ticket, no contact, no employee time lost. The wider figure adds
+      the contacts that were resolved at first touch by self-service or by an agent executing a
+      single validated capability instead of following a runbook.</p>
+      <p class="pull">Deflection that comes from resolution is durable. Deflection that comes from
+      friction is a queue somewhere else.</p>
     </div>
+  </div>
+</section>
 
-    <div class="head" style="margin-top:64px">
-      <p class="label">Side by side</p>
-      <h2 class="h2">The same fix, both ways.</h2>
+<section class="band bone2">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Illustrative model</p>
+      <h2 class="h2">Per 10,000 employees, per year.</h2>
+      <p class="lede">This is a model, not a measured result. It is shown with its inputs so you
+      can replace them with yours &mdash; the arithmetic matters more than our defaults.</p>
     </div>
-    <div class="tblwrap">
-      <table class="spec">
-        <thead><tr><th>&nbsp;</th><th>Script-based</th><th>Nanoheal</th></tr></thead>
-        <tbody>
-          <tr><td>Detection</td><td class="bad">Rebuilt per fix; polls on an interval</td><td class="good">The OS event is the trigger</td></tr>
-          <tr><td>Idle cost</td><td class="bad">CPU, memory and battery on every device, continuously</td><td class="good">None &mdash; nothing is watching</td></tr>
-          <tr><td>Detection latency</td><td class="bad">Up to one polling interval</td><td class="good">Milliseconds</td></tr>
-          <tr><td>What ships</td><td class="bad">Executable code, per fix</td><td class="good">Sealed knowledge, kilobytes</td></tr>
-          <tr><td>Agent growth</td><td class="bad">Linear with automation count</td><td class="good">Flat</td></tr>
-          <tr><td>Time to first fix</td><td class="bad">Weeks &mdash; specify, script, test, approve, publish</td><td class="good">Day one, from 1,200+ pre-built configurations</td></tr>
-          <tr><td>On estate drift</td><td class="bad">Fails silently until someone notices</td><td class="good">Engine updated centrally; knowledge unaffected</td></tr>
-          <tr><td>Security review</td><td class="bad">Per script, line by line, every revision</td><td class="good">Capability set reviewed once; entries carry no code</td></tr>
-          <tr><td>Who can create one</td><td class="bad">An engineer who writes PowerShell</td><td class="good">Anyone in IT who can describe the task</td></tr>
-          <tr><td>Cost of the next one</td><td class="bad">Roughly the same as the last</td><td class="good">Approaching zero</td></tr>
-        </tbody>
-      </table>
+    <div class="metrics"><div class="metric"><em>Modelled</em><b>$1.0M</b><span>IT cost avoided &mdash; contacts that never reach a human, at your blended cost per ticket</span></div><div class="metric"><em>Modelled</em><b>$8.6M</b><span>employee productivity recovered &mdash; disruption time returned to the people being paid for it</span></div><div class="metric"><em>Input</em><b>Ticket mix</b><span>your top call drivers, matched against the 1,200+ pre-built configurations before anything is built</span></div><div class="metric"><em>Input</em><b>Rates</b><span>your cost per contact and your loaded employee cost &mdash; both numbers you already have</span></div></div>
+    <div class="prose" style="margin-top:34px">
+      <p>The productivity figure is nearly nine times the IT saving, and that ratio is the honest
+      argument for autonomy. The service desk cost of a broken VPN profile is one contact. The
+      business cost is the hour before the contact, the interruption after it, and the same
+      condition sitting unreported on a few thousand other machines.</p>
+      <p>Which is also why the <a href="../../platform/experience-score/" style="color:var(--teal)">DEX
+      score</a> matters commercially: a patented methodology defined independently of any release
+      means a ten-point gain means the same thing in Q3 as it did in Q1, so the improvement can be
+      priced rather than argued about.</p>
     </div>
+  </div>
+</section>
 
-    <div class="prose" style="margin-top:52px">
-      <h3>The fair objection</h3>
-      <p>A reasonable engineer will point out that a script can do <em>anything</em>, and a fixed
-      capability set cannot. That is true, and it is the actual trade being made.</p>
-      <p>The answer is that the capability set covers the operations endpoint remediation genuinely
-      consists of &mdash; files, registry, services, processes, configuration, software, network,
-      identity &mdash; and that the long tail of real tickets is overwhelmingly recombination of
-      those primitives with different parameters, not novel computation. Where something truly
-      exceptional is required, orchestration to an external system remains available. What you
-      give up is the ability to write arbitrary code on the endpoint. What you get back is that
-      nobody has to maintain arbitrary code on the endpoint.</p>
-      <p class="pull">Coverage stalls in script-based estates for a reason that has nothing to do
-      with ambition. Change the cost of the next automation and the ceiling moves.</p>
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Where the numbers come from</p>
+      <h2 class="h2">Four levers, one loop.</h2>
     </div>
-
-    <div class="next"><a href="../../platform/automate/"><span class="k">A</span><b>Automate</b><span>The capability API, in detail.</span></a><a href="../../platform/intelligence/"><span class="k">I</span><b>Intelligence</b><span>How the parameters get chosen.</span></a><a href="../../platform/"><span class="k">&rarr;</span><b>The AIM-X loop</b><span>Where this sits in the whole framework.</span></a></div>
+    <div class="next"><a href="../../solutions/ticket-deflection/"><span class="k">&rarr;</span><b>Ticket deflection</b><span>Contacts that never happen.</span></a><a href="../../solutions/it-task-automation/"><span class="k">&rarr;</span><b>IT task automation</b><span>Agent minutes returned.</span></a><a href="../../solutions/compliance-audit/"><span class="k">&rarr;</span><b>Compliance &amp; audit</b><span>Remediation effort and audit cost.</span></a></div><div class="next"><a href="../../platform/experience-score/"><span class="k">X</span><b>Experience score</b><span>The number the improvement is measured on.</span></a><a href="../../platform/manage/"><span class="k">M</span><b>Continuous improvement</b><span>How the next opportunity is ranked and priced.</span></a><a href="../../platform/automation-library/"><span class="k">1,200+</span><b>Automation library</b><span>Why value starts on day one.</span></a></div>
   </div>
 </section>
 
