@@ -122,7 +122,7 @@ SCOPE_FLOW = """
 <div class="scope-stats">
   <div class="scope-stat"><span class="ic"><svg class="scope-ic" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg></span><span class="scope-stat-label">No scripts to write</span></div>
   <div class="scope-stat"><span class="ic"><svg class="scope-ic" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12a10 10 0 0 1 20 0M2 12a10 10 0 0 0 20 0" stroke-width="1.4"></path><path d="M4 4l16 16" stroke-width="1.4"></path></svg></span><span class="scope-stat-label">Real-time issue resolution</span></div>
-  <div class="scope-stat"><span class="ic"><svg class="scope-ic" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3.2 2"></path></svg></span><span class="scope-stat-label">Compliance automated</span></div>
+  <div class="scope-stat"><span class="ic"><svg class="scope-ic" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3.2 2"></path></svg></span><span class="scope-stat-label">Compliance ad IT automated</span></div>
   <div class="scope-stat"><span class="ic"><svg class="scope-ic" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9V6z"></path></svg></span><span class="scope-stat-label">IT operations, always on</span></div>
 </div>
 """
@@ -213,8 +213,7 @@ PAGES["/"] = {
     <div class="head">
       <p class="label">The category</p>
       <h2 class="h2">The operating system for the digital workplace.</h2>
-      <p class="lede">One intelligence layer that sees what&rsquo;s happening, understands the
-      context, and acts &mdash; across every device, every policy and every system IT depends on.</p>
+      <p class="lede">Intelligence continuously measures experience, gathers context, identifies new opportunities to automate, resolves issues as they emerge, keeps devices and environments compliant, and orchestrates work across the IT ecosystem</p>
     </div>
 
     <div class="ostabs">
@@ -227,29 +226,22 @@ PAGES["/"] = {
           <div class="os-acc-item">
             <label for="ostab-1" class="os-acc-label">Automate Issues</label>
             <div class="os-acc-body" id="obody-1">
-              <p class="os-cap-title">Catch the problem. Fix it before it becomes a ticket.</p>
-              <p class="os-cap-desc">Nanoheal listens for symptoms reported by the operating
-              system and application environment, then decides what to do about them on the
-              device, in real time. No script. No polling. No ticket.</p>
+              <p class="os-cap-title">Turn every symptom into a reusable capability</p>
+              <p class="os-cap-desc">The context layer gives intelligence the knowledge needed to extend its capabilities to new symptoms across the OS, applications, and resources — without code. Validate once, then make it available through Autoheal, Self-service, or Assisted IT</p>
             </div>
           </div>
           <div class="os-acc-item">
             <label for="ostab-2" class="os-acc-label">Compliance &amp; Governance</label>
             <div class="os-acc-body" id="obody-2">
-              <p class="os-cap-title">Know what&rsquo;s out of policy. Put it right.</p>
-              <p class="os-cap-desc">Observe &rarr; identify &rarr; remediate &rarr; prove.
-              Nanoheal finds the deviation and applies the policy itself &mdash; compliance
-              becomes continuous action, not periodic checking.</p>
+              <p class="os-cap-title">IT management automated. Compliance continuously enforced</p>
+              <p class="os-cap-desc">The context layer gives intelligence the knowledge to extend its capabilities without code — automating software, patches, security updates and policies by persona, while continuously detecting and restoring drift to keep the fleet compliant.</p>
             </div>
           </div>
           <div class="os-acc-item">
             <label for="ostab-3" class="os-acc-label">Orchestrate the IT Ecosystem</label>
             <div class="os-acc-body" id="obody-3">
-              <p class="os-cap-title">The work doesn&rsquo;t stop at the device. Neither does
-              Nanoheal.</p>
-              <p class="os-cap-desc">A digital workplace problem may begin on a device. The work
-              required to resolve it usually doesn&rsquo;t end there &mdash; one context layer
-              decides what to do, then acts wherever the work actually belongs, no code.</p>
+              <p class="os-cap-title">The device is just the beginning. The work extends across IT</p>
+              <p class="os-cap-desc">Intelligence extends beyond the device — giving human agents and automation the context to act. SOPs, how-to guides and knowledge help IT serve better, while APIs, MCP servers, data and system capabilities become no-code building blocks for analysis, action and orchestration across the IT ecosystem.</p>
               <div style="margin-top:16px">
                 <a class="btn btn-line" href="/platform/orchestration/">How orchestration works</a>
               </div>
@@ -271,10 +263,8 @@ PAGES["/"] = {
   <div class="wrap">
     <div class="head">
       <p class="label">The foundation underneath</p>
-      <h2 class="h2">DEX is how Nanoheal sees. It&rsquo;s not the pitch &mdash; it&rsquo;s the base.</h2>
-      <p class="lede">Every automation, policy fix and orchestration above is driven by DEX
-      intelligence and context, not by a script guessing at what happened. Measurement is table
-      stakes and we hold the table &mdash; what separates Nanoheal is what happens next.</p>
+      <h2 class="h2">Solving the Knowing and Doing in DEX</h2>
+      <p class="lede">DEX gives IT the intelligence to understand the experience. Nanoheal closes the gap between insight and action — using context to create the knowledge that extends capabilities without code</p>
     </div>
     """ + SCOPE_FLOW + """
     <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
@@ -310,7 +300,7 @@ PAGES["/"] = {
   <div class="wrap">
     <div class="head">
       <p class="label">Who it&rsquo;s for</p>
-      <h2 class="h2">One engine. Different value, depending who&rsquo;s running it.</h2>
+      <h2 class="h2">One platform. different value, depending who’s running it.</h2>
       <p class="lede">Whether IT sits inside your company or you deliver it as a service, it&rsquo;s
       the same autonomous platform &mdash; positioned for how you work.</p>
     </div>
