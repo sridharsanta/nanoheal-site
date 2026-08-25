@@ -413,26 +413,39 @@ table.spec td.bad{color:var(--clay)}
   .pf-arrow2{display:none}
 }
 
-/* operating-system tabs (Rulebase-style underline tabs + paired visual card) */
+/* operating-system section (Rulebase-style vertical accordion + large visual) */
 .ostabs{margin-top:44px}
 .ostabs-radio{position:absolute; opacity:0; pointer-events:none; width:1px; height:1px}
-.ostabs-nav{display:flex; gap:30px; border-bottom:1px solid var(--line); flex-wrap:wrap}
-.ostabs-nav label{display:block; padding:0 0 15px; font-size:14px; font-weight:500; color:var(--tx-3); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .15s}
-.ostabs-nav label:hover{color:var(--tx)}
-.ostabs-panel{display:none; padding-top:36px}
-#ostab-1:checked ~ .ostabs-nav label[for="ostab-1"],
-#ostab-2:checked ~ .ostabs-nav label[for="ostab-2"],
-#ostab-3:checked ~ .ostabs-nav label[for="ostab-3"]{color:var(--tx); border-bottom-color:var(--tx)}
-#ostab-1:checked ~ #panel-1,
-#ostab-2:checked ~ #panel-2,
-#ostab-3:checked ~ #panel-3{display:block}
+.os-layout{display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:52px; align-items:start}
 
-.os-cap{max-width:62ch}
-.os-cap-title{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:19px; margin-bottom:8px}
-.os-cap-desc{font-size:14.5px; color:var(--tx-2); line-height:1.55}
-.osshot{margin-top:28px; border:1.5px dashed var(--line-2); border-radius:calc(var(--r) * 2); background-color:var(--bone-2); min-height:320px; display:flex; align-items:center; justify-content:center; padding:32px}
-.osshot .sig-flow{margin:0; width:100%; max-width:540px}
-.osshot .chain{margin-top:0; width:100%}
+.os-accordion{border-top:1px solid var(--line)}
+.os-acc-item{border-bottom:1px solid var(--line)}
+.os-acc-label{display:block; padding:19px 0; font-size:15px; font-weight:500; color:var(--tx-3); cursor:pointer; transition:color .15s}
+.os-acc-label:hover{color:var(--tx)}
+.os-acc-body{display:none; padding:0 0 22px; max-width:44ch}
+.os-cap-title{font-family:"Instrument Sans",sans-serif; font-weight:500; font-size:15.5px; color:var(--tx); margin-bottom:8px; line-height:1.4}
+.os-cap-desc{font-size:13.5px; color:var(--tx-2); line-height:1.6}
+
+#ostab-1:checked ~ .os-layout label[for="ostab-1"],
+#ostab-2:checked ~ .os-layout label[for="ostab-2"],
+#ostab-3:checked ~ .os-layout label[for="ostab-3"]{color:var(--tx); font-weight:600}
+#ostab-1:checked ~ .os-layout #obody-1,
+#ostab-2:checked ~ .os-layout #obody-2,
+#ostab-3:checked ~ .os-layout #obody-3{display:block}
+
+.os-visual{position:relative; min-height:520px}
+.os-visual-panel{display:none; position:absolute; inset:0; align-items:center; justify-content:center; text-align:center;
+  border:1.5px dashed var(--line-2); border-radius:calc(var(--r) * 2); background-color:var(--bone-2);
+  background-image:repeating-linear-gradient(135deg, transparent, transparent 11px, var(--line) 11px, var(--line) 12px)}
+.os-visual-panel span{background:var(--paper); border:1px solid var(--line); border-radius:99px; padding:8px 18px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--tx-3)}
+#ostab-1:checked ~ .os-layout #opanel-1,
+#ostab-2:checked ~ .os-layout #opanel-2,
+#ostab-3:checked ~ .os-layout #opanel-3{display:flex}
+
+@media (max-width:900px){
+  .os-layout{grid-template-columns:1fr; gap:8px}
+  .os-visual{min-height:320px; margin-top:8px}
+}
 
 /* signal flow: automate issues / compliance & governance */
 .sig-flow{max-width:540px; margin:40px auto 0}

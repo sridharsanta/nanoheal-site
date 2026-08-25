@@ -222,74 +222,45 @@ PAGES["/"] = {
       <input type="radio" name="ostab" id="ostab-2" class="ostabs-radio">
       <input type="radio" name="ostab" id="ostab-3" class="ostabs-radio">
 
-      <div class="ostabs-nav">
-        <label for="ostab-1">Automate Issues</label>
-        <label for="ostab-2">Compliance &amp; Governance</label>
-        <label for="ostab-3">Orchestrate the IT Ecosystem</label>
-      </div>
+      <div class="os-layout">
+        <div class="os-accordion">
+          <div class="os-acc-item">
+            <label for="ostab-1" class="os-acc-label">Automate Issues</label>
+            <div class="os-acc-body" id="obody-1">
+              <p class="os-cap-title">Catch the problem. Fix it before it becomes a ticket.</p>
+              <p class="os-cap-desc">Nanoheal listens for symptoms reported by the operating
+              system and application environment, then decides what to do about them on the
+              device, in real time. No script. No polling. No ticket.</p>
+            </div>
+          </div>
+          <div class="os-acc-item">
+            <label for="ostab-2" class="os-acc-label">Compliance &amp; Governance</label>
+            <div class="os-acc-body" id="obody-2">
+              <p class="os-cap-title">Know what&rsquo;s out of policy. Put it right.</p>
+              <p class="os-cap-desc">Observe &rarr; identify &rarr; remediate &rarr; prove.
+              Nanoheal finds the deviation and applies the policy itself &mdash; compliance
+              becomes continuous action, not periodic checking.</p>
+            </div>
+          </div>
+          <div class="os-acc-item">
+            <label for="ostab-3" class="os-acc-label">Orchestrate the IT Ecosystem</label>
+            <div class="os-acc-body" id="obody-3">
+              <p class="os-cap-title">The work doesn&rsquo;t stop at the device. Neither does
+              Nanoheal.</p>
+              <p class="os-cap-desc">A digital workplace problem may begin on a device. The work
+              required to resolve it usually doesn&rsquo;t end there &mdash; one context layer
+              decides what to do, then acts wherever the work actually belongs, no code.</p>
+              <div style="margin-top:16px">
+                <a class="btn btn-line" href="/platform/orchestration/">How orchestration works</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="ostabs-panel" id="panel-1">
-        <div class="os-cap">
-          <p class="os-cap-title">Catch the problem. Fix it before it becomes a ticket.</p>
-          <p class="os-cap-desc">Nanoheal listens for symptoms reported by the operating system
- and application environment, then decides what to do about them on the device, in
- real time. No script. No polling. No ticket.</p>
-        </div>
-        <div class="osshot">
-          <div class="sig-flow">
-            <div class="sig-step"><span class="sig-k">OS reports</span><span class="sig-v">VPN service failed</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step"><span class="sig-k">Context</span><span class="sig-v">Device + network + history + policy</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Restart &rarr; repair &rarr; verify</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step done">✓ Resolved</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ostabs-panel" id="panel-2">
-        <div class="os-cap">
-          <p class="os-cap-title">Know what&rsquo;s out of policy. Put it right.</p>
-          <p class="os-cap-desc">Observe &rarr; identify &rarr; remediate &rarr; prove. Nanoheal
-          finds the deviation and applies the policy itself &mdash; compliance becomes continuous
-          action, not periodic checking.</p>
-        </div>
-        <div class="osshot">
-          <div class="sig-flow">
-            <div class="sig-step"><span class="sig-k">Estate</span><span class="sig-v">3,412 devices</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step warn"><span class="sig-k">Observed</span><span class="sig-v">247 non-compliant</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step"><span class="sig-k">Nanoheal</span><span class="sig-v">Identifies the deviation, applies policy</span></div>
-            <div class="sig-arrow">&darr;</div>
-            <div class="sig-step done"><span class="sig-k">✓ 3,412 compliant</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ostabs-panel" id="panel-3">
-        <div class="os-cap">
-          <p class="os-cap-title">The work doesn&rsquo;t stop at the device. Neither does Nanoheal.</p>
-          <p class="os-cap-desc">A digital workplace problem may begin on a device. The work
-          required to resolve it usually doesn&rsquo;t end there &mdash; one context layer decides
-          what to do, then acts wherever the work actually belongs, no code.</p>
-          <div style="margin-top:20px">
-            <a class="btn btn-line" href="/platform/orchestration/">How orchestration works</a>
-          </div>
-        </div>
-        <div class="osshot">
-          <div class="chain">
-            <div class="chain-node origin"><span class="chain-title">Device</span><span class="chain-desc">Autoheal, self-service, assisted IT</span></div>
-            <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-            <div class="chain-node"><span class="chain-title">ITSM</span><span class="chain-desc">Tickets raised, updated and closed</span></div>
-            <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-            <div class="chain-node"><span class="chain-title">IT management</span><span class="chain-desc">Software, patch, policy, compliance</span></div>
-            <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-            <div class="chain-node"><span class="chain-title">Workplace systems</span><span class="chain-desc">Directory, identity, any standard API</span></div>
-            <span class="chain-arrow"><svg viewBox="0 0 16 10" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h13M9 1l5 4-5 4"></path></svg></span>
-            <div class="chain-node"><span class="chain-title">Human agent</span><span class="chain-desc">Only when judgement is genuinely needed</span></div>
-          </div>
+        <div class="os-visual">
+          <div class="os-visual-panel" id="opanel-1"><span>Screenshot &mdash; Automate Issues</span></div>
+          <div class="os-visual-panel" id="opanel-2"><span>Screenshot &mdash; Compliance &amp; Governance</span></div>
+          <div class="os-visual-panel" id="opanel-3"><span>Screenshot &mdash; Orchestrate the IT Ecosystem</span></div>
         </div>
       </div>
     </div>

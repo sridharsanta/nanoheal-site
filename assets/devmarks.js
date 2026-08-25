@@ -23,7 +23,7 @@
     ".ps > div", ".loop-legend > div", ".linkrow", ".next a",
     "table.spec tbody tr", ".chip", ".btn", ".loop",
     ".scope-glabel", ".scope-card-text", ".scope-pill", ".scope-stat-label", ".scope-bracket span",
-    ".os-cap-title", ".os-cap-desc", ".sig-step", ".chain-node"
+    ".os-cap-title", ".os-cap-desc"
   ].join(",");
 
   var on = false, marks = [], toast;
