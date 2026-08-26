@@ -546,12 +546,25 @@ table.spec td.bad{color:var(--clay)}
   padding:8px 18px; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
   color:var(--tx-3);
 }
-.shot img{display:block; width:100%; height:auto}
+/* Captures are focused crops, so they vary in width. The plate keeps them on a
+   light ground and centred rather than stretched past their natural size. */
+.shot-img{
+  display:flex; justify-content:center; background:#fff; padding:14px;
+  border-bottom:1px solid var(--line);
+}
+.shot-img img{display:block; max-width:100%; width:auto; height:auto}
+/* Captures are light-mode console crops; take the glare off in dark themes
+   rather than inverting them, which wrecks the product's own colour coding. */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .shot-img{background:#E9E6E3; filter:brightness(.88) saturate(.95)}
+}
+:root[data-theme="dark"] .shot-img{background:#E9E6E3; filter:brightness(.88) saturate(.95)}
 .shot figcaption{
   padding:14px 18px; border-top:1px solid var(--line);
   font-size:13.5px; color:var(--tx-2); line-height:1.5;
 }
 .shot figcaption b{color:var(--tx); font-weight:500}
+@media (max-width:640px){.shot-img{padding:8px}}
 .shots{display:grid; grid-template-columns:1fr 1fr; gap:14px}
 .shots .shot{margin-top:0}
 @media (max-width:900px){.shots{grid-template-columns:1fr}}

@@ -46,9 +46,9 @@
     </div>
 
     <figure class="shot">
-<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; automation library</span></div>
-<div class="shot-frame"><span>Screenshot &mdash; knowledge entry</span></div>
-<figcaption><b>What an automation actually is here.</b> The trigger the OS emits, the capabilities selected, the guardrails it runs under and the validation record — kilobytes of sealed knowledge, with no code to review line by line.</figcaption>
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; workflow builder</span></div>
+<div class="shot-img"><img src="../../assets/shots/workflow-timeline.png" alt="Nanoheal console: Workflow timeline — trigger" loading="lazy" decoding="async"></div>
+<figcaption><b>The symptom is the first line of the automation.</b> A workflow opens with WHEN, and WHEN is a condition the operating system already reports — here, a high disk usage alert. Nothing was deployed to go looking for it.</figcaption>
 </figure>
 
     <div class="issues">
@@ -114,10 +114,11 @@
           <div class="tile"><h3>Autoheal.</h3><p>It resolves before anyone notices. No ticket, no
           contact, no employee interruption &mdash; this is the 17% in production at a Fortune 100
           manufacturer.</p></div>
-          <div class="tile"><h3>Self-service.</h3><p>The employee is offered the fix at the moment
+          <div class="tile"><h3>Self Help.</h3><p>The employee is offered the fix at the moment
           of failure and applies it themselves. Deflection without the service desk touching it.</p></div>
-          <div class="tile"><h3>Assisted.</h3><p>The service desk executes the same capability in a
-          single action, with no runbook to follow and no elevation risk.</p></div>
+          <div class="tile"><h3>Remote Execution.</h3><p>The service desk runs the same capability
+          against a device, a group or a whole site in a single action &mdash; no runbook to
+          follow, no elevation risk.</p></div>
         </div>
       </div>
 
@@ -133,10 +134,40 @@
           <a href="../../platform/automation-library/" style="color:var(--teal)">See what ships on day
           one &rarr;</a></p>
         </div>
+      </div>
+
+      <div class="issue">
+        <p class="n">06 &mdash; Change control</p>
+        <h3>Autonomy the change board can sign.</h3>
+        <p class="lead">The objection to unattended action is never the technology. It is the
+        question of who authorised it, against which population, and how it is reversed. That is
+        answered by structure, not by assurances.</p>
+        <div class="tblwrap" style="margin-top:22px">
+          <table class="spec">
+            <thead><tr><th>Step</th><th>What happens</th><th>What is recorded</th></tr></thead>
+            <tbody>
+              <tr><td>Author</td><td>The workflow is written and validated once</td><td>Author, version, capability set, action risk per step</td></tr>
+              <tr><td>Link scope</td><td>It is attached to a device classification &mdash; a site, a persona, a business unit</td><td>Which populations, linked by whom</td></tr>
+              <tr><td>Stage</td><td>The link becomes a pending change, not a live one</td><td>Change count per group, base version, last modified by</td></tr>
+              <tr><td>Publish</td><td>Staged changes are released to the estate together</td><td>Publish event, group, operator, time</td></tr>
+              <tr><td>Execute</td><td>The engine runs it when the trigger fires</td><td>Per-device outcome &mdash; success, failed, pending</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Nothing goes live because someone edited a profile. Linking an automation to a group
+          <em>stages</em> a change; a separate publish step releases it. That gap is deliberate: it
+          is where review, batching and a change window fit, and it is why the estate does not move
+          under you while an operator is still thinking.</p>
+          <p>Every step also carries an action-risk classification, so the difference between
+          clearing a cache and touching a service is visible at authoring time rather than
+          discovered at run time.</p>
+          <p class="pull">Unattended does not mean unaccounted for. Every execution resolves to an approved version, a scoped population and a named operator.</p>
+        </div>
         <figure class="shot">
-<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; resolution timeline</span></div>
-<div class="shot-frame"><span>Screenshot &mdash; live resolution</span></div>
-<figcaption><b>Symptom to resolved, on one endpoint.</b> The OS event, the knowledge match, the capabilities that ran and the verified end state — the same trace the service desk sees when a ticket never gets raised.</figcaption>
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; execution history</span></div>
+<div class="shot-img"><img src="../../assets/shots/exec-history.png" alt="Nanoheal console: execution history" loading="lazy" decoding="async"></div>
+<figcaption><b>The record the chain leaves.</b> Each execution carries the automation, the machine, the capability behind it, the class of work &mdash; remediation, software distribution, inventory &mdash; and the outcome. Success, failed and pending all stay on the same record.</figcaption>
 </figure>
       </div>
     </div>

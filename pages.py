@@ -172,16 +172,21 @@ def nextcards(items):
     return f'<div class="next">{a}</div>'
 
 
-def shot(bar, label, caption):
+def shot(bar, label, caption, src=None):
     """Product screenshot frame.
 
-    The grid placeholder inside .shot-frame is a stand-in: when the real
-    capture exists, swap the whole <div class="shot-frame"> for an
-    <img src="/assets/shots/....png" alt="..."> and nothing else changes.
+    Pass ``src`` (a file in /assets/shots/) to render the real capture; the
+    captures are focused crops of the AEX console, not full-window shots, so
+    they stay legible at column width. Without ``src`` the grid placeholder
+    stands in and ``label`` names what the capture will show.
     """
+    alt = label.replace("Screenshot &mdash; ", "").replace("Screenshot — ", "")
+    inner = (f'<div class="shot-img"><img src="/assets/shots/{src}" '
+             f'alt="Nanoheal console: {alt}" loading="lazy" decoding="async"></div>'
+             if src else f'<div class="shot-frame"><span>{label}</span></div>')
     return f"""<figure class="shot">
 <div class="shot-bar"><i></i><i></i><i></i><span>{bar}</span></div>
-<div class="shot-frame"><span>{label}</span></div>
+{inner}
 <figcaption>{caption}</figcaption>
 </figure>"""
 
@@ -431,10 +436,12 @@ PAGES["/platform/"] = {
        "The device is just the beginning"),
     ]) + """
     """ + shot("nanoheal &middot; console",
-               "Screenshot &mdash; unified console",
-               "<b>One console, four jobs.</b> Experience measurement, the automation library, "
-               "compliance posture and ecosystem orchestration are views onto the same estate "
-               "and the same knowledge \u2014 not four products sharing a login.") + """
+               "Screenshot &mdash; Experience — report catalog",
+               "<b>One console, four jobs.</b> Automate, Manage, Experience and "
+               "Administration are branches of the same navigation rather than four "
+               "products sharing a login — here, the Experience branch and its report "
+               "catalog. The estate you measure is the estate you act on.",
+               "console-experience.png") + """
   </div>
 </section>
 
@@ -560,6 +567,13 @@ PAGES["/digital-experience/"] = {
       <div class="tile"><h3>Employee experience</h3><p>Sentiment and reported friction, scored
       alongside the telemetry rather than in a separate survey tool.</p></div>
     </div>
+    """ + shot("nanoheal &middot; dashboards",
+               "Screenshot &mdash; report catalog",
+               "<b>Twenty-four finished reports, not a query builder.</b> Leadership summary, "
+               "endpoint scorecards, application health, network quality, workforce sentiment, "
+               "industry benchmarks and the IT-service numbers &mdash; categorised, searchable "
+               "and live on day one.",
+               "dex-reports.png") + """
   </div>
 </section>
 
@@ -804,11 +818,12 @@ PAGES["/platform/automate/"] = {
       breaks when a build changes underneath it.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; automation library",
-               "Screenshot &mdash; knowledge entry",
-               "<b>What an automation actually is here.</b> The trigger the OS emits, the "
-               "capabilities selected, the guardrails it runs under and the validation record "
-               "\u2014 kilobytes of sealed knowledge, with no code to review line by line.") + """
+    """ + shot("nanoheal &middot; workflow builder",
+               "Screenshot &mdash; Workflow timeline — trigger",
+               "<b>The symptom is the first line of the automation.</b> A workflow opens "
+               "with WHEN, and WHEN is a condition the operating system already reports — "
+               "here, a high disk usage alert. Nothing was deployed to go looking for it.",
+               "workflow-timeline.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -873,10 +888,11 @@ PAGES["/platform/automate/"] = {
           <div class="tile"><h3>Autoheal.</h3><p>It resolves before anyone notices. No ticket, no
           contact, no employee interruption &mdash; this is the 17% in production at a Fortune 100
           manufacturer.</p></div>
-          <div class="tile"><h3>Self-service.</h3><p>The employee is offered the fix at the moment
+          <div class="tile"><h3>Self Help.</h3><p>The employee is offered the fix at the moment
           of failure and applies it themselves. Deflection without the service desk touching it.</p></div>
-          <div class="tile"><h3>Assisted.</h3><p>The service desk executes the same capability in a
-          single action, with no runbook to follow and no elevation risk.</p></div>
+          <div class="tile"><h3>Remote Execution.</h3><p>The service desk runs the same capability
+          against a device, a group or a whole site in a single action &mdash; no runbook to
+          follow, no elevation risk.</p></div>
         </div>
       </div>
 
@@ -892,11 +908,43 @@ PAGES["/platform/automate/"] = {
           <a href="/platform/automation-library/" style="color:var(--teal)">See what ships on day
           one &rarr;</a></p>
         </div>
-        """ + shot("nanoheal &middot; resolution timeline",
-                   "Screenshot &mdash; live resolution",
-                   "<b>Symptom to resolved, on one endpoint.</b> The OS event, the knowledge "
-                   "match, the capabilities that ran and the verified end state \u2014 the same "
-                   "trace the service desk sees when a ticket never gets raised.") + """
+      </div>
+
+      <div class="issue">
+        <p class="n">06 &mdash; Change control</p>
+        <h3>Autonomy the change board can sign.</h3>
+        <p class="lead">The objection to unattended action is never the technology. It is the
+        question of who authorised it, against which population, and how it is reversed. That is
+        answered by structure, not by assurances.</p>
+        <div class="tblwrap" style="margin-top:22px">
+          <table class="spec">
+            <thead><tr><th>Step</th><th>What happens</th><th>What is recorded</th></tr></thead>
+            <tbody>
+              <tr><td>Author</td><td>The workflow is written and validated once</td><td>Author, version, capability set, action risk per step</td></tr>
+              <tr><td>Link scope</td><td>It is attached to a device classification &mdash; a site, a persona, a business unit</td><td>Which populations, linked by whom</td></tr>
+              <tr><td>Stage</td><td>The link becomes a pending change, not a live one</td><td>Change count per group, base version, last modified by</td></tr>
+              <tr><td>Publish</td><td>Staged changes are released to the estate together</td><td>Publish event, group, operator, time</td></tr>
+              <tr><td>Execute</td><td>The engine runs it when the trigger fires</td><td>Per-device outcome &mdash; success, failed, pending</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Nothing goes live because someone edited a profile. Linking an automation to a group
+          <em>stages</em> a change; a separate publish step releases it. That gap is deliberate: it
+          is where review, batching and a change window fit, and it is why the estate does not move
+          under you while an operator is still thinking.</p>
+          <p>Every step also carries an action-risk classification, so the difference between
+          clearing a cache and touching a service is visible at authoring time rather than
+          discovered at run time.</p>
+          <p class="pull">Unattended does not mean unaccounted for. Every execution resolves to an approved version, a scoped population and a named operator.</p>
+        </div>
+        """ + shot("nanoheal &middot; execution history",
+               "Screenshot &mdash; execution history",
+               "<b>The record the chain leaves.</b> Each execution carries the automation, the "
+               "machine, the capability behind it, the class of work &mdash; remediation, "
+               "software distribution, inventory &mdash; and the outcome. Success, failed and "
+               "pending all stay on the same record.",
+               "exec-history.png") + """
       </div>
     </div>
 
@@ -1339,12 +1387,12 @@ PAGES["/platform/dex-intelligence/"] = {
       engine to execute. There is no handoff, because there is nowhere to hand off to.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; experience overview",
-               "Screenshot &mdash; experience overview",
-               "<b>Fleet DEX score, and what is moving it.</b> Device, application, network and "
-               "sentiment scores over time, with the populations dragging the number down ranked "
-               "by how many employees they affect \u2014 and an <em>Automate this</em> action on "
-               "every row.") + """
+    """ + shot("nanoheal &middot; experience score",
+               "Screenshot &mdash; DEX trend — fleet",
+               "<b>Fleet DEX as a number that moves.</b> Tracked continuously against a "
+               "methodology fixed before the work started, so a change in the line is a "
+               "change in the estate rather than a change in how it was counted.",
+               "dex-score.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -1428,10 +1476,55 @@ PAGES["/platform/dex-intelligence/"] = {
           <div class="tile"><h3>Persona and population.</h3><p>Segment by role, site, device
           class or business unit &mdash; the unit an automation is later targeted at.</p></div>
         </div>
+        """ + shot("nanoheal &middot; inventory",
+               "Screenshot &mdash; managed estate",
+               "<b>One estate, several operating systems.</b> Windows, macOS and Linux "
+               "endpoints sit in the same inventory with the same health, agent and "
+               "last-seen columns &mdash; so a population is defined by who uses it, not "
+               "by which console can see it.",
+               "inventory.png") + """
       </div>
 
       <div class="issue">
-        <p class="n">06 &mdash; The handoff that isn&rsquo;t one</p>
+        <p class="n">06 &mdash; What ships as standard</p>
+        <h3>Twenty-four reports, live on day one.</h3>
+        <p class="lead">Not a canvas and a query builder. A catalogue of finished analytics that
+        answers the questions an IT organisation already has &mdash; grouped the way the
+        conversation actually splits, from the leadership summary down to the endpoint.</p>
+        <div class="tblwrap" style="margin-top:22px">
+          <table class="spec">
+            <thead><tr><th>Category</th><th>Reports</th></tr></thead>
+            <tbody>
+              <tr><td>Digital experience</td><td>DEX Score Overview &middot; What Changed &mdash; Device &amp; DEX Drivers &middot; IT Leadership &mdash; Experience Summary &middot; Device Friction &rarr; Productivity Loss</td></tr>
+              <tr><td>Device fleet &amp; endpoints</td><td>Endpoint Experience Scorecard &middot; Boot &amp; Logon Performance &middot; Device Lifecycle &amp; Refresh Readiness &middot; CPU, Memory &amp; Right-Sizing</td></tr>
+              <tr><td>Applications on endpoints</td><td>Business Application Health &middot; App Crashes &amp; Instability &middot; Software Inventory &amp; License Use &middot; Teams, Outlook &amp; Meeting Apps</td></tr>
+              <tr><td>Network &amp; remote access</td><td>Network, Wi-Fi &amp; VPN Quality &middot; Device Degradation &amp; Anomalies</td></tr>
+              <tr><td>Workforce experience</td><td>Employee Device Satisfaction &middot; Top Employee Complaints (IT)</td></tr>
+              <tr><td>Benchmarks &amp; fleet planning</td><td>DEX vs Industry Benchmark &middot; DEX by Site, Persona &amp; Working Style &middot; Predictive Device Risk</td></tr>
+              <tr><td>IT service &amp; remediation</td><td>Endpoint Auto-Remediation &middot; Device-Related Ticket Volume &middot; Endpoint Incident MTTR &middot; Device Ops &mdash; Cost &amp; ROI &middot; Endpoint Compliance &amp; Posture</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Two of those categories are worth pausing on, because they are the ones a pure
+          observability product cannot fill. <em>IT service &amp; remediation</em> reports on
+          auto-remediation volume, ticket deflection, MTTR and cost &mdash; numbers that only
+          exist if the platform is also the thing doing the fixing. <em>Benchmarks &amp; fleet
+          planning</em> puts your score next to an industry baseline and a predicted risk curve,
+          which is what turns a measurement into a plan.</p>
+          <p class="pull">Analytics parity is the price of entry, not the argument. It is on this page so that scope is never the reason a conversation ends.</p>
+        </div>
+        """ + shot("nanoheal &middot; dashboards",
+               "Screenshot &mdash; report catalog",
+               "<b>The catalogue, not a blank canvas.</b> Every report is categorised, "
+               "searchable and one click from a view &mdash; and it sits in the same "
+               "navigation as the automation library, the policy catalogue and the "
+               "execution record.",
+               "console-experience.png") + """
+      </div>
+
+      <div class="issue">
+        <p class="n">07 &mdash; The handoff that isn&rsquo;t one</p>
         <h3>Every insight is an automation opportunity.</h3>
         <p class="lead">This is the part that separates intelligence from reporting. A finding
         here does not become a JIRA ticket for the automation team &mdash; it becomes a candidate
@@ -1445,11 +1538,12 @@ PAGES["/platform/dex-intelligence/"] = {
           entry</a> and a human validates it once.</p>
           <p class="pull">The measurement doesn't hand you a finding. It hands you a fix, priced by how many people it helps.</p>
         </div>
-        """ + shot("nanoheal &middot; automation opportunities",
-                   "Screenshot &mdash; automation opportunities",
-                   "<b>Ranked by what it would actually return.</b> Detected conditions with "
-                   "affected population, estimated ticket volume and projected DEX gain \u2014 "
-                   "each with the capability set that would resolve it, ready to validate.") + """
+        """ + shot("nanoheal &middot; experience drivers",
+                   "Screenshot &mdash; Score drivers by location and cause",
+                   "<b>Which populations, and which cause.</b> The score is decomposed by site "
+                   "and by driver — connectivity leads here at 32% — so the next automation is "
+                   "chosen by what it would return, not by what is easiest to build.",
+                   "dex-drivers.png") + """
       </div>
     </div>
 
@@ -1492,11 +1586,13 @@ PAGES["/platform/compliance-governance/"] = {
       capability set covers all of it.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; compliance posture",
-               "Screenshot &mdash; compliance posture",
-               "<b>Desired state, actual state, and the gap closing itself.</b> Policy, patch and "
-               "software compliance by persona and population, with drifted devices shown against "
-               "the correction already queued for them.") + """
+    """ + shot("nanoheal &middot; policy templates",
+               "Screenshot &mdash; ADMX policy catalog",
+               "<b>Desired state, from the catalog you already know.</b> 4,080 ADMX policy "
+               "templates are first-class objects: pick the template, scope it to a device "
+               "classification, and the engine holds the estate there. No settings "
+               "hand-authored one at a time.",
+               "gpo-admx.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -1534,6 +1630,31 @@ PAGES["/platform/compliance-governance/"] = {
           <p class="pull">Reporting a device out of policy is a finding. Putting it back in policy
           is the job.</p>
         </div>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Policy templates.</h3><p>4,080 ADMX templates, browsable by
+          category and subcategory. The Windows policy vocabulary your team already knows,
+          available as objects to scope rather than settings to re-author.</p></div>
+          <div class="tile"><h3>Protection profiles.</h3><p>Lockdown baselines expressed as
+          policies over registry, services, application control, filesystem paths and removable
+          media &mdash; Defender real-time protection, BitLocker on the OS volume, machine
+          inactivity limits.</p></div>
+          <div class="tile"><h3>Collection profiles.</h3><p>What the agent gathers in the first
+          place: performance, storage, user activity and network. The measuring half is itself a
+          scoped, published configuration &mdash; not a fixed sensor set you inherit.</p></div>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>All three are the same kind of object as an automation, and they travel the same
+          route: attach to a device classification, stage the change, publish it. One change-control
+          path covers remediation, software, telemetry and hardening, which is the reason a
+          compliance conversation here does not need a second tool to finish.</p>
+        </div>
+        """ + shot("nanoheal &middot; data collection",
+               "Screenshot &mdash; collection profiles",
+               "<b>What you measure is a published configuration too.</b> Performance, storage, "
+               "network and user-activity collection are profiles you attach to a group and "
+               "release &mdash; so a persona can be measured differently from a kiosk without "
+               "a separate deployment.",
+               "data-collection.png") + """
       </div>
 
       <div class="issue">
@@ -1566,11 +1687,13 @@ PAGES["/platform/compliance-governance/"] = {
           with what result &mdash; exportable as the evidence pack an audit asks for, not
           reconstructed from logs.</p></div>
         </div>
-        """ + shot("nanoheal &middot; evidence &amp; audit trail",
-                   "Screenshot &mdash; evidence and audit trail",
-                   "<b>Every unattended action, accounted for.</b> Execution history by policy, "
-                   "population and capability version, with the approval record attached to each "
-                   "knowledge entry.") + """
+        """ + shot("nanoheal &middot; activity log",
+                   "Screenshot &mdash; Activity log",
+                   "<b>Who changed what, on the record.</b> Every config edit, publish and "
+                   "link is logged with the module it touched, the account that made it and "
+                   "the outcome — the console&rsquo;s own change history, kept separate from "
+                   "the device telemetry stream.",
+                   "audit-log.png") + """
       </div>
     </div>
 
@@ -1612,11 +1735,13 @@ PAGES["/platform/orchestration/"] = {
       written, so no connector is maintained.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; ecosystem orchestration",
-               "Screenshot &mdash; cross-system run",
-               "<b>One resolution, four systems, unattended.</b> The device action, the directory "
-               "change, the ITSM update and the licence reclaim shown as a single governed run "
-               "\u2014 with the guardrails each step was checked against.") + """
+    """ + shot("nanoheal &middot; connectors",
+               "Screenshot &mdash; Ecosystem connectors",
+               "<b>The ecosystem, described rather than coded.</b> ServiceNow for incident "
+               "and CMDB sync, Teams and Slack for escalation, BMC Helix for asset "
+               "reconciliation, Autotask for PSA tickets — each scoped to a site, each a "
+               "statement of intent rather than an integration project.",
+               "connectors.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -1649,6 +1774,21 @@ PAGES["/platform/orchestration/"] = {
           time either side ships a release.</p>
           <p class="pull">The reason integration is normally slow is that somebody has to write
           the integration. Remove that and the schedule changes shape.</p>
+        </div>
+        <div class="tblwrap" style="margin-top:24px">
+          <table class="spec">
+            <thead><tr><th>Surface</th><th>Direction</th><th>What it is for</th></tr></thead>
+            <tbody>
+              <tr><td>Connectors</td><td>Nanoheal &rarr; a product</td><td>Named, per-site links to the systems the work lives in &mdash; ITSM, CMDB, PSA, collaboration</td></tr>
+              <tr><td>Event subscriptions</td><td>Nanoheal &rarr; any URL</td><td>Pushing device and remediation events into whatever you already run, without a connector for it</td></tr>
+              <tr><td>API keys &amp; catalog</td><td>A product &rarr; Nanoheal</td><td>Scoped programmatic access for the systems that need to read or drive the estate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Connectors are scoped to a site rather than to the tenant, which matters more than it
+          sounds: a regional CMDB, a business unit&rsquo;s own ServiceNow instance and a partner&rsquo;s
+          PSA can coexist under one console without anybody having to pick a winner.</p>
         </div>
       </div>
 
@@ -1740,27 +1880,47 @@ PAGES["/platform/workflows/"] = {
           problem rather than removed it &mdash; and inherited code nobody wrote but somebody
           still maintains.</p>
         </div>
+        """ + shot("nanoheal &middot; workflow builder",
+               "Screenshot &mdash; plain-language authoring",
+               "<b>Described, not built.</b> One field, in plain English. The context layer "
+               "resolves the description against what the engine can already do and returns "
+               "a workflow to review &mdash; and the quick starts underneath are capabilities, "
+               "not code samples.",
+               "workflow-nl.png") + """
       </div>
 
       <div class="issue">
         <p class="n">02 &mdash; Triggering</p>
         <h3>Four ways the same workflow starts.</h3>
-        <div class="tblwrap">
+        <p class="lead">In the console this is a single choice on the workflow&rsquo;s
+        <em>Details</em> step &mdash; three intents that cover four operational patterns, because
+        a symptom and a forecast arrive through the same door.</p>
+        <div class="tblwrap" style="margin-top:22px">
           <table class="spec">
-            <thead><tr><th>Trigger</th><th>Starts when</th><th>Typical use</th></tr></thead>
+            <thead><tr><th>Trigger</th><th>Starts when</th><th>Set in the builder as</th><th>Typical use</th></tr></thead>
             <tbody>
-              <tr><td>Symptom</td><td>The OS reports the condition &mdash; event, service state, crash, error</td><td>Autoheal, before anyone notices</td></tr>
-              <tr><td>Forecast</td><td>Prediction or anomaly detection flags a condition building</td><td>Prevention &mdash; the ticket never exists</td></tr>
-              <tr><td>Request</td><td>An employee, a service-desk agent or an IT agent asks</td><td>Self-service and assisted resolution</td></tr>
-              <tr><td>Schedule or policy</td><td>A window, a compliance obligation, a drift threshold</td><td>Patch rings, policy enforcement, routine tasks</td></tr>
+              <tr><td>Symptom</td><td>The OS reports the condition &mdash; event, service state, crash, error</td><td>Event trigger</td><td>Autoheal, before anyone notices</td></tr>
+              <tr><td>Forecast</td><td>Prediction or anomaly detection flags a condition building</td><td>Event trigger</td><td>Prevention &mdash; the ticket never exists</td></tr>
+              <tr><td>Request</td><td>An employee, a service-desk agent or an IT agent asks</td><td>On demand</td><td>Self Help and Remote Execution</td></tr>
+              <tr><td>Schedule or policy</td><td>A window, a compliance obligation, a drift threshold</td><td>Schedule</td><td>Patch rings, policy enforcement, routine tasks</td></tr>
             </tbody>
           </table>
         </div>
         <div class="prose" style="margin-top:22px">
-          <p>One authored workflow serves all four. This is the part that compounds: the effort is
-          spent once and recovered every time the condition recurs, through whichever channel it
-          arrives.</p>
+          <p>An event trigger is bound to a named condition the operating system already
+          publishes &mdash; a Windows event, a service state, a disk or memory threshold &mdash;
+          with a comparison and a value. Nothing is deployed to the endpoint to watch for it,
+          because the endpoint is already reporting it.</p>
+          <p>One authored workflow serves all four rows. This is the part that compounds: the
+          effort is spent once and recovered every time the condition recurs, through whichever
+          channel it arrives.</p>
         </div>
+        """ + shot("nanoheal &middot; workflow builder",
+               "Screenshot &mdash; intent",
+               "<b>Three intents, four patterns.</b> On demand is the one worth reading twice: "
+               "the same automation reaches employees through Self Help and technicians through "
+               "Remote Execution, without being rebuilt for either.",
+               "workflow-trigger.png") + """
       </div>
 
       <div class="issue">
@@ -1831,11 +1991,13 @@ PAGES["/platform/automation-library/"] = {
       first, not about how long the build takes.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; library",
-               "Screenshot &mdash; automation library",
-               "<b>Browse, target, switch on.</b> Configurations by category, platform and "
-               "delivery mode, with the populations they apply to and the validation state of "
-               "each entry.") + """
+    """ + shot("nanoheal &middot; automation library",
+               "Screenshot &mdash; Linked automations",
+               "<b>Browse, target, run.</b> Linked automations grouped by category, each "
+               "showing its delivery mode, its state and the population it is scoped to — "
+               "and a <em>Run now</em> that puts the same validated knowledge in a "
+               "technician&rsquo;s hands on demand.",
+               "remote-exec.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -1853,6 +2015,18 @@ PAGES["/platform/automation-library/"] = {
               <tr><td>Enforce</td><td>Security configuration, encryption state, required software, profile and policy baselines, persona-specific standards</td><td>Drift, treated as a symptom of its own</td></tr>
             </tbody>
           </table>
+        </div>
+        <div class="prose" style="margin-top:24px">
+          <p>In the console every entry carries the same four facets, whichever class it belongs
+          to: the <strong>category</strong> it sits under &mdash; apps, collaboration, devices,
+          network &mdash; the <strong>delivery mode</strong> it is licensed for, the
+          <strong>state</strong> it is in, and the <strong>population</strong> it is scoped to.
+          &ldquo;Chrome Cleanup &middot; autoheal &middot; active &middot; scoped for Clinical&rdquo;
+          is the whole record: what it fixes, how it reaches the device, whether it is live, and
+          who gets it.</p>
+          <p>That uniformity is what makes the library browsable at 1,200 entries rather than
+          merely large. You are not reading scripts to work out what something does; you are
+          filtering objects that describe themselves.</p>
         </div>
       </div>
 
@@ -2099,11 +2273,13 @@ PAGES["/solutions/self-service/"] = {
       for them to misread.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; employee experience",
-               "Screenshot &mdash; in-context self-service",
-               "<b>One offer, one action.</b> The employee sees the specific fix for the "
-               "condition their device just reported, with the same validated knowledge an "
-               "autoheal or an agent would have used.") + """
+    """ + shot("nanoheal &middot; workflow builder",
+               "Screenshot &mdash; Intent — how it runs",
+               "<b>Self Help is a delivery mode, not a separate product.</b> One authored "
+               "automation is marked <em>On demand</em> and becomes available to employees "
+               "through Self Help and to the service desk through Remote Execution. Nobody "
+               "rewrites it for the portal.",
+               "workflow-trigger.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -2139,6 +2315,13 @@ PAGES["/solutions/self-service/"] = {
         end-to-end: the condition before, the action taken, the condition after, and its effect on
         the <a href="/platform/experience-score/" style="color:var(--teal)">DEX score</a> for that
         population.</p>
+        <div class="prose" style="margin-top:20px">
+          <p>The employee&rsquo;s own read on it is collected the same way. A sentiment campaign can
+          be attached to run <em>after</em> a remediation rather than once a year, so the answer to
+          &ldquo;did that actually help?&rdquo; arrives while the incident is still recent and is
+          tied to the device evidence from the same moment.</p>
+          <p class="pull">An annual survey tells you how the year felt. A prompt after the fix tells you whether the fix worked.</p>
+        </div>
       </div>
     </div>
 
@@ -2180,11 +2363,12 @@ PAGES["/solutions/it-task-automation/"] = {
       gets automated.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; task workflows",
-               "Screenshot &mdash; task authoring",
-               "<b>Described, not built.</b> A request described in plain language, compiled into "
-               "a sealed capability sequence, scoped to a population and validated once before it "
-               "is trusted.") + """
+    """ + shot("nanoheal &middot; workflow builder",
+               "Screenshot &mdash; Plain-language authoring",
+               "<b>Described, not built.</b> The task is typed in plain English; the "
+               "context layer resolves it against what the engine can do and returns a "
+               "workflow to review. The quick starts are capabilities, not code samples.",
+               "workflow-nl.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -2200,6 +2384,12 @@ PAGES["/solutions/it-task-automation/"] = {
           <a href="/platform/compliance-governance/" style="color:var(--teal)">Compliance &amp;
           Governance &rarr;</a></p>
         </div>
+        """ + shot("nanoheal &middot; software distribution",
+               "Screenshot &mdash; software profiles",
+               "<b>Install and uninstall are the same object.</b> A distribution profile is "
+               "authored, scoped and published on the same path as a remediation &mdash; which "
+               "is why removing a superseded agent needs no more ceremony than rolling one out.",
+               "swd.png") + """
       </div>
 
       <div class="issue">
@@ -2267,11 +2457,12 @@ PAGES["/solutions/compliance-audit/"] = {
       that heals the device, with no script and no separate remediation tool.</p></div>
     </div>
 
-    """ + shot("nanoheal &middot; audit evidence",
-               "Screenshot &mdash; evidence pack",
-               "<b>What ran, where, when, and under whose approval.</b> Per-device compliance "
-               "history with capability versions and the validation record attached &mdash; "
-               "exportable, not reconstructed from logs.") + """
+    """ + shot("nanoheal &middot; classification",
+               "Screenshot &mdash; device classifications",
+               "<b>A baseline is only as good as the population it is scoped to.</b> Sites, "
+               "regions and business units are first-class groups &mdash; what a policy links "
+               "to, what a publish releases against, and the unit an auditor asks about.",
+               "classification.png") + """
 
     <div class="issues">
       <div class="issue">
@@ -2310,6 +2501,13 @@ PAGES["/solutions/compliance-audit/"] = {
           <p class="pull">If you cannot show an auditor what ran and who approved it, autonomy
           never leaves the pilot.</p>
         </div>
+        """ + shot("nanoheal &middot; activity log",
+               "Screenshot &mdash; activity log",
+               "<b>The evidence already exists.</b> Config edits, publishes and links are "
+               "recorded as they happen, with the module touched, the account that made the "
+               "change and the outcome. An audit pack is a filter over this &mdash; not a "
+               "reconstruction from logs after the fact.",
+               "audit-log.png") + """
       </div>
     </div>
 
@@ -2365,11 +2563,13 @@ PAGES["/solutions/internal-it/"] = {
       </div>
     </div>
 
-    """ + shot("nanoheal &middot; programme view",
-               "Screenshot &mdash; autonomy programme",
-               "<b>Coverage, deflection and score, on one view.</b> Automations live, tickets "
-               "avoided, populations improved and the next opportunities ranked by what they "
-               "would return.") + """
+    """ + shot("nanoheal &middot; experience score",
+               "Screenshot &mdash; DEX trend — programme view",
+               "<b>One number a programme can be run on.</b> Fleet DEX tracked "
+               "continuously on a fixed methodology, so the line moving is the estate "
+               "improving — which is what makes an autonomy programme reportable quarter "
+               "on quarter.",
+               "dex-score.png") + """
   </div>
 </section>
 

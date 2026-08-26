@@ -62,27 +62,44 @@
           problem rather than removed it &mdash; and inherited code nobody wrote but somebody
           still maintains.</p>
         </div>
+        <figure class="shot">
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; workflow builder</span></div>
+<div class="shot-img"><img src="../../assets/shots/workflow-nl.png" alt="Nanoheal console: plain-language authoring" loading="lazy" decoding="async"></div>
+<figcaption><b>Described, not built.</b> One field, in plain English. The context layer resolves the description against what the engine can already do and returns a workflow to review &mdash; and the quick starts underneath are capabilities, not code samples.</figcaption>
+</figure>
       </div>
 
       <div class="issue">
         <p class="n">02 &mdash; Triggering</p>
         <h3>Four ways the same workflow starts.</h3>
-        <div class="tblwrap">
+        <p class="lead">In the console this is a single choice on the workflow&rsquo;s
+        <em>Details</em> step &mdash; three intents that cover four operational patterns, because
+        a symptom and a forecast arrive through the same door.</p>
+        <div class="tblwrap" style="margin-top:22px">
           <table class="spec">
-            <thead><tr><th>Trigger</th><th>Starts when</th><th>Typical use</th></tr></thead>
+            <thead><tr><th>Trigger</th><th>Starts when</th><th>Set in the builder as</th><th>Typical use</th></tr></thead>
             <tbody>
-              <tr><td>Symptom</td><td>The OS reports the condition &mdash; event, service state, crash, error</td><td>Autoheal, before anyone notices</td></tr>
-              <tr><td>Forecast</td><td>Prediction or anomaly detection flags a condition building</td><td>Prevention &mdash; the ticket never exists</td></tr>
-              <tr><td>Request</td><td>An employee, a service-desk agent or an IT agent asks</td><td>Self-service and assisted resolution</td></tr>
-              <tr><td>Schedule or policy</td><td>A window, a compliance obligation, a drift threshold</td><td>Patch rings, policy enforcement, routine tasks</td></tr>
+              <tr><td>Symptom</td><td>The OS reports the condition &mdash; event, service state, crash, error</td><td>Event trigger</td><td>Autoheal, before anyone notices</td></tr>
+              <tr><td>Forecast</td><td>Prediction or anomaly detection flags a condition building</td><td>Event trigger</td><td>Prevention &mdash; the ticket never exists</td></tr>
+              <tr><td>Request</td><td>An employee, a service-desk agent or an IT agent asks</td><td>On demand</td><td>Self Help and Remote Execution</td></tr>
+              <tr><td>Schedule or policy</td><td>A window, a compliance obligation, a drift threshold</td><td>Schedule</td><td>Patch rings, policy enforcement, routine tasks</td></tr>
             </tbody>
           </table>
         </div>
         <div class="prose" style="margin-top:22px">
-          <p>One authored workflow serves all four. This is the part that compounds: the effort is
-          spent once and recovered every time the condition recurs, through whichever channel it
-          arrives.</p>
+          <p>An event trigger is bound to a named condition the operating system already
+          publishes &mdash; a Windows event, a service state, a disk or memory threshold &mdash;
+          with a comparison and a value. Nothing is deployed to the endpoint to watch for it,
+          because the endpoint is already reporting it.</p>
+          <p>One authored workflow serves all four rows. This is the part that compounds: the
+          effort is spent once and recovered every time the condition recurs, through whichever
+          channel it arrives.</p>
         </div>
+        <figure class="shot">
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; workflow builder</span></div>
+<div class="shot-img"><img src="../../assets/shots/workflow-trigger.png" alt="Nanoheal console: intent" loading="lazy" decoding="async"></div>
+<figcaption><b>Three intents, four patterns.</b> On demand is the one worth reading twice: the same automation reaches employees through Self Help and technicians through Remote Execution, without being rebuilt for either.</figcaption>
+</figure>
       </div>
 
       <div class="issue">

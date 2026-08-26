@@ -190,11 +190,66 @@ single cleanest quantitative contrast available, and it is used on /platform/aut
 ### Screenshots
 
 Every Platform pillar page and several Solutions pages carry a `.shot` frame — a captioned
-product screenshot with a placeholder grid where the capture goes. To drop a real one in,
-replace `<div class="shot-frame">…</div>` inside `shot()` in `pages.py` with an
-`<img src="/assets/shots/….png" alt="…">`; the frame, caption and responsive behaviour
-are unchanged. The captions are written to carry the argument on their own, so the page still
-reads if an image is missing.
+product screenshot. `shot(bar, label, caption, src)` renders the real capture when `src` names
+a file in `/assets/shots/`, and falls back to the placeholder grid when it doesn't, so a new
+frame can be written before its capture exists.
+
+The 16 captures in `/assets/shots/` are **focused crops** of the AEX console (source:
+`AEX-UI-Journeys-Walkthrough.docx`, captured 2026-08-26) — one panel, one table or one card
+each, not full 1440×900 windows, so the text stays legible at column width. They sit on a
+light plate (`.shot-img`) that centres rather than stretches them, and dark themes dim the
+plate instead of inverting the image, which would wreck the console's own colour coding.
+
+The captions are written to carry the argument on their own, so every page still reads if an
+image fails to load.
+
+**Not usable from that capture set:** the Tenants screen (`image35`) lists identifiable
+customer/prospect tenant names and must not be published. Several other screens were captured
+empty (Overview, Pending Publish, Score Models) or contain visible test rows, which is why the
+crops are as tight as they are.
+
+| Capture | Shows | Used on |
+|---|---|---|
+| `console-experience.png` | Sidebar + the 24-report catalogue | `/platform/`, `/platform/dex-intelligence/` |
+| `dex-score.png` | Fleet DEX trend | `/platform/dex-intelligence/`, `/solutions/internal-it/` |
+| `dex-drivers.png` | Score by location and by driver | `/platform/dex-intelligence/` |
+| `dex-reports.png` | Report catalogue list | `/digital-experience/` |
+| `inventory.png` | Windows / macOS / Linux estate | `/platform/dex-intelligence/` |
+| `workflow-nl.png` | "What needs fixing?" plain-language field | `/platform/workflows/`, `/solutions/it-task-automation/` |
+| `workflow-trigger.png` | Intent — Schedule / Event trigger / On demand | `/platform/workflows/`, `/solutions/self-service/` |
+| `workflow-timeline.png` | WHEN — Event: high disk usage alert | `/platform/automate/` |
+| `classification.png` | Device classifications | `/platform/automate/` |
+| `exec-history.png` | Execution history with outcomes | `/platform/automate/` |
+| `remote-exec.png` | 114 linked automations, autoheal chips | `/platform/automation-library/` |
+| `gpo-admx.png` | 4,080 ADMX policy templates | `/platform/compliance-governance/` |
+| `data-collection.png` | Collection profiles | `/platform/compliance-governance/` |
+| `audit-log.png` | Activity log, 777 records | `/platform/compliance-governance/`, `/solutions/compliance-audit/` |
+| `connectors.png` | ServiceNow · Teams · BMC Helix · Slack · Autotask | `/platform/orchestration/` |
+| `swd.png` | Software install/uninstall profiles | `/solutions/it-task-automation/` |
+
+### Product vocabulary the site now uses
+
+Derived from the AEX UI walkthrough, so marketing claims resolve to something a demo can show:
+
+| Site claim | The console object behind it |
+|---|---|
+| "The symptom is the trigger" | A workflow's first step is `WHEN` — an **Event trigger** bound to a named OS condition with a comparison and value |
+| "Four trigger classes" | Three **intents** on the Details step: Schedule, Event trigger, On demand. Symptom and forecast both arrive as Event trigger; request is On demand |
+| "Three ways to deliver it" | autoheal · **Self Help** (end users) · **Remote Execution** (technicians) |
+| "Knowledge, not code" | A step is a **DART** capability id plus parameters, carrying an **action-risk** classification |
+| "Governed / auditable" | Link scope → **Pending Publish** → publish → **Execution History**; separately, the **Activity log** records every console change |
+| "Scoped to a population" | **Device classifications** — sites, regions, business units |
+| "Desired state" | **GPO/ADMX templates** (4,080), **Device Protection** profiles, **Data Collection** profiles — all published on the same path |
+| "Analytics parity" | 24 DEX & device reports in 7 categories, incl. auto-remediation, MTTR and cost/ROI |
+| "Sentiment in context" | Survey campaigns that run *after* a remediation, not annually |
+| "No connector backlog" | **Connectors** (out to a product) · **Event subscriptions** (out to any URL) · **API keys/catalog** (in), each scoped per site |
+
+Two things the doc describes that the site does **not** yet claim, deliberately: Patch
+Management and Device Explorer are menu entries whose UI is not built yet, and the Innovate
+section (AI helpdesk, investigations, forecasting, query builder, agent workbench) was out of
+scope for that walkthrough. `/platform/dex-intelligence/` still asserts forecasting and anomaly
+detection on the strength of the product story rather than a screen — worth a capture before
+that claim is pushed harder.
 
 ## 5. Homepage section order (built)
 
@@ -228,8 +283,11 @@ loop diagram (→ /platform/), and the path-to-value timeline
 The category repositioning and the four-item IA are complete across the pages that exist.
 Still open from the planned IA, in rough priority order:
 
-1. **Real product screenshots.** Every `.shot` frame is a captioned placeholder. This is now the
-   single biggest gap between the site and the story it tells.
+1. ~~**Real product screenshots.**~~ Done — 16 focused console crops are live across the
+   Platform and Solutions pages (see *Screenshots* above). What is still missing is a capture
+   for the multi-tenant story (`/solutions/service-providers/`, `/solutions/oem-channel/`):
+   the Tenants screen in the current set names real customers and cannot be used, so a clean
+   demo-tenant capture is needed.
 2. `/resources/customer-stories/` — the production numbers on `/resources/outcomes/` are
    anonymised ("Fortune 100 manufacturer"). Named, quotable stories are what the competition
    leads with.

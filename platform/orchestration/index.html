@@ -47,9 +47,9 @@
     </div>
 
     <figure class="shot">
-<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; ecosystem orchestration</span></div>
-<div class="shot-frame"><span>Screenshot &mdash; cross-system run</span></div>
-<figcaption><b>One resolution, four systems, unattended.</b> The device action, the directory change, the ITSM update and the licence reclaim shown as a single governed run — with the guardrails each step was checked against.</figcaption>
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; connectors</span></div>
+<div class="shot-img"><img src="../../assets/shots/connectors.png" alt="Nanoheal console: Ecosystem connectors" loading="lazy" decoding="async"></div>
+<figcaption><b>The ecosystem, described rather than coded.</b> ServiceNow for incident and CMDB sync, Teams and Slack for escalation, BMC Helix for asset reconciliation, Autotask for PSA tickets — each scoped to a site, each a statement of intent rather than an integration project.</figcaption>
 </figure>
 
     <div class="issues">
@@ -83,6 +83,21 @@
           time either side ships a release.</p>
           <p class="pull">The reason integration is normally slow is that somebody has to write
           the integration. Remove that and the schedule changes shape.</p>
+        </div>
+        <div class="tblwrap" style="margin-top:24px">
+          <table class="spec">
+            <thead><tr><th>Surface</th><th>Direction</th><th>What it is for</th></tr></thead>
+            <tbody>
+              <tr><td>Connectors</td><td>Nanoheal &rarr; a product</td><td>Named, per-site links to the systems the work lives in &mdash; ITSM, CMDB, PSA, collaboration</td></tr>
+              <tr><td>Event subscriptions</td><td>Nanoheal &rarr; any URL</td><td>Pushing device and remediation events into whatever you already run, without a connector for it</td></tr>
+              <tr><td>API keys &amp; catalog</td><td>A product &rarr; Nanoheal</td><td>Scoped programmatic access for the systems that need to read or drive the estate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>Connectors are scoped to a site rather than to the tenant, which matters more than it
+          sounds: a regional CMDB, a business unit&rsquo;s own ServiceNow instance and a partner&rsquo;s
+          PSA can coexist under one console without anybody having to pick a winner.</p>
         </div>
       </div>
 

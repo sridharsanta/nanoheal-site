@@ -46,9 +46,9 @@
     </div>
 
     <figure class="shot">
-<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; compliance posture</span></div>
-<div class="shot-frame"><span>Screenshot &mdash; compliance posture</span></div>
-<figcaption><b>Desired state, actual state, and the gap closing itself.</b> Policy, patch and software compliance by persona and population, with drifted devices shown against the correction already queued for them.</figcaption>
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; policy templates</span></div>
+<div class="shot-img"><img src="../../assets/shots/gpo-admx.png" alt="Nanoheal console: ADMX policy catalog" loading="lazy" decoding="async"></div>
+<figcaption><b>Desired state, from the catalog you already know.</b> 4,080 ADMX policy templates are first-class objects: pick the template, scope it to a device classification, and the engine holds the estate there. No settings hand-authored one at a time.</figcaption>
 </figure>
 
     <div class="issues">
@@ -87,6 +87,29 @@
           <p class="pull">Reporting a device out of policy is a finding. Putting it back in policy
           is the job.</p>
         </div>
+        <div class="g3" style="margin-top:26px">
+          <div class="tile"><h3>Policy templates.</h3><p>4,080 ADMX templates, browsable by
+          category and subcategory. The Windows policy vocabulary your team already knows,
+          available as objects to scope rather than settings to re-author.</p></div>
+          <div class="tile"><h3>Protection profiles.</h3><p>Lockdown baselines expressed as
+          policies over registry, services, application control, filesystem paths and removable
+          media &mdash; Defender real-time protection, BitLocker on the OS volume, machine
+          inactivity limits.</p></div>
+          <div class="tile"><h3>Collection profiles.</h3><p>What the agent gathers in the first
+          place: performance, storage, user activity and network. The measuring half is itself a
+          scoped, published configuration &mdash; not a fixed sensor set you inherit.</p></div>
+        </div>
+        <div class="prose" style="margin-top:22px">
+          <p>All three are the same kind of object as an automation, and they travel the same
+          route: attach to a device classification, stage the change, publish it. One change-control
+          path covers remediation, software, telemetry and hardening, which is the reason a
+          compliance conversation here does not need a second tool to finish.</p>
+        </div>
+        <figure class="shot">
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; data collection</span></div>
+<div class="shot-img"><img src="../../assets/shots/data-collection.png" alt="Nanoheal console: collection profiles" loading="lazy" decoding="async"></div>
+<figcaption><b>What you measure is a published configuration too.</b> Performance, storage, network and user-activity collection are profiles you attach to a group and release &mdash; so a persona can be measured differently from a kiosk without a separate deployment.</figcaption>
+</figure>
       </div>
 
       <div class="issue">
@@ -120,9 +143,9 @@
           reconstructed from logs.</p></div>
         </div>
         <figure class="shot">
-<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; evidence &amp; audit trail</span></div>
-<div class="shot-frame"><span>Screenshot &mdash; evidence and audit trail</span></div>
-<figcaption><b>Every unattended action, accounted for.</b> Execution history by policy, population and capability version, with the approval record attached to each knowledge entry.</figcaption>
+<div class="shot-bar"><i></i><i></i><i></i><span>nanoheal &middot; activity log</span></div>
+<div class="shot-img"><img src="../../assets/shots/audit-log.png" alt="Nanoheal console: Activity log" loading="lazy" decoding="async"></div>
+<figcaption><b>Who changed what, on the record.</b> Every config edit, publish and link is logged with the module it touched, the account that made it and the outcome — the console&rsquo;s own change history, kept separate from the device telemetry stream.</figcaption>
 </figure>
       </div>
     </div>
